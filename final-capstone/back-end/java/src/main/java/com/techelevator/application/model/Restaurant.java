@@ -5,7 +5,7 @@ public class Restaurant {
 	private String name;
 	private String descrip;
 	private int zipCode;
-	private int phoneNumber;
+	private String phoneNumber;
 	private String imageLink;
 	private String address;
 	private int typeId;
@@ -48,11 +48,11 @@ public class Restaurant {
 		this.zipCode = zipCode;
 	}
 
-	public int getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(int phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 
