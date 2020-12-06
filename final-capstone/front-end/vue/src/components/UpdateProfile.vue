@@ -9,8 +9,12 @@
           <input type="text" id="lastName" placeholder="Last Name" required=true/>
 
            <label for="email" class="profile-form">Email Address: </label>
-          <input type="text" id="email" placeholder="email" required=true/>
+          <input type="email" id="email" placeholder="email" required=true/>
 
+           <label for="zipCode" class="profile-form">Zip Code: </label>
+          <input type="text" id="zipCode" placeholder="Zip Code" required=true/>
+
+          <input type="submit"/>
       </form>
     
 

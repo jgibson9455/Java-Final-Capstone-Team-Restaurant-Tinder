@@ -5,7 +5,7 @@
 <script>
 import UpdateProfile from '../components/UpdateProfile.vue'
 export default {
-    name: 'update-profile',
+    name: 'update-profile-view',
     components: {
         UpdateProfile
     }

@@ -7,6 +7,8 @@ import Register from '../views/Register.vue'
 import store from '../store/index'
 import StartupPage from '../views/StartupPage.vue'
 import UpdateProfile from '../views/UpdateProfile.vue'
+import Restaurants from '../views/Restaurants.vue'
+import Questionnaire from '../views/Questionnaire.vue'
 
 Vue.use(Router)
 
@@ -61,9 +63,19 @@ const router = new Router({
       }
     },
     {
-      path: "/profile",
-      name: "update-profile",
+      path: "/update-profile",
+      name: "update-profile-view",
       component: UpdateProfile
+    },
+    {
+      path: "/restaurants",
+      name: "restaurants",
+      component: Restaurants
+    },
+    {
+      path: "/questionnaire",
+      name: "questionnaire",
+      component: Questionnaire
     }
   ]
 })
