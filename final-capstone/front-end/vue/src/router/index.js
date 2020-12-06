@@ -5,6 +5,8 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
+import StartupPage from '../views/StartupPage.vue'
+import UpdateProfile from '../views/UpdateProfile.vue'
 
 Vue.use(Router)
 
@@ -23,6 +25,11 @@ const router = new Router({
   routes: [
     {
       path: '/',
+      name: 'startup',
+      component: StartupPage
+    },
+    {
+      path: '/home',
       name: 'home',
       component: Home,
       meta: {
@@ -53,6 +60,11 @@ const router = new Router({
         requiresAuth: false
       }
     },
+    {
+      path: "/profile",
+      name: "update-profile",
+      component: UpdateProfile
+    }
   ]
 })
 
