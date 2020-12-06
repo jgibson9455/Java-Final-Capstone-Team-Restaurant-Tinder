@@ -1,5 +1,8 @@
 package com.techelevator.application.jdbcdao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.sql.DataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -15,7 +18,36 @@ public class JDBCRestaurantDAO implements RestaurantDAO {
 	public JDBCRestaurantDAO(DataSource source) {
 		this.jdbcTemplate = new JdbcTemplate(source);
 	}
+	
+	
+	
+	@Override
+	public List<Restaurant> getAllRestaurants() {
+		String query="SELECT * FROM restaurant";
+		SqlRowSet rowSet = jdbcTemplate.queryForRowSet(query);
+		List<Restaurant> restaurants = new ArrayList<>();
+			while(rowSet.next()) {
+				Restaurant restaurantToAdd = mapRowToRestaurant(rowSet);
+				restaurants.add(restaurantToAdd);
+			}
+		return restaurants;
+	}
 
+	@Override
+	public Restaurant getRestaurantById(int id) {
+		String query ="SELECT * FROM restaurant WHERE restaurant_id=?";
+		SqlRowSet rowSet = jdbcTemplate.queryForRowSet(query, id);
+			if(rowSet.next()) {
+				Restaurant restaurant = mapRowToRestaurant(rowSet);
+				return restaurant;
+			}
+		
+		return null;
+	}
+	
+	
+	
+	
 	private Restaurant mapRowToRestaurant(SqlRowSet rowset) {
 		Restaurant restaurant = new Restaurant();
 		restaurant.setRestaurantId(rowset.getInt("restaurant_id"));
@@ -29,5 +61,7 @@ public class JDBCRestaurantDAO implements RestaurantDAO {
 
 		return restaurant;
 	}
+
+	
 
 }
