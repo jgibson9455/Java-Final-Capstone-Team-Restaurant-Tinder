@@ -6,6 +6,5 @@ public interface ProfileDAO {
 
 	public Profile getProfileByUserId(int userId);
 	public Profile makeProfileFromUser(int userId);
-	public void populateUserProfile(Profile profile);
-	
-	}
+	public void populateUserProfile(Profile profile);	
+}

@@ -30,4 +30,9 @@ public class ProfileController {
 	public Profile createProfileFromUserId(@RequestBody User user) {
 		return profileDAO.makeProfileFromUser(user.getId().intValue()); // doublecheck this - int to long conversion
 	}
+	
+	@RequestMapping(path="/profile/{id}", method=RequestMethod.PUT)
+	public void updateProfile(@PathVariable int id, @RequestBody Profile profile) {
+		profileDAO.populateUserProfile(profile);
+	}
 }
