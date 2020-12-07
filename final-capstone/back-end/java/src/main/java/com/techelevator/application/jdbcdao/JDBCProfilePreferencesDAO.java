@@ -15,6 +15,25 @@ public class JDBCProfilePreferencesDAO implements ProfilePreferencesDAO {
 	public JDBCProfilePreferencesDAO(DataSource source) {
 		this.jdbcTemplate = new JdbcTemplate(source);
 	}
+	
+	@Override
+	public ProfilePreferences addPrefererence(int userId, int preferenceId, int typeId) {
+		String query = "INSERT INTO profile_preferences VALUES(?, ?, ?)";
+		SqlRowSet rowSet = jdbcTemplate.queryForRowSet(query, userId, typeId, preferenceId);
+		
+		if(rowSet.next()) {
+			ProfilePreferences preference = mapRowToProfilePreference(rowSet);
+			return preference;
+		}
+		
+		return null;
+	}
+
+	@Override
+	public void updatePreference(ProfilePreferences profilePreference) {
+		String query = "UPDATE profile_preferences SET preference_id = ?";
+		jdbcTemplate.update(query, profilePreference.getPreferenceId());
+	}
 
 	private ProfilePreferences mapRowToProfilePreference(SqlRowSet rowset) {
 		ProfilePreferences profilePreference = new ProfilePreferences();

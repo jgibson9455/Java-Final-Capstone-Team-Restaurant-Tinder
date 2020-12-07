@@ -30,4 +30,9 @@ public class RestaurantController {
 	public Restaurant getRestaurantById(@PathVariable int id) {
 		return restaurantDAO.getRestaurantById(id);
 	}
+	
+	@RequestMapping(path="/restaurants/type/{typeId}", method=RequestMethod.GET)
+	public List<Restaurant> getRestaurantByType(@PathVariable int typeId){
+		return restaurantDAO.getRestaurantsByType(typeId);
+	}
 }

@@ -19,8 +19,6 @@ public class JDBCRestaurantDAO implements RestaurantDAO {
 		this.jdbcTemplate = new JdbcTemplate(source);
 	}
 	
-	
-	
 	@Override
 	public List<Restaurant> getAllRestaurants() {
 		String query="SELECT * FROM restaurant";
@@ -45,8 +43,19 @@ public class JDBCRestaurantDAO implements RestaurantDAO {
 		return null;
 	}
 	
-	
-	
+	@Override
+	public List<Restaurant> getRestaurantsByType(int typeId){
+		List<Restaurant> restaurantType = new ArrayList<>();
+		String query = "SELECT * FROM restaurant WHERE type_id = ?";
+		SqlRowSet rowSet = jdbcTemplate.queryForRowSet(query, typeId);
+		
+		while(rowSet.next()) {
+			Restaurant restaurantToAdd = mapRowToRestaurant(rowSet);
+			restaurantType.add(restaurantToAdd);
+		}
+		
+		return restaurantType;
+	}
 	
 	private Restaurant mapRowToRestaurant(SqlRowSet rowset) {
 		Restaurant restaurant = new Restaurant();

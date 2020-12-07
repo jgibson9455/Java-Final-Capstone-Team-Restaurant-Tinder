@@ -8,7 +8,5 @@ public interface RestaurantDAO {
 
 	public List<Restaurant> getAllRestaurants();
 	public Restaurant getRestaurantById(int id);
-	
-	
-	
+	public List<Restaurant> getRestaurantsByType(int typeId);
 }
