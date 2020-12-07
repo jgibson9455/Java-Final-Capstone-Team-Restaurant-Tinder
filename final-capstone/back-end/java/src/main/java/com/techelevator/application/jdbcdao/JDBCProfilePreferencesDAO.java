@@ -34,6 +34,15 @@ public class JDBCProfilePreferencesDAO implements ProfilePreferencesDAO {
 		String query = "UPDATE profile_preferences SET preference_id = ?";
 		jdbcTemplate.update(query, profilePreference.getPreferenceId());
 	}
+	
+	
+	@Override
+	public void deletePreference(ProfilePreferences profilePreference) {
+		String query = "DELETE profile_preferences WHERE preference_id = ?";
+		jdbcTemplate.update(query, profilePreference.getPreferenceId()); // double check me
+	}
+	
+	
 
 	private ProfilePreferences mapRowToProfilePreference(SqlRowSet rowset) {
 		ProfilePreferences profilePreference = new ProfilePreferences();

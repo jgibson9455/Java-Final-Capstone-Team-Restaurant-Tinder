@@ -31,7 +31,10 @@ public class ProfilePreferencesController {
 	
 	}
 	
-	
+	@RequestMapping(path="/profile/preference/{id}", method=RequestMethod.DELETE) 
+	public void deletePreference(@PathVariable ProfilePreferences profilePreferences) {
+		
+	}
 	
 	
 	
