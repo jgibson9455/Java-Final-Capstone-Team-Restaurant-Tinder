@@ -14,6 +14,17 @@
 
 export default {
     name: 'profile',
+      data() {
+        return {
+         profile: {
+           userID: "",
+           firstName: "",
+           lastName: "",
+           email: "",
+           zipCode: "",
+    }
+      }
+       }
 
 }
 </script>

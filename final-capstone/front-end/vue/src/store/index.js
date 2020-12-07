@@ -11,6 +11,7 @@ Vue.use(Vuex)
  */
 const currentToken = localStorage.getItem('token')
 const currentUser = JSON.parse(localStorage.getItem('user'));
+const currentProfile = JSON.parse(localStorage.getItem('profile'));
 
 if(currentToken != null) {
   axios.defaults.headers.common['Authorization'] = `Bearer ${currentToken}`;
@@ -19,7 +20,8 @@ if(currentToken != null) {
 export default new Vuex.Store({
   state: {
     token: currentToken || '',
-    user: currentUser || {}
+    user: currentUser || {},
+    profile: currentProfile || {}
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -29,7 +31,7 @@ export default new Vuex.Store({
     },
     SET_USER(state, user) {
       state.user = user;
-      localStorage.setItem('user',JSON.stringify(user));
+      localStorage.setItem('user', JSON.stringify(user));
     },
     LOGOUT(state) {
       localStorage.removeItem('token');
@@ -37,6 +39,15 @@ export default new Vuex.Store({
       state.token = '';
       state.user = {};
       axios.defaults.headers.common = {};
+    },
+    //make mutation to hold data
+    //within service call save user input data to mutation
+    //services can access data from mutation
+    //and send back to api
+
+    CREATE_PROFILE(state, profile) {
+      state.profile = profile;
+      localStorage.setItem('profile', JSON.stringify(profile));
     }
   }
 })

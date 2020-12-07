@@ -64,11 +64,12 @@ export default {
         this.registrationErrors = true;
         this.registrationErrorMsg = 'Password & Confirm Password do not match.';
       } else {
-        /* appService.createProfileFromUserId(this.user).then(response => {
+         appService.createProfileFromUserId(this.user)
+            .then(response => {
             if (response.status === 200) {
-              
+              this.$store.commit("CREATE_PROFILE", response.data.profile)
             }
-        }) */
+        }) 
         authService
           .register(this.user)
           .then((response) => {

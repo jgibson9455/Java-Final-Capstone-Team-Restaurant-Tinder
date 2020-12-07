@@ -21,10 +21,11 @@ export default {
 
     // user for profile
     createProfileFromUserId(user) {
-        return http.post('/profile');
+        return http.post('/profile', user);
     },
 
     updateProfile(id, profile) {
         return http.post(`/profile/${id}`, profile);
     }
+
 }
