@@ -30,7 +30,4 @@ public class ProfileController {
 	public Profile createProfileFromUserId(@RequestBody User user) {
 		return profileDAO.makeProfileFromUser(user.getId().intValue()); // doublecheck this - int to long conversion
 	}
-	
-	
-	
 }

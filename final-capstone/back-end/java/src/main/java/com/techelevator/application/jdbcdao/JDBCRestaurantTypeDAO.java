@@ -1,5 +1,8 @@
 package com.techelevator.application.jdbcdao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.sql.DataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -15,8 +18,35 @@ public class JDBCRestaurantTypeDAO implements RestaurantTypeDAO {
 	public JDBCRestaurantTypeDAO(DataSource source) {
 		this.jdbcTemplate = new JdbcTemplate(source);
 	}
+	
+	@Override
+	public List<RestaurantType> getAllTypes(){
+		List<RestaurantType> types = new ArrayList<>();
+		
+		String query = "SELECT * FROM restaurant_type";
+		SqlRowSet rowSet = jdbcTemplate.queryForRowSet(query);
+		while(rowSet.next()) {
+			RestaurantType type = mapRowToRestaurantType(rowSet);
+			types.add(type);
+		}
+		
+		return types;
+	}
+	
+	@Override
+	public RestaurantType getTypeById(int id) {
+		String query = "SELECT * FROM restaurant_type WHERE type_id = ?";
+		SqlRowSet rowSet = jdbcTemplate.queryForRowSet(query, id);
+		
+		if(rowSet.next()) {
+			RestaurantType type = mapRowToRestaurantType(rowSet);
+			return type;
+		}
+		
+		return null;
+	}
 
-	private RestaurantType mapRowToRestaurant(SqlRowSet rowset) {
+	private RestaurantType mapRowToRestaurantType(SqlRowSet rowset) {
 		RestaurantType restaurantType = new RestaurantType();
 		restaurantType.setTypeId(rowset.getInt("type_id"));
 		restaurantType.setTypeName(rowset.getString("type_name"));

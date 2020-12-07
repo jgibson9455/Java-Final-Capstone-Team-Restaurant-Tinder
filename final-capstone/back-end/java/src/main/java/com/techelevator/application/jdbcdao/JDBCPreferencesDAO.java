@@ -18,6 +18,7 @@ public class JDBCPreferencesDAO implements PreferencesDAO{
 	
 	
 	
+	
 	private Preferences mapRowToPreference(SqlRowSet rowset) {
 		Preferences preference = new Preferences();
 		preference.setPreferenceId(rowset.getInt("preference_id"));
