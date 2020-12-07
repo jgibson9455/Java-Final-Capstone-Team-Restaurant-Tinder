@@ -17,5 +17,14 @@ export default {
 
     getRestaurantById(id) {
         return http.get(`/restaurant/${id}`);
+    },
+
+    // user for profile
+    createProfileFromUserId(user) {
+        return http.post('/profile');
+    },
+
+    updateProfile(id, profile) {
+        return http.post(`/profile/${id}`, profile);
     }
 }

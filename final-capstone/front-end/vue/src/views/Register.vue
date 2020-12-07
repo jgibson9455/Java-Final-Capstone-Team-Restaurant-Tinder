@@ -5,7 +5,7 @@
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
-      <label for="username" class="sr-only">Username</label>
+      <label for="username" class="sr-only">username: </label>
       <input
         type="text"
         id="username"
@@ -15,7 +15,7 @@
         required
         autofocus
       />
-      <label for="password" class="sr-only">Password</label>
+      <label for="password" class="sr-only">password: </label>
       <input
         type="password"
         id="password"
@@ -32,16 +32,17 @@
         v-model="user.confirmPassword"
         required
       />
-      <router-link :to="{ name: 'login' }">Have an account?</router-link>
       <button class="btn btn-lg btn-primary btn-block" type="submit">
         Create Account
       </button>
+      <router-link :to="{ name: 'login' }">Have an account?</router-link>
     </form>
   </div>
 </template>
 
 <script>
 import authService from '../services/AuthService';
+import appService from '../services/ApplicationServices';
 
 export default {
   name: 'register',
@@ -63,6 +64,11 @@ export default {
         this.registrationErrors = true;
         this.registrationErrorMsg = 'Password & Confirm Password do not match.';
       } else {
+        /* appService.createProfileFromUserId(this.user).then(response => {
+            if (response.status === 200) {
+              
+            }
+        }) */
         authService
           .register(this.user)
           .then((response) => {
