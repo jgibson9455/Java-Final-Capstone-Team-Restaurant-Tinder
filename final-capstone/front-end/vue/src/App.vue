@@ -15,5 +15,15 @@ export default {
 </script>
 
 <style scoped>
+a {
+  color: #FD297B;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+a:hover {
+  color: #FF655B;
+  text-decoration: underline;
+}
 
 </style>

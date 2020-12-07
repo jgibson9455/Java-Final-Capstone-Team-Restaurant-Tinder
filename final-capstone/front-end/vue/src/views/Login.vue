@@ -14,7 +14,8 @@
         role="alert"
         v-if="this.$route.query.registration"
       >Thank you for registering, please sign in.</div>
-      <label for="username" class="sr-only">username:</label>
+      <div id="username-signin">
+      <label for="username" class="sr-only">username:  </label>
       <input
         type="text"
         id="username"
@@ -24,7 +25,9 @@
         required
         autofocus
       />
-      <label for="password" class="sr-only">password:</label>
+      </div>
+      <div id="password-signin">
+      <label for="password" class="sr-only">password:  </label>
       <input
         type="password"
         id="password"
@@ -33,9 +36,16 @@
         v-model="user.password"
         required
       />
-      <router-link :to="{ name: 'register' }">Create an Account</router-link>
+      </div>
+      
       <button type="submit">Sign in</button>
+      <router-link class="link" :to="{ name: 'register' }">Create an Account</router-link>
+
+    <div class="logo">
+      <img src='../img/logo-color.png'/>
+    </div>
     </form>
+    
   </div>
 </body>
 </template>
@@ -85,8 +95,9 @@ export default {
   align-items: center;
   background-color: white;
   object-fit: fill;
-  height: 300px;
+  height: 400px;
   text-align: center;
+  border-radius: 1%;
   
 }
 
@@ -108,11 +119,59 @@ body {
 
 .whatever {
   grid-area: whatever;
-  height: 25%;
+  height: 30%;
+  padding-bottom: 40px;
 }
 
 body {
   background-image: linear-gradient(to bottom left,  #FF655B, #FD297B);
   height: 700px;
+}
+
+h1 {
+  border-bottom: 2px solid grey;
+  padding-bottom: 5px;
+}
+
+#username-signin, #password-singin {
+  display: inline-block;
+  padding: 10px;
+}
+
+.sr-only {
+  font-size: 20px;
+}
+
+button {
+  margin-top: 20px;
+}
+
+.link {
+  padding-top: 20px;
+}
+
+h1, .sr-only, button, .link {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.logo {
+  text-align: center;
+  padding-top: 20px;
+}
+
+img {
+  width: 100px;
+  border-radius: 50%;
+}
+
+a {
+  color: #FD297B;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+a:hover {
+  color: #FF655B;
+  text-decoration: underline;
 }
 </style>

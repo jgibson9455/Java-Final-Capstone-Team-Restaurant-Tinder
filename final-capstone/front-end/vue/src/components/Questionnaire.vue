@@ -5,32 +5,41 @@
         <div>
           <h2>Favorite Foods: </h2>
           
-          <input type="checkbox" id="Mexican" value="Mexican" required=true />
+            <input type="checkbox" id="Mexican" value="Mexican"/>
             <label for="Mexican" class="food-form">Mexican</label><br>
 
-            <input type="checkbox" id="Asian" value="Asian" required=true />
+            <input type="checkbox" id="Asian" value="Asian" />
             <label for="Asian" class="food-form">Asian</label><br>
-        </div>  
+
+            <input type="checkbox" id="Seafood" value="Seafood" />
+            <label for="Seafood" class="food-form">Seafood</label><br>
+
+            <input type="checkbox" id="Italian" value="Italian" />
+            <label for="Italian" class="food-form">Italian</label><br>
+        </div>
 
         <div>
-        <h2>Allergies: </h2>
-            <input type="checkbox" id="Dairy" value="Dairy" required=true/>
-           <label for="Dairy" class="food-form">Dairy </label><br>
+        <h2>Disliked Food: </h2>
+            <input type="checkbox" id="Mexican" value="Mexican"/>
+            <label for="Mexican" class="food-form">Mexican</label><br>
 
-            <input type="checkbox" id="Peanut Butter" value="Peanut Butter" required=true/>
-           <label for="Peanut Butter" class="food-form">Peanut Butter </label><br>
+            <input type="checkbox" id="Asian" value="Asian"/>
+            <label for="Asian" class="food-form">Asian</label><br>
 
-            <input type="checkbox" id="Shellfish" value="Shellfish" required=true/>
-           <label for="Shellfish" class="food-form">Shellfish </label><br>
+            <input type="checkbox" id="Seafood" value="Seafood"/>
+           <label for="Seafood" class="food-form">Seafood</label><br>
+
+           <input type="checkbox" id="Italian" value="Italian"/>
+            <label for="Italian" class="food-form">Italian</label><br>
 
         </div>
 
         <div>
         <h2>Vegetarian or Vegan? </h2>
-            <input type="checkbox" id="Vegetarian" required=true/>
+            <input type="checkbox" id="Vegetarian"/>
            <label for="Vegetarian" class="food-form">Vegetarian </label><br>
 
-            <input type="checkbox" id="Vegan" required=true/>
+            <input type="checkbox" id="Vegan"/>
            <label for="Vegan" class="food-form">Vegan </label>
 
         </div>
