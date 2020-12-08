@@ -11,6 +11,10 @@ const http = axios.create({
 })
 
 export default {
+    getUserByUserName(userName){
+        return http.get(`/user/search?userName=${userName}`)
+    },
+
     getAllRestaurants() {
         return http.get('/restaurants');
     },

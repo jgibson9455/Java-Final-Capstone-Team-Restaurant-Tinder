@@ -21,11 +21,10 @@ export default {
            firstName: "",
            lastName: "",
            email: "",
-           zipCode: "",
-    }
+           zipCode: ""
       }
-       }
-
+    }
+  }
 }
 </script>
 

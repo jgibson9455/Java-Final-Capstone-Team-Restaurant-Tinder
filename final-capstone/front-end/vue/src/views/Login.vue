@@ -51,6 +51,7 @@
 </template>
 
 <script>
+//import ApplicationServices from '../services/ApplicationServices';
 import authService from "../services/AuthService";
 
 export default {
@@ -73,7 +74,6 @@ export default {
           if (response.status == 200) {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
-           this.registerProfile();
             this.$router.push("/home");
           }
         })
@@ -85,9 +85,6 @@ export default {
           }
         });
     },
-    registerProfile() {
-        alert(`${this.user.username} ${this.user.userId}`);
-  }
   }
 };
 </script>
