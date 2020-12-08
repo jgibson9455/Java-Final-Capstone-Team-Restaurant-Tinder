@@ -28,15 +28,10 @@ public class JDBCProfileDAO implements ProfileDAO {
 	}
 
 	@Override
-	public Profile makeProfileFromUser(int userId) {
+	public void makeProfileFromUser(int userId) {
 		String query = "INSERT INTO profile (user_id, user_name) " + "SELECT u.user_id, u.username FROM users u "
 				+ "WHERE u.user_id = ?";
-		SqlRowSet rowSet = jdbcTemplate.queryForRowSet(query, userId);
-		if (rowSet.next()) {
-			Profile profile = mapRowToProfileFromUser(rowSet);
-			return profile;
-		}
-		return null;
+		jdbcTemplate.update(query, userId);
 	}
 
 	@Override
