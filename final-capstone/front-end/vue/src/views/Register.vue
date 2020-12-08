@@ -42,7 +42,7 @@
 
 <script>
 import authService from '../services/AuthService';
-import appService from '../services/ApplicationServices';
+// import appService from '../services/ApplicationServices';
 
 export default {
   name: 'register',
@@ -64,16 +64,12 @@ export default {
         this.registrationErrors = true;
         this.registrationErrorMsg = 'Password & Confirm Password do not match.';
       } else {
-         appService.createProfileFromUserId(this.user)
-            .then(response => {
-            if (response.status === 200) {
-              this.$store.commit("CREATE_PROFILE", response.data.profile)
-            }
-        }) 
+        
         authService
           .register(this.user)
           .then((response) => {
             if (response.status == 201) {
+              this.registerProfile();
               this.$router.push({
                 path: '/login',
                 query: { registration: 'success' },
@@ -87,8 +83,14 @@ export default {
               this.registrationErrorMsg = 'Bad Request: Validation Errors';
             }
           });
+          
+          
       }
+      
     },
+    registerProfile() {
+        alert(`${this.user.username} ${this.user.id}`);
+      },
     clearErrors() {
       this.registrationErrors = false;
       this.registrationErrorMsg = 'There were problems registering this user.';
