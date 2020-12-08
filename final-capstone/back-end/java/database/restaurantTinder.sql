@@ -8,7 +8,7 @@ DROP TABLE IF EXISTS restaurant_type;
 
 -- Create Tables 
 CREATE TABLE profile(
-        user_id         INTEGER PRIMARY KEY,
+        user_id         SERIAL PRIMARY KEY,
         first_name      VARCHAR(50),
         last_name       VARCHAR(50),
         user_name       VARCHAR(50),

@@ -34,8 +34,6 @@ public class JDBCProfileDAO implements ProfileDAO {
 		jdbcTemplate.update(query, profile.getUserName());
 	}
 	
-	
-
 	@Override
 	public void populateUserProfile(Profile profile) {
 		String query = "UPDATE profile SET first_name = ?, last_name = ?, " + "email_address = ?, zip_code = ? "

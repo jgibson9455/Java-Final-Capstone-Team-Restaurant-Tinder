@@ -11,10 +11,6 @@ const http = axios.create({
 })
 
 export default {
-    getUserByUserName(userName){
-        return http.get(`/user/search?userName=${userName}`)
-    },
-
     getAllRestaurants() {
         return http.get('/restaurants');
     },
@@ -24,12 +20,12 @@ export default {
     },
 
     // user for profile
-    createProfileFromUserId(user) {
-        return http.post('/profile', user);
+    createProfileFromUsername(profile) {
+        return http.post('/profile', profile);
     },
 
     updateProfile(id, profile) {
-        return http.post(`/profile/${id}`, profile);
+        return http.put(`/profile/${id}`, profile);
     }
 
 }
