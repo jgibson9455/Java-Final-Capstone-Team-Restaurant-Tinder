@@ -36,10 +36,10 @@ public class JDBCProfileDAO implements ProfileDAO {
 	
 	@Override
 	public void populateUserProfile(Profile profile) {
-		String query = "UPDATE profile SET first_name = ?, last_name = ?, " + "email_address = ?, zip_code = ? "
+		String query = "UPDATE profile SET first_name = ?, last_name = ?, email_address = ?, zip_code = ? "
 				+ "WHERE user_name = ?";
 		jdbcTemplate.update(query, profile.getFirstName(), profile.getLastName(), profile.getEmail(),
-				profile.getZipCode(), profile.getUserId());
+				profile.getZipCode(), profile.getUserName());
 	}
 	
 	private Profile mapRowToProfileFromUser(SqlRowSet rowset) {
