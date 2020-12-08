@@ -43,7 +43,7 @@ export default {
 } */
 
 .startup-body {
-       background-image: linear-gradient(to bottom left,  #FF655B, #FD297B);
+    background-image: linear-gradient(to bottom left,  #FF655B, #FD297B);
 }
 
 .link-div {
@@ -58,7 +58,7 @@ export default {
     flex-direction: column;
     justify-content: center; /*centers the items within this box*/
     align-items: center;
-    background-color: white;
+    background-color: blanchedalmond;
     height: 250px;
     width: 250px;
     border-radius: 5%;
