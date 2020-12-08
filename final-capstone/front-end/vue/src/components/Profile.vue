@@ -1,13 +1,16 @@
 <template>
+<body>
    <div class="home">
     
-    <h1>Home</h1>
-    <p>You must be authenticated to see this</p>
-   <router-link v-bind:to="{name: 'update-profile-view'}">Update Profile</router-link>
-   <router-link v-bind:to="{name: 'questionnaire'}">Food Questionnaire</router-link>
+    <h1> My Profile</h1>
+
+    <p>This is your profile</p>
+   <router-link v-bind:to="{name: 'update-profile-view'}">Update Profile</router-link> |
+   <router-link v-bind:to="{name: 'questionnaire'}">Food Questionnaire</router-link> |
    <router-link v-bind:to="{name: 'restaurants'}">Restaurant List</router-link>
    
   </div>
+</body>
 </template>
 
 <script>
@@ -29,5 +32,8 @@ export default {
 </script>
 
 <style>
+.home {
+  text-align: center;
+}
 
 </style>
