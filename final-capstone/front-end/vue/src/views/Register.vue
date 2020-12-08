@@ -1,4 +1,6 @@
 <template>
+<body>
+  <div class="whatever"></div>
   <div id="register" class="text-center">
     <form class="form-register" @submit.prevent="register">
       <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
@@ -35,9 +37,13 @@
       <button class="btn btn-lg btn-primary btn-block" type="submit">
         Create Account
       </button>
-      <router-link :to="{ name: 'login' }">Have an account?</router-link>
+      <router-link class="link" :to="{ name: 'login' }">Have an account?</router-link>
+      <div class="logo">
+      <img src='../img/logo-color.png'/>
+    </div>
     </form>
   </div>
+  </body>
 </template>
 
 <script>
@@ -93,4 +99,100 @@ export default {
 };
 </script>
 
-<style></style>
+
+
+<style>
+.form-register {
+   display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  object-fit: fill;
+  height: 400px;
+  text-align: center;
+  border-radius: 1%;
+}
+body {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: 
+  "whatever whatever whatever"
+  ". register ."
+  ". register ."
+  ". . ."
+  ;
+  grid-gap: 10px;
+}
+
+#register {
+  grid-area: register;
+}
+
+.whatever {
+  grid-area: whatever;
+  height: 30%;
+  padding-bottom: 40px;
+}
+
+body {
+  background-image: linear-gradient(to bottom left,  #FF655B, #FD297B);
+  height: 700px;
+}
+
+h1 {
+  border-bottom: 2px solid grey;
+  padding-bottom: 5px;
+}
+
+#username, #password, #confirmPassword {
+  display: inline-block;
+  padding: 10px;
+}
+
+.sr-only {
+  font-size: 20px;
+}
+
+button {
+  margin-top: 20px;
+}
+
+.link {
+  padding-top: 20px;
+}
+
+h1, .sr-only, button, .link {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.logo {
+  text-align: center;
+  padding-top: 20px;
+}
+
+img {
+  width: 100px;
+  border-radius: 50%;
+}
+
+a {
+  color: #FD297B;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+a:hover {
+  color: #FF655B;
+  text-decoration: underline;
+}
+
+
+
+
+
+
+
+
+
+
+</style>

@@ -1,5 +1,7 @@
 <template>
+<body>
   <questionnaire/>
+  </body>
 </template>
 
 <script>
