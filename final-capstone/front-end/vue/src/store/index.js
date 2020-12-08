@@ -45,7 +45,7 @@ export default new Vuex.Store({
     //services can access data from mutation
     //and send back to api
 
-    CREATE_PROFILE(state, profile) {
+    UPDATE_PROFILE(state, profile) {
       state.profile = profile;
       localStorage.setItem('profile', JSON.stringify(profile));
     }

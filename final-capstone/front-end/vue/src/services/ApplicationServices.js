@@ -24,8 +24,12 @@ export default {
         return http.post('/profile', profile);
     },
 
-    updateProfile(id, profile) {
-        return http.put(`/profile/${id}`, profile);
+    updateProfile(profile) {
+        return http.put(`/profile`, profile);
+    },
+
+    getTypeById(id) {
+        return http.get(`/type/${id}`)
     }
 
 }
