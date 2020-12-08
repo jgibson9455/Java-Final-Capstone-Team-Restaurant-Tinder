@@ -28,8 +28,8 @@ public class ProfileController {
 	}
 	
 	@RequestMapping(path="/profile", method=RequestMethod.POST)
-	public void createProfileFromUserId(@RequestBody Profile profile) {
-		profileDAO.makeProfile(profile); // doublecheck this - int to long conversion
+	public void createProfileFromUsername(@RequestBody Profile profile) {
+		profileDAO.makeProfile(profile);
 	}
 	
 	@RequestMapping(path="/profile", method=RequestMethod.PUT)

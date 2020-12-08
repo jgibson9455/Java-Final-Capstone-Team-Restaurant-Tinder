@@ -64,6 +64,13 @@ export default {
         confirmPassword: '',
         role: 'user',
       },
+      profile: {
+        userName: '',
+        firstName: '',
+        lastName: '',
+        emailAddress: '',
+        zipCode: ''
+      },
       registrationErrors: false,
       registrationErrorMsg: 'There were problems registering this user.',
     };
@@ -74,11 +81,11 @@ export default {
         this.registrationErrors = true;
         this.registrationErrorMsg = 'Password & Confirm Password do not match.';
       } else {
-        
         authService
           .register(this.user)
           .then((response) => {
             if (response.status == 201) {
+              this.profile.userName = this.user.username;
               this.registerProfile();
               this.$router.push({
                 path: '/login',
@@ -96,10 +103,7 @@ export default {
       }
     },   
       registerProfile() {
-      // this is whre we register the profile    // create application service to register someone to profile
-        appService.createProfileFromUserId(this.user);
-        alert(`${this.user.username} ${this.user.id}`);
-      
+        appService.createProfileFromUsername(this.profile);
       },
     clearErrors() {
       this.registrationErrors = false;
