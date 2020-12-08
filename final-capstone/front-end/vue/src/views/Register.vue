@@ -42,7 +42,7 @@
 
 <script>
 import authService from '../services/AuthService';
-//import appService from '../services/ApplicationServices';
+import appService from '../services/ApplicationServices';
 
 export default {
   name: 'register',
@@ -82,9 +82,15 @@ export default {
             if (response.status === 400) {
               this.registrationErrorMsg = 'Bad Request: Validation Errors';
             }
-          });   
+          });
       }
-    },
+    },   
+      registerProfile() {
+      // this is whre we register the profile    // create application service to register someone to profile
+        appService.createProfileFromUserId(this.user);
+        alert(`${this.user.username} ${this.user.id}`);
+      
+      },
     clearErrors() {
       this.registrationErrors = false;
       this.registrationErrorMsg = 'There were problems registering this user.';
