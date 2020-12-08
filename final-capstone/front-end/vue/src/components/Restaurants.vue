@@ -1,10 +1,19 @@
 <template>
-    <div>
-        <div v-for="restaurant in restaurants"
-        v-bind:key="restaurant.id">
-        <h4>{{ restaurant.restaurantName }}</h4>
-        <img class="images" v-bind:src="restaurant.imageLink"/>
-        </div>
+    <div class="restaurant-page">
+            
+          <div class="restaurant-items">
+
+            <div class="restaurant-head"
+                v-for="restaurant in restaurants"
+                v-bind:key="restaurant.id">
+                <h4>{{ restaurant.restaurantName }}</h4>
+            <!-- </div>
+
+            <div class="rest-image-link">     -->
+                <img class="rest-images" v-bind:src="restaurant.imageLink"/>
+            </div>
+
+          </div>
     </div>
 </template>
 
@@ -29,9 +38,27 @@ created() {
 </script>
 
 <style>
-    .images {
-        height: 250px;
-        width: 250px;
-    }
+
+.restaurant-page {
+    background-image: linear-gradient(to bottom left,  #FF655B, #FD297B);;
+
+}
+.restaurant-items {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+
+}
+
+.restaurant-head {
+    text-align: center;
+}
+.rest-images {
+    height: 250px;
+    width: 250px;
+    /* border-style: dotted;
+    border: black;
+    border-radius: 5px;  */
+    } 
 
 </style>

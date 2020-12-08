@@ -73,6 +73,7 @@ export default {
   height: 75;
   width: 75px;
   border-radius: 50%;
+
 }
  .start-banner {
   text-align: center;
@@ -86,8 +87,12 @@ export default {
      background-color:#ffbfb4;
      padding-top: 5px;
      padding-bottom: 5px;
-     padding-right: 15px;
-     padding-left: 15px;
+     padding-right: 18.5px;
+     padding-left: 18.5px;
+     border-style: outset;
+     border-width: 4px;
+     border-color:rgb(100, 38, 38);
+     margin-bottom: 2px
 }
 
 #registerb {
@@ -96,6 +101,10 @@ export default {
      padding-bottom: 5px;
      padding-right: 7px;
      padding-left: 7px;
+     border-style: outset;
+     border-width: 4px;
+     border-color:rgb(100, 38, 38);
+     margin-top: 2px
 }
 
  .restaurant-head {
