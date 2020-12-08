@@ -28,13 +28,12 @@ public class ProfileController {
 	}
 	
 	@RequestMapping(path="/profile", method=RequestMethod.POST)
-	public void createProfileFromUserId(@RequestBody User user) {
-		profileDAO.makeProfileFromUser(user.getId().intValue()); // doublecheck this - int to long conversion
+	public void createProfileFromUserId(@RequestBody Profile profile) {
+		profileDAO.makeProfile(profile); // doublecheck this - int to long conversion
 	}
 	
-	@RequestMapping(path="/profile/{id}", method=RequestMethod.PUT)
-	public void updateProfile(@PathVariable int id, @RequestBody Profile profile) {
+	@RequestMapping(path="/profile", method=RequestMethod.PUT)
+	public void updateProfile(@RequestBody Profile profile) {
 		profileDAO.populateUserProfile(profile);
 	}
-	
 }

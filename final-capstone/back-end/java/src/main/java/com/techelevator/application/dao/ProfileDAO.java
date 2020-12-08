@@ -6,6 +6,6 @@ import com.techelevator.security.model.User;
 public interface ProfileDAO {
 
 	public Profile getProfileByUserId(int userId);
-	public void makeProfileFromUser(int userId);
+	public void makeProfile(Profile profile);
 	public void populateUserProfile(Profile profile);	
 }
