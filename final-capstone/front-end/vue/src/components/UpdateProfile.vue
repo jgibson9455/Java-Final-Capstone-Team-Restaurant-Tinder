@@ -1,7 +1,7 @@
 <template>
-  <div> 
+  <div>
       <h1>Create Profile</h1>
-      <form class="profile">
+      <form class="profile" >
            <label for="firstName" class="profile-form">First Name: </label>
           <input type="text" id="firstName" placeholder="First Name" required=true v-model="profile.firstName"/>
 
@@ -14,7 +14,7 @@
            <label for="zipCode" class="profile-form">Zip Code: </label>
           <input type="text" id="zipCode" placeholder="Zip Code" required=true v-model="profile.zipCode" />
 
-          <input type="submit"/>
+          <button type="submit" v-on:click="saveProfile()">Update Profile</button>
       </form>
     
 
@@ -25,15 +25,13 @@
 import appServices from "@/services/ApplicationServices.js"
 export default {
        name: 'update-profile',
-       props: ["userName"],
+      //  props: ["userName"],
        data() {
          return {
-           
             firstName: "",
             lastName: "",
             email: "",
             zipCode: ""
-           
          }
        },
        methods: {
@@ -47,7 +45,7 @@ export default {
            };
            appServices.updateProfile(this.userName, profile).then(response => {
              if(response.status === 200) {
-               this.$router.push(`/profile`)
+               this.$router.push(`/profile/${this.userName}`)
              }
            }).catch(msgError => {
              if(msgError.response.status == 404) {
@@ -75,5 +73,6 @@ export default {
 </script>
 
 <style>
+
 
 </style>
