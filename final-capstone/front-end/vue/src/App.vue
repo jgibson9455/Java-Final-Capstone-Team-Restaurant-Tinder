@@ -15,13 +15,13 @@ export default {
 </script>
 
 <style scoped>
-a {
+#nav > a {
   color: #FD297B;
   text-decoration: none;
   font-weight: 600;
 }
 
-a:hover {
+#nav > a:hover {
   color: #FF655B;
   text-decoration: underline;
 }
