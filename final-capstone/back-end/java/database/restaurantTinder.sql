@@ -47,6 +47,11 @@ CREATE TABLE restaurant_type(
 
 --Add FKs
 
+--Profile FK
+ALTER TABLE profile
+ADD FOREIGN KEY(user_id)
+REFERENCES users(user_id);
+
 --Profile Preferences FKS
 ALTER TABLE profile_preferences
 ADD FOREIGN KEY(user_id)
