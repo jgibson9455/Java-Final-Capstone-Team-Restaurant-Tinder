@@ -43,7 +43,7 @@ export default {
 } */
 
 .startup-body {
-       background-image: linear-gradient(to bottom left,  #FF655B, #FD297B);
+    background-image: linear-gradient(to bottom left,  #FF655B, #FD297B);
 }
 
 .link-div {
