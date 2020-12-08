@@ -1,10 +1,31 @@
 <template>
-  <div>
-      <h1>Restaurant Tinder</h1>
-      <div class="links"> 
-          <router-link v-bind:to="{name: 'login'}">Login</router-link>
-          <router-link v-bind:to="{ name: 'register' }">Register</router-link>
-      </div>
+  <div class="contatiner">
+
+      <body class="startup-body">
+            <div class="start-banner">
+                <img id="banner-logo" src='../img/homebanner.jpg'/>
+            </div>
+    <h1 class="restaurant-head">Restaurant Tinder</h1>
+       
+        <div class="link-div">
+    
+            <div class="link-box"> 
+             <button id="loginb">
+                <router-link v-bind:to="{name: 'login'}">Login</router-link></button>
+            <button id="registerb">
+                <router-link v-bind:to="{ name: 'register' }">Register</router-link></button>
+       
+            <div class="start-logo">
+                <img id="starting-logo" src='../img/logo-color.png'/>
+            </div>
+       
+        </div>
+
+
+
+    </div>
+    </body>
+
   </div>
 </template>
 
@@ -17,4 +38,68 @@ export default {
 
 <style>
 
+ /* .container {
+ 
+} */
+
+.startup-body {
+       background-image: linear-gradient(to bottom left,  #FF655B, #FD297B);
+}
+
+.link-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+}
+
+.link-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /*centers the items within this box*/
+    align-items: center;
+    background-color: white;
+    height: 250px;
+    width: 250px;
+    border-radius: 5%;
+}
+
+.start-logo {
+  text-align: center;
+  padding-top: 30px;
+}
+
+#starting-logo {
+  height: 75;
+  width: 75px;
+  border-radius: 50%;
+}
+ .start-banner {
+  text-align: center;
+  padding-top: 30px;
+} 
+#banner-logo {
+  height: 200px;
+  width: 500px;
+}
+ #loginb {
+     background-color:#ffbfb4;
+     padding-top: 5px;
+     padding-bottom: 5px;
+     padding-right: 15px;
+     padding-left: 15px;
+}
+
+#registerb {
+     background-color:#ffbfb4;
+     padding-top: 5px;
+     padding-bottom: 5px;
+     padding-right: 7px;
+     padding-left: 7px;
+}
+
+ .restaurant-head {
+     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+     text-align: center;
+} 
 </style>
