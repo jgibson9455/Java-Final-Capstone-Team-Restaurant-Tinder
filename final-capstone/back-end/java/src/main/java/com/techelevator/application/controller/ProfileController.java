@@ -30,7 +30,7 @@ public class ProfileController {
 	
 	@RequestMapping(path="/profile", method=RequestMethod.POST)
 	public Profile createProfileFromUserId(@RequestBody User user) {
-		return profileDAO.makeProfileFromUser(user.getId().intValue()); // doublecheck this - int to long conversion
+		return profileDAO.makeProfileFromUser(user.getId().intValue());
 	}
 	
 	@RequestMapping(path="/profile/{id}", method=RequestMethod.PUT)
