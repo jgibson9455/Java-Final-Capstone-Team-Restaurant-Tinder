@@ -1,4 +1,6 @@
 <template>
+<body>
+  
     <div class="main">
       <div class="heading"> 
       <h1>Preferences</h1>
@@ -45,12 +47,13 @@
            <label for="Vegan" class="food-form">Vegan </label>
 
         </div> -->
-
-        <input type="submit"/>
+      <div class="margin"></div>
+        <input class="button" type="submit"/>
       </form>
     
 
   </div>
+  </body>
 </template>
 
 <script>
@@ -64,29 +67,52 @@ export default {
    display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: white;
-  object-fit: fill;
+  background-color: blanchedalmond;
+  /*object-fit: fill;*/
   height: 400px;
- 
+  flex-shrink: 2;
   text-align: center;
-  border-radius: 50%;
+  border-radius: 2%;
+  margin-left: 200px;
+  margin-right: 200px;
+  
+  
 }
 .heading {
   text-align: center;
+   font-size: 20px;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  align-content: center;
+  text-shadow: 2px 5px 5px rgba(8, 8, 8, 0.75),
+                -5px 6px 7px rgba(8, 8, 8, 0.75);
+    color: blanchedalmond;
 }
 .main {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   background-image: linear-gradient(to bottom left,  #FF655B, #FD297B);
   height: 700px;
 }
-.favorites, .dislikes {
-    display: flex;
-    justify-content: center;
-    align-items:center;
-    
-    flex-direction: column;
+.food-form{
+ width: 300px;
+position: relative;
+left: -20px;
+display: inline-block;
+vertical-align: middle;
+  
+}
+input[type="checkbox"] {
+  width: 20px;
+  position: relative;
+  left:100px;
+  vertical-align: middle;
 
 }
+.margin {
+  padding: 10px;
+}
+
+
 
 
 </style>
