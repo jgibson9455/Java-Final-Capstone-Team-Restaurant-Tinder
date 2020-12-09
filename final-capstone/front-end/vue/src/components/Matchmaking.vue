@@ -3,22 +3,31 @@
 <div class="heading">
     <h1>Heading</h1>  
 </div>
+
 <div class="random"><h2> {{ randomRestaurant.restaurantName }}</h2></div>
+
 <img class="image" v-bind:src="randomRestaurant.imageLink"/>
+ 
   <div class="buttons">
+      
       <div class="like">
-      <button>Like</button>
-  </div>
- <div class="dislike">
-     <button>Dislike</button>
+         <button>Like</button>
+      </div>
+
+      <div class="dislike">
+         <button>Dislike</button>
+      </div>
+
+      <div class="next">
+         <button>Next</button>
+      </div>
+
  </div>
- <div class="next">
-     <button>Next</button>
- </div>
- </div>
+
 <router-link/>
 <router-link/>
   </div>
+
 </template>
 
 <script>
