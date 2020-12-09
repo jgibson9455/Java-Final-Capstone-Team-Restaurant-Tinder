@@ -22,6 +22,11 @@ public class ProfileController {
 		this.profileDAO = profileDAO;
 	}
 	
+	@RequestMapping(path = "/profile/search", method = RequestMethod.GET)
+	public Profile getProfileByUserName(@RequestParam(value = "userName", defaultValue = "") String userName) {
+		return profileDAO.findByUsername(userName);
+	}
+	
 	@RequestMapping(path="/profile/{id}", method= RequestMethod.GET)
 	public Profile getProfileById(@PathVariable int id) {
 		return profileDAO.getProfileByUserId(id);
