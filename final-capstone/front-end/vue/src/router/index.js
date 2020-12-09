@@ -9,6 +9,7 @@ import StartupPage from '../views/StartupPage.vue'
 import UpdateProfile from '../views/UpdateProfile.vue'
 import Restaurants from '../views/Restaurants.vue'
 import Questionnaire from '../views/Questionnaire.vue'
+import Matchmaking from '../views/Matchmaking.vue'
 
 Vue.use(Router)
 
@@ -76,6 +77,11 @@ const router = new Router({
       path: "/questionnaire",
       name: "questionnaire",
       component: Questionnaire
+    },
+    {
+      path: "/matches",
+      name: "matchmaking",
+      component: Matchmaking
     }
   ]
 })
