@@ -14,8 +14,9 @@
         role="alert"
         v-if="this.$route.query.registration"
       >Thank you for registering, please sign in.</div>
+     
       <div id="username-signin">
-      <label for="username" class="sr-only">username:  </label>
+      <label for="username" class="sr-only">  </label>
       <input
         type="text"
         id="username"
@@ -26,8 +27,9 @@
         autofocus
       />
       </div>
+
       <div id="password-signin">
-      <label for="password" class="sr-only">password:  </label>
+      <label for="password" class="sr-only">  </label>
       <input
         type="password"
         id="password"
@@ -94,11 +96,12 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: white;
+  background-color: blanchedalmond;
   object-fit: fill;
   height: 400px;
+  width: 400px;
   text-align: center;
-  border-radius: 1%;
+  border-radius: 5%;
   
 }
 
@@ -136,7 +139,7 @@ h1 {
 
 #username-signin, #password-singin {
   display: inline-block;
-  padding: 10px;
+  padding: 20px;
 }
 
 .sr-only {
@@ -157,7 +160,7 @@ h1, .sr-only, button, .link {
 
 .logo {
   text-align: center;
-  padding-top: 20px;
+  padding-top: 11px;
 }
 
 img {

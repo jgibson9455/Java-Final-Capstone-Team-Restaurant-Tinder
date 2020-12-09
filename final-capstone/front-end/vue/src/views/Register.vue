@@ -7,8 +7,9 @@
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
+
       <div class="username-reg">
-      <label for="username" class="sr-only">username: </label>
+      <label for="username" class="sr-only"> </label>
       <input
         type="text"
         id="username"
@@ -16,28 +17,33 @@
         placeholder="Username"
         v-model="user.username"
         required
-        autofocus
-      />
+        autofocus/>
       </div>
+
       <div class="password-reg">
-      <label for="password" class="sr-only">password: </label>
+      <label for="password" class="sr-only"> </label>
       <input
         type="password"
         id="password"
         class="form-control"
         placeholder="Password"
         v-model="user.password"
-        required
-      />
+        required/>
+      </div>
+
+      <div class="confirm-reg">
+      <label for="password" class="sr-only"></label>
       <input
         type="password"
         id="confirmPassword"
         class="form-control"
         placeholder="Confirm Password"
         v-model="user.confirmPassword"
-        required
-      />
+        required/>
       </div>
+
+
+      
       <button id="btn" class="btn btn-lg btn-primary btn-block" type="submit">
         Create Account
       </button>
@@ -120,11 +126,13 @@ export default {
    display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: white;
+  background-color: blanchedalmond;
   object-fit: fill;
   height: 400px;
+  width: 400px;
   text-align: center;
-  border-radius: 1%;
+  border-radius: 5%;
+
 }
 .register-body {
   display: grid;
@@ -155,17 +163,34 @@ export default {
 
 #create-account {
   border-bottom: 2px solid grey;
+  margin-bottom: 18px;
   padding-bottom: 5px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-.username-reg, .password-reg {
+.username-reg {
   display: inline-block;
-  padding: 10px;
+  font-size: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  
+}
+.password-reg {
+  display: inline-block;
+  padding-top: 15px;
   font-size: 20px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
-
+.confirm-reg {
+  display: inline-block;
+  padding-top: 15px;
+  font-size: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  text-align: right;
+}
+.form-control {
+  height: 1.5em;
+  width: 15em;
+}
 #btn {
   margin-top: 20px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -178,12 +203,14 @@ export default {
 
 .logo-account {
   text-align: center;
-  padding-top: 10px;
+  padding-top: 4px;
+  
 }
 
 .logo-account > img {
   width: 100px;
   border-radius: 50%;
+
 }
 
 a {
