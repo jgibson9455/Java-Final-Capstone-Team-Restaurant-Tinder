@@ -10,16 +10,20 @@
  
   <div class="buttons">
       
-      <div class="like">
-         <button>Like</button>
-      </div>
+
 
       <div class="dislike">
          <button>Dislike</button>
       </div>
 
-      <div class="next">
-         <button>Next</button>
+      <div class="skip">
+         <button>Skip</button>
+      </div>
+
+      <div class="like">
+         <button
+         v-on:click.prevent="addRestaurantToFavorites(restaurant)"
+         >Like</button>
       </div>
 
  </div>
@@ -56,8 +60,10 @@ export default {
             let randomNum = Math.floor(Math.random() * this.restaurants.length - 1);
             ApplicationServices.getRestaurantById(randomNum).then(apiData => {
                 this.randomRestaurant = apiData.data;
-            })
-            
+            })    
+        },
+        addRestaurantToFavorites(restaurant) {
+            this.$store.commit('ADD_TO_FAVES', restaurant)
         }
 
     }

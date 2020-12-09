@@ -21,7 +21,9 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
-    profile: currentProfile || {}
+    profile: currentProfile || {},
+    favorites: [],
+    dislikes: []
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -40,14 +42,12 @@ export default new Vuex.Store({
       state.user = {};
       axios.defaults.headers.common = {};
     },
-    //make mutation to hold data
-    //within service call save user input data to mutation
-    //services can access data from mutation
-    //and send back to api
 
     UPDATE_PROFILE(state, profile) {
       state.profile = profile;
-      
+    },
+    ADD_TO_FAVES(state, restaurant) {
+      state.favorites.push(restaurant);
     }
   }
 })

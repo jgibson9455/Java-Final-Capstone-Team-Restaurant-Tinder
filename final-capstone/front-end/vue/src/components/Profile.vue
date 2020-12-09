@@ -20,7 +20,7 @@
     
        <button class="start">Start</button>
    
-   <h3 class="fav">Favorite Restaurants</h3>
+   <router-link class="favorite-restaurants" v-bind:to="{name: 'favorites'}"><h3 class="fav">Favorite Restaurants</h3></router-link>
     </div>
 
     <div class="fav-temp">
