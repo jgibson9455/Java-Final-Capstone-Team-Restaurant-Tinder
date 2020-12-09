@@ -7,10 +7,18 @@
                 v-for="restaurant in restaurants"
                 v-bind:key="restaurant.id">
                 <h2>{{ restaurant.restaurantName }}</h2>
-                <h2 class="rest-type">Restaurant Type</h2>
+                <h4>{{ restaurant.typeName }}</h4>
+                
+                    <!-- <div class="types"
+                      v-for="type in restaurantTypes"
+                      v-bind:key="type.typeId">
+                      <h2 class="rest-type">{{type.typeName}}</h2>
+                    </div> -->
 
                 <img class="rest-images" v-bind:src="restaurant.imageLink"/>
             </div>
+
+
 
           </div>
     </div>
@@ -23,24 +31,30 @@ export default {
     name: 'restaurants',
     data(){
         return {
-            restaurants: [],
-            restaurantTypes: []
+            restaurants: []
         }
     },
 created() {
     theApplicationService.getAllRestaurants()
         .then(apiData => {
             this.restaurants = apiData.data;
-            
+            this.getRestaurantTypes();
         })
-    //     ,
-    // theApplicationService.getTypeById(restaurants.typeID)
-    //     .then(apiData => {
-    //         this.restaurantTypes = apiData.data;
-            
-    //     })
-        
-}
+},
+
+methods: {
+ getRestaurantTypes() {
+    for(let i = 0; i < this.restaurants.length; i++){
+    theApplicationService.getTypeById(this.restaurants[i].typeId)
+        .then(apiData => {
+            this.restaurants[i].typeName = apiData.data.typeName; //adds typeName to the object restaurants
+
+        })
+
+    }
+ }
+}       
+
 }
 </script>
 
@@ -60,10 +74,17 @@ created() {
       text-shadow: black 0px 0px 1px,   black 0px 0px 1px,   black 0px 0px 1px,
              black 0px 0px 1px,   black 0px 0px 1px,   black 0px 0px 1px*/
 
-    text-shadow: 2px 5px 5px rgba(59, 59, 57, 0.445),
-                -2px 6px 7px  rgba(59, 59, 57, 0.445); 
+   text-shadow: 2px 5px 5px rgba(8, 8, 8, 0.75),
+                -5px 6px 7px rgba(8, 8, 8, 0.75);
+
     /* -webkit-font-smoothing: antialiased; */
     }
+h2 {
+    margin-bottom: 5px;
+}
+h4 {
+    margin-top: 5px;
+}
 #rest-line {
     text-decoration: none;
     border-bottom: 5px solid blanchedalmond;
