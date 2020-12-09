@@ -87,7 +87,7 @@ export default {
             .then((response) => { 
             // this.profile = response.data.profile
             this.$store.commit("UPDATE_PROFILE", response)
-            this.$router.push("/home")
+            this.$router.push("/matches")
             })
           }
         })
