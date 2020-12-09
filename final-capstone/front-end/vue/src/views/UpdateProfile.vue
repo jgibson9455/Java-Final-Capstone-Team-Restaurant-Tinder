@@ -1,5 +1,7 @@
 <template>
+<div>
   <update-profile/>
+  </div>
 </template>
 
 <script>
