@@ -60,8 +60,9 @@ created() {
       text-shadow: black 0px 0px 1px,   black 0px 0px 1px,   black 0px 0px 1px,
              black 0px 0px 1px,   black 0px 0px 1px,   black 0px 0px 1px*/
 
-    text-shadow: 2px 5px 5px rgba(59, 59, 57, 0.445),
-                -2px 6px 7px  rgba(59, 59, 57, 0.445); 
+   text-shadow: 2px 5px 5px rgba(8, 8, 8, 0.75),
+                -5px 6px 7px rgba(8, 8, 8, 0.75);
+
     /* -webkit-font-smoothing: antialiased; */
     }
 #rest-line {

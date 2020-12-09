@@ -1,9 +1,9 @@
 <template>
-<body>
+<body class="flex-container">
   
     <div class="main">
       <div class="heading"> 
-      <h1>Preferences</h1>
+      <h2><u id="pref-line">Preferences</u></h2>
       </div>
       <form class="preferences">
         <div class="favorites">
@@ -24,17 +24,17 @@
 
         <div class="dislikes">
         <h2>Disliked Food: </h2>
-            <input type="checkbox" id="Mexican" value="Mexican"/>
-            <label for="Mexican" class="food-form">Mexican</label><br>
+            <input type="checkbox" id="Mexican-dis" value="Mexican"/>
+            <label for="Mexican-dis" class="food-form">Mexican</label><br>
 
-            <input type="checkbox" id="Asian" value="Asian"/>
-            <label for="Asian" class="food-form">Asian</label><br>
+            <input type="checkbox" id="Asian-dis" value="Asian"/>
+            <label for="Asian-dis" class="food-form">Asian</label><br>
 
-            <input type="checkbox" id="Seafood" value="Seafood"/>
-           <label for="Seafood" class="food-form">Seafood</label><br>
+            <input type="checkbox" id="Seafood-dis" value="Seafood"/>
+           <label for="Seafood-dis" class="food-form">Seafood</label><br>
 
-           <input type="checkbox" id="Italian" value="Italian"/>
-            <label for="Italian" class="food-form">Italian</label><br>
+           <input type="checkbox" id="Italian-dis" value="Italian"/>
+            <label for="Italian-dis" class="food-form">Italian</label><br>
 
         </div>
 
@@ -48,7 +48,7 @@
 
         </div> -->
       <div class="margin"></div>
-        <input class="button" type="submit"/>
+        <router-link v-bind:to="{name: 'home'}"><input class="button" type="submit"/></router-link>
       </form>
     
 
@@ -64,7 +64,7 @@ export default {
 
 <style>
 .preferences {
-   display: flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
   background-color: blanchedalmond;
@@ -75,12 +75,12 @@ export default {
   border-radius: 2%;
   margin-left: 200px;
   margin-right: 200px;
-  
-  
+  flex-wrap: wrap;
 }
+
 .heading {
   text-align: center;
-   font-size: 20px;
+  font-size: 2.2em;
   padding-top: 10px;
   padding-bottom: 20px;
   align-content: center;
@@ -111,8 +111,22 @@ input[type="checkbox"] {
 .margin {
   padding: 10px;
 }
+#pref-line {
+    text-decoration: none;
+    border-bottom: 5px solid blanchedalmond;
+    -webkit-font-smoothing: antialiased;
+}
 
 
-
+@media  (max-width: 500px) {
+  .preferences {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .favorites, .dislikes {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
 
 </style>
