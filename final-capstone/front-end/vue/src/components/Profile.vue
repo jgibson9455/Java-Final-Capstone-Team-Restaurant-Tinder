@@ -105,6 +105,7 @@ export default {
   flex-direction: column;
   object-fit: fill; */
   /* grid-area: home; */
+
 }
 
 
@@ -173,6 +174,7 @@ export default {
   background-color: #FF5864;
   color: white;
   border: 3px solid black;
+  border-radius: 3%;
 }
 
 .start {
