@@ -5,7 +5,7 @@
             <div class="start-banner">
                 <img id="banner-logo" src='../img/homebanner.jpg'/>
             </div>
-    <h1 class="restaurant-head">Restaurant Tinder</h1>
+    <h1 class="start-head">Restaurant Tinder</h1>
        
         <div class="link-div">
     
@@ -44,6 +44,7 @@ export default {
 
 .startup-body {
     background-image: linear-gradient(to bottom left,  #FF655B, #FD297B);
+    height: 50em;
 }
 
 .link-div {
@@ -107,8 +108,11 @@ export default {
      margin-top: 2px
 }
 
- .restaurant-head {
+ .start-head {
      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
      text-align: center;
+    text-shadow: 2px 5px 5px rgb(59, 59, 57),
+                -5px 6px 7px  rgb(59, 59, 57); 
+    color: blanchedalmond;
 } 
 </style>
