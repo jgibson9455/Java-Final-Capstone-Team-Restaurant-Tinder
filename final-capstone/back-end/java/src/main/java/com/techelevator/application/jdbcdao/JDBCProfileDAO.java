@@ -42,6 +42,18 @@ public class JDBCProfileDAO implements ProfileDAO {
 				profile.getZipCode(), profile.getUserName());
 	}
 	
+	public Profile findByUsername(String userName) {
+		String query = "SELECT * FROM profile WHERE user_name = ?";
+		SqlRowSet rowSet = jdbcTemplate.queryForRowSet(query, userName);
+		
+		if(rowSet.next()) {
+			Profile profile = mapRowToProfile(rowSet);
+			return profile;
+		}
+		
+		return null;
+	}
+	
 	private Profile mapRowToProfileFromUser(SqlRowSet rowset) {
 		Profile profile = new Profile();
 		profile.setUserId(rowset.getInt("user_id"));

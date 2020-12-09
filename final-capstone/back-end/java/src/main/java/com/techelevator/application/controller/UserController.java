@@ -20,12 +20,11 @@ public class UserController {
 		this.userDao = userDao;
 	}
 
-	
-	  @RequestMapping(path = "/user/search", method = RequestMethod.GET) public
-	  User getUserByUserName(@RequestParam(value = "userName", defaultValue = "")
-	  String userName) { return userDao.findByUsername(userName); }
-	 
-	
+	@RequestMapping(path = "/user/search", method = RequestMethod.GET)
+	public User getUserByUserName(@RequestParam(value = "userName", defaultValue = "") String userName) {
+		return userDao.findByUsername(userName);
+	}
+
 	/*
 	 * @RequestMapping(path = "/user/search", method = RequestMethod.GET) public int
 	 * getUserIdByUserName(@RequestParam(value = "userName", defaultValue = "")

@@ -7,5 +7,6 @@ public interface ProfileDAO {
 
 	public Profile getProfileByUserId(int userId);
 	public void makeProfile(Profile profile);
-	public void populateUserProfile(Profile profile);	
+	public void populateUserProfile(Profile profile);
+	public Profile findByUsername(String userName);
 }
