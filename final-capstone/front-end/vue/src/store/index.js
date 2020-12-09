@@ -47,7 +47,7 @@ export default new Vuex.Store({
 
     UPDATE_PROFILE(state, profile) {
       state.profile = profile;
-      localStorage.setItem('profile', JSON.stringify(profile));
+      
     }
   }
 })

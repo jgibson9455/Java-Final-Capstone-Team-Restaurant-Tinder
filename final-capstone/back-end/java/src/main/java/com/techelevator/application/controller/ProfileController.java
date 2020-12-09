@@ -24,6 +24,7 @@ public class ProfileController {
 	
 	@RequestMapping(path = "/profile/search", method = RequestMethod.GET)
 	public Profile getProfileByUserName(@RequestParam(value = "userName", defaultValue = "") String userName) {
+		System.out.println("/profile/search path for get user by username - " + userName);
 		return profileDAO.findByUsername(userName);
 	}
 	

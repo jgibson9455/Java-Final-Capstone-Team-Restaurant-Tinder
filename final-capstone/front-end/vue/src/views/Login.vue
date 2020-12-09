@@ -53,7 +53,7 @@
 </template>
 
 <script>
-//import ApplicationServices from '../services/ApplicationServices';
+import ApplicationServices from '../services/ApplicationServices';
 import authService from "../services/AuthService";
 
 export default {
@@ -65,7 +65,14 @@ export default {
         username: "",
         password: ""
       },
-      invalidCredentials: false
+      invalidCredentials: false,
+      profile: {
+            userName: "",
+            firstName: "",
+            lastName: "",
+            email: "",
+            zipCode: ""
+      }
     };
   },
   methods: {
@@ -74,9 +81,14 @@ export default {
         .login(this.user)
         .then(response => {
           if (response.status == 200) {
-            this.$store.commit("SET_AUTH_TOKEN", response.data.token);
-            this.$store.commit("SET_USER", response.data.user);
-            this.$router.push("/home");
+            this.$store.commit("SET_AUTH_TOKEN", response.data.token)
+            this.$store.commit("SET_USER", response.data.user)
+            ApplicationServices.getProfileByUsername(response.data.user.username)
+            .then(() => { 
+            // this.profile = response.data.profile
+            this.$store.commit("UPDATE_PROFILE", response.data.profile)
+            this.$router.push("/home")
+            })
           }
         })
         .catch(error => {
