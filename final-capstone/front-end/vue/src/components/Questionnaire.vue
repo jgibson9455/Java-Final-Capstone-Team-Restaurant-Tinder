@@ -118,14 +118,14 @@ input[type="checkbox"] {
 }
 
 
-@media  (max-width: 500px) {
+@media screen and (max-width: 800px) {
   .preferences {
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
   }
-  .favorites, .dislikes {
-    flex-direction: row;
-    flex-wrap: wrap;
+  .main {
+    height: 50em;
   }
 }
 
