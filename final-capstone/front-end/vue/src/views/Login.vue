@@ -84,9 +84,9 @@ export default {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token)
             this.$store.commit("SET_USER", response.data.user)
             ApplicationServices.getProfileByUsername(response.data.user.username)
-            .then(() => { 
+            .then((response) => { 
             // this.profile = response.data.profile
-            this.$store.commit("UPDATE_PROFILE", response.data.profile)
+            this.$store.commit("UPDATE_PROFILE", response)
             this.$router.push("/home")
             })
           }

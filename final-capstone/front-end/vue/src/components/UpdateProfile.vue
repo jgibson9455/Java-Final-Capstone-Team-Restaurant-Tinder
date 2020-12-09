@@ -3,70 +3,52 @@
   <h1>Create Profile </h1>
       <form class="profile" >
           <label for="firstName" class="profile-form">First Name: </label>
-          <input type="text" id="firstName" placeholder="First Name" required=true v-model="firstName"/>
+          <input type="text" id="firstName" placeholder="First Name" required=true v-model="profile.firstName"/>
 
            <label for="lastName" class="profile-form">Last Name: </label>
-          <input type="text" id="lastName"  v-bind:placeholder="this.lastName" required=true v-model="lastName" />
+          <input type="text" id="lastName"  placeholder="Last Name" required=true v-model="profile.lastName" />
 
            <label for="email" class="profile-form">Email Address: </label>
-          <input type="email" id="email" placeholder="email" required=true v-model="email"/>
+          <input type="email" id="email" placeholder="Email" required=true v-model="profile.email"/>
 
            <label for="zipCode" class="profile-form">Zip Code: </label>
-          <input type="text" id="zipCode" placeholder="Zip Code" required=true v-model="zipCode" />
+          <input type="text" id="zipCode" placeholder="Zip Code" required=true v-model="profile.zipCode" />
 
           <button type="submit" v-on:click="saveProfile()">Update Profile</button>
       </form>
-    
-
   </div>
 </template>
 
 <script>
-import appServices from "@/services/ApplicationServices.js"
+import ApplicationServices from '../services/ApplicationServices';
+//import appServices from "@/services/ApplicationServices.js"
 export default {
        name: 'update-profile',
        data() {
          return {
+           profile: {
             firstName: "",
             lastName: "",
             email: "",
             zipCode: ""
+           }
          }
        },
        methods: {
          saveProfile() {
-           const profile = {
-             userName: this.$store.state.user.username,
-             firstName: this.$store.state.profile.firstName,
-             lastName: this.$store.state.profile.lastName,
-             email: this.$store.state.profile.email,
-             zipCode: this.$store.state.profile.zipCode
-             
-           };
-           appServices.updateProfile(profile).then(response => {
-             if(response.status === 200) {
-               alert("Profile successfully updated")
-               this.$store.commit("UPDATE_PROFILE", response.data);
-               this.$router.push(`/home`)
-             }
-           }).catch(msgError => {
-             if(msgError.response.status == 404) {
-               alert("error");
-             }
-           });
+           ApplicationServices.updateProfile(this.profile)
+           .then((response) =>{
+              this.$store.commit("UPDATE_PROFILE", response.data);
+              this.$router.push("/home");
+           })
          }
-       }
-      //  created() {
-      //    appServices.getProfileByUsername(this.userName).then(response => {
-      //     this.profile = response.data;
-      //    })
-        //  .catch(error => {
-        //    if(error.response.status == 404) {
-        //      alert("error: 404 ya dummy");
-        //    }
-        //  });
-      //  }
-       
+       },
+        created(){
+            ApplicationServices.getProfileByUsername(this.$store.state.user.username)
+            .then((response)=>{
+              this.profile = response.data;
+            })
+         }
 };
 </script>
 
