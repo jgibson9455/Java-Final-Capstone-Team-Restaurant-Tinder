@@ -1,6 +1,6 @@
 <template>
     <div class="restaurant-page">
-            <h1 class="page-head">Restaurants</h1>
+            <h1 class="page-head"><u>Restaurants</u></h1>
           <div class="restaurant-items">
                 
             <div class="restaurant-head"
@@ -62,8 +62,12 @@ created() {
     text-shadow: 2px 5px 5px rgba(59, 59, 57, 0.445),
                 -2px 6px 7px  rgba(59, 59, 57, 0.445); 
     -webkit-font-smoothing: antialiased;
-    text-decoration: underline;
-    
+    }
+u {
+    text-decoration: none;
+    padding-bottom: 0px;
+    border-bottom: 5px solid blanchedalmond;
+    -webkit-font-smoothing: antialiased;
 }
 .restaurant-page {
 
