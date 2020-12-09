@@ -51,7 +51,7 @@ export default {
       data() {
         return {
          profile: {
-           userID: "",
+           userName: "",
            firstName: "",
            lastName: "",
            email: "",
