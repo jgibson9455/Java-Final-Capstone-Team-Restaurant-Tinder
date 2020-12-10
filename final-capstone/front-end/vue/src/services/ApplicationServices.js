@@ -34,6 +34,13 @@ export default {
 
     getTypeById(id) {
         return http.get(`/type/${id}`)
-    }
+    },
 
+    saveMatchingResult(matchingResult){
+        return http.post('/matchingResult', matchingResult);
+    },
+
+    getMatchingResultsByUserName(userName){
+        return http.get(`/matchingResult/search?userName=${userName}`) 
+    }
 }
