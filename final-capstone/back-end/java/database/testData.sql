@@ -58,7 +58,7 @@ VALUES('The Rail', 'Known for serving juicy Certified Angus Beef steaks, The Cit
 
 INSERT INTO restaurant(restaurant_name, description, city, zip_code, phone_number, image_link, address, type_id)
 VALUES('Barrio', 'Local chain serving signature & build-your-own tacos, plus cocktails, in a hip, casual space.', 'Cleveland', 44121, '(216) 984-9925',
-'https://media-cdn.tripadvisor.com/media/photo-s/0c/bb/f3/76/photo0jpg.jpg', '123 Detriot Rd', 
+'https://barrio-tacos.com/themes/custom/barrio_fdn/images/default/food-menu-tacos02.jpg', '123 Detriot Rd', 
 (SELECT type_id FROM restaurant_type WHERE type_name ='Mexican'));
 
 -- Test Data for -- Profile
