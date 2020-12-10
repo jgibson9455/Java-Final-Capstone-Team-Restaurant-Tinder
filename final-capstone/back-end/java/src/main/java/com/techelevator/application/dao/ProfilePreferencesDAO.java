@@ -1,9 +1,12 @@
 package com.techelevator.application.dao;
 
+import java.util.List;
+
 import com.techelevator.application.model.ProfilePreferences;
 
 public interface ProfilePreferencesDAO {
-	public ProfilePreferences addPrefererence(String userName, int preferenceId, int typeId);
+	public List<ProfilePreferences> getPreferencesByUserName(String userName);
+	public void addPrefererence(ProfilePreferences profilePreference);
 	public void updatePreference(ProfilePreferences profilePreference);
 	public void deletePreference(ProfilePreferences profilePreference);
 }

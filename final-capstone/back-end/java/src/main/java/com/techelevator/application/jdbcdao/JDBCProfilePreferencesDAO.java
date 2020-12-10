@@ -1,5 +1,8 @@
 package com.techelevator.application.jdbcdao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.sql.DataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -16,32 +19,37 @@ public class JDBCProfilePreferencesDAO implements ProfilePreferencesDAO {
 		this.jdbcTemplate = new JdbcTemplate(source);
 	}
 	
-	//TODO: REWORK THIS, NEEDS TO BE AN UPDATE, LOGIC IS WRONG
 	@Override
-	public ProfilePreferences addPrefererence(String userName, int preferenceId, int typeId) {
-		String query = "INSERT INTO profile_preferences VALUES(?, ?, ?)";
-		SqlRowSet rowSet = jdbcTemplate.queryForRowSet(query, userName, typeId, preferenceId);
+	public List<ProfilePreferences> getPreferencesByUserName(String userName){
+		String query = "SELECT * FROM profile_preferences WHERE user_name = ?";
+		SqlRowSet rowSet = jdbcTemplate.queryForRowSet(query, userName);
 		
-		if(rowSet.next()) {
+		List<ProfilePreferences> preferences = new ArrayList<>();
+		while(rowSet.next()) {
 			ProfilePreferences preference = mapRowToProfilePreference(rowSet);
-			return preference;
+			preferences.add(preference);
 		}
 		
-		return null;
-	}
-
-	//TODO: REWORK THIS, LOGIC IS WRONG
-	@Override
-	public void updatePreference(ProfilePreferences profilePreference) {
-		String query = "UPDATE profile_preferences SET preference_id = ?";
-		jdbcTemplate.update(query, profilePreference.getPreferenceId());
+		return preferences;
 	}
 	
-	//TODO: REWORK THIS, THIS WILL DELETE ALL PEFERENCES
+	@Override
+	public void addPrefererence(ProfilePreferences profilePreference) {
+		String query = "INSERT INTO profile_preferences VALUES(?, ?, ?)";
+		jdbcTemplate.update(query, profilePreference.getUserName(), profilePreference.getTypeId(), 
+				profilePreference.getPreferenceId());
+	}
+
+	@Override
+	public void updatePreference(ProfilePreferences profilePreference) {
+		String query = "UPDATE profile_preferences SET preference_id = ? WHERE user_name= ? AND type_id = ?";
+		jdbcTemplate.update(query, profilePreference.getPreferenceId(), profilePreference.getUserName(), profilePreference.getTypeId());
+	}
+	
 	@Override
 	public void deletePreference(ProfilePreferences profilePreference) {
-		String query = "DELETE profile_preferences WHERE preference_id = ?";
-		jdbcTemplate.update(query, profilePreference.getPreferenceId()); // double check me
+		String query = "DELETE FROM profile_preferences WHERE user_name = ? AND type_id = ?";
+		jdbcTemplate.update(query, profilePreference.getUserName(), profilePreference.getTypeId()); // double check me
 	}
 	
 
