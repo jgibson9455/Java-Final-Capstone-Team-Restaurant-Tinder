@@ -1,28 +1,23 @@
 <template>
 <body class="flex-container">
-  
     <div class="main">
       <div class="heading"> 
       <h2><u id="pref-line">Preferences</u></h2>
       </div>
       <form class="preferences">
         <div class="favorites">
+
           <h2>Popular Food Preferences: </h2>
-          <div class="button-container" v-for="type in top20" v-bind:key="type.typeId"> 
+          <div class="button-container" v-for="type in top20" v-bind:key="type.typeId" > 
             <h5>{{type.typeName}}</h5>
-              <button class v-bind:id='type.typeId' v-on:click.prevent="preferenceLike(true)" v-if="preferenceLike(true)">remove like</button>
-              <button class v-bind:id='type.typeId' v-on:click.prevent="preferenceLike(false)" v-if="! preferenceLike(true)">like</button>
-
-              <button class v-bind:id='type.typeId' v-on:click.prevent="preferenceDislike(true)" v-if="preferenceDislike(true)">remove dislike</button>
-              <button class v-bind:id='type.typeId' v-on:click.prevent="preferenceDislike(false)" v-if="! preferenceDislike(true)">dislike</button>
-
+              <button class v-bind:id="type.typeId" v-on:click.prevent="toggleLikes(type.typeId)">like</button>
+              <button class v-bind:id="type.typeId" v-on:click.prevent="toggleDislikes(type.typeId)">dislike</button>
             </div>
             
 
         </div>
-
       <div class="margin"></div>
-        <router-link v-bind:to="{name: 'home'}"><input class="button" type="submit"/></router-link>
+        <button type="submit" v-on:click="savePreferences()" > Submit preferences </button>
       </form>
     
 
@@ -36,25 +31,52 @@ export default {
     name: 'questionnaire',
     data() {
       return {
-        type: {
+      type: {
       typeId: "",
       typeName: ""
     },
     top20: [],
+    selectedLikeIds: [],
+    selectedDislikeIds: []
       }
     },
     methods: {
-      preferenceLike(value) {
-        if(value == true) {
-            this.$store.commit('SET_LIKE_STATUS', {type: this.type, value: value}); 
-        }
-        },
-      preferenceDislike(value) {
-        this.$store.commit('SET_DISLIKE_STATUS', {type: this.type, value: value});
+    toggleLikes(id){
+    //Not in either array
+    if(this.selectedLikeIds.indexOf(id) === -1 && this.selectedDislikeIds.indexOf(id) === -1){
+      this.selectedLikeIds.push(id);
+    }else{
+      //Check if the id is IN the dislikes
+      if(this.selectedDislikeIds.indexOf(id) !== -1){
+      //It is so display alert message
+        alert("You cannot have a type in both like and dislike")
+      }else{
+      //It already is in the liked array, take it out
+        this.selectedLikeIds.splice(this.selectedLikeIds.indexOf(id), 1);
       }
-      
+    }
+  },
+      toggleDislikes(id){
+    //Not in either array
+    if(this.selectedDislikeIds.indexOf(id) === -1 && this.selectedLikeIds.indexOf(id) === -1){
+      this.selectedDislikeIds.push(id);
+    }else{
+      //Check if the id is IN the dislikes
+      if(this.selectedLikeIds.indexOf(id) !== -1){
+      //It is so display alert message
+        alert("You cannot have a type in both like and dislike")
+      }else{
+      //It already is in the liked array, take it out
+        this.selectedDislikeIds.splice(this.selectedDislikeIds.indexOf(id), 1);
+      }
+    }
       },
-    created() {
+      savePreferences() {
+
+      }
+    
+},
+created() {
       appServices.getAllRestaurantTypes().then((response) => {
       this.top20 = response.data;
       })
