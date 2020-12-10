@@ -48,7 +48,7 @@ CREATE TABLE preferences(
 );
 
 CREATE TABLE restaurant_type(
-        type_id         SERIAL PRIMARY KEY,
+        type_id         INTEGER PRIMARY KEY,
         type_name       VARCHAR(50)
 );
 
