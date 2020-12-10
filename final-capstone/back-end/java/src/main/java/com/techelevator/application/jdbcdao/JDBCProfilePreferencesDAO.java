@@ -16,10 +16,11 @@ public class JDBCProfilePreferencesDAO implements ProfilePreferencesDAO {
 		this.jdbcTemplate = new JdbcTemplate(source);
 	}
 	
+	//TODO: REWORK THIS, NEEDS TO BE AN UPDATE, LOGIC IS WRONG
 	@Override
-	public ProfilePreferences addPrefererence(int userId, int preferenceId, int typeId) {
+	public ProfilePreferences addPrefererence(String userName, int preferenceId, int typeId) {
 		String query = "INSERT INTO profile_preferences VALUES(?, ?, ?)";
-		SqlRowSet rowSet = jdbcTemplate.queryForRowSet(query, userId, typeId, preferenceId);
+		SqlRowSet rowSet = jdbcTemplate.queryForRowSet(query, userName, typeId, preferenceId);
 		
 		if(rowSet.next()) {
 			ProfilePreferences preference = mapRowToProfilePreference(rowSet);
@@ -29,24 +30,24 @@ public class JDBCProfilePreferencesDAO implements ProfilePreferencesDAO {
 		return null;
 	}
 
+	//TODO: REWORK THIS, LOGIC IS WRONG
 	@Override
 	public void updatePreference(ProfilePreferences profilePreference) {
 		String query = "UPDATE profile_preferences SET preference_id = ?";
 		jdbcTemplate.update(query, profilePreference.getPreferenceId());
 	}
 	
-	
+	//TODO: REWORK THIS, THIS WILL DELETE ALL PEFERENCES
 	@Override
 	public void deletePreference(ProfilePreferences profilePreference) {
 		String query = "DELETE profile_preferences WHERE preference_id = ?";
 		jdbcTemplate.update(query, profilePreference.getPreferenceId()); // double check me
 	}
 	
-	
 
 	private ProfilePreferences mapRowToProfilePreference(SqlRowSet rowset) {
 		ProfilePreferences profilePreference = new ProfilePreferences();
-		profilePreference.setUserId(rowset.getInt("user_id"));
+		profilePreference.setUserName(rowset.getString("user_name"));
 		profilePreference.setTypeId(rowset.getInt("type_id"));
 		profilePreference.setPreferenceId(rowset.getInt("preference_id"));
 

@@ -2,6 +2,7 @@
 START TRANSACTION;
 
 --Clear Data From all tables
+DELETE FROM matching_results;
 DELETE FROM profile_preferences;
 DELETE FROM preferences;
 DELETE FROM restaurant_type;
@@ -51,7 +52,10 @@ INSERT INTO profile VALUES(1, 'Test', 'User', (SELECT username FROM users WHERE 
 
 --Test Data For -- profile_preferences
 --VALUES(user_id, type, like(1)/dislike(2))
-INSERT INTO profile_preferences VALUES(1,2,1);
-INSERT INTO profile_preferences VALUES(1,3,2);
+INSERT INTO profile_preferences VALUES((SELECT user_name FROM profile WHERE user_name = 'user'),2,1);
+INSERT INTO profile_preferences VALUES((SELECT user_name FROM profile WHERE user_name = 'user'),3,2);
+
+--Test Data For Matching_results
+INSERT INTO matching_results VALUES((SELECT user_name FROM profile WHERE user_name = 'user'), 1,1);
 
 COMMIT;

@@ -5,6 +5,7 @@ DROP TABLE IF EXISTS restaurant;
 DROP TABLE IF EXISTS profile;
 DROP TABLE IF EXISTS preferences;
 DROP TABLE IF EXISTS restaurant_type;
+DROP TABLE IF EXISTS matching_results;
 
 -- Create Tables 
 CREATE TABLE profile(
@@ -27,8 +28,14 @@ CREATE TABLE restaurant(
         type_id         INTEGER
 );
 
+CREATE TABLE matching_results(
+        user_name       VARCHAR(50),
+        restaurant_id   INTEGER,
+        preference_id   INTEGER
+);
+
 CREATE TABLE profile_preferences(
-        user_id         INTEGER,
+        user_name       VARCHAR(50),
         type_id         INTEGER,
         preference_id   INTEGER
 );
@@ -53,9 +60,9 @@ ADD FOREIGN KEY(user_id)
 REFERENCES users(user_id);
 
 --Profile Preferences FKS
-ALTER TABLE profile_preferences
-ADD FOREIGN KEY(user_id)
-REFERENCES profile(user_id);
+--ALTER TABLE profile_preferences
+--ADD FOREIGN KEY(user_name)
+--REFERENCES profile(user_name);
 
 ALTER TABLE profile_preferences
 ADD FOREIGN KEY(type_id)
@@ -64,6 +71,11 @@ REFERENCES restaurant_type(type_id);
 ALTER TABLE profile_preferences
 ADD FOREIGN KEY(preference_id)
 REFERENCES preferences(preference_id);
+
+--Matching Results FK
+--ALTER TABLE matching_results
+--ADD FOREIGN KEY(user_name)
+--REFERENCES profile(user_name);
 
 --Restaurant FK
 ALTER TABLE restaurant

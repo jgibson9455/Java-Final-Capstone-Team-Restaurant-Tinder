@@ -1,15 +1,12 @@
 package com.techelevator.application.model;
 
-public class ProfilePreferences {
+public class MatchingResults {
 	private String userName;
-	private int typeId;
+	private int restaurantId;
 	private int preferenceId;
+	
+	public MatchingResults() {}
 
-//constructor
-	public ProfilePreferences() {
-	}
-
-//getters and setters
 	public String getUserName() {
 		return userName;
 	}
@@ -18,12 +15,12 @@ public class ProfilePreferences {
 		this.userName = userName;
 	}
 
-	public int getTypeId() {
-		return typeId;
+	public int getRestaurantId() {
+		return restaurantId;
 	}
 
-	public void setTypeId(int typeId) {
-		this.typeId = typeId;
+	public void setRestaurantId(int restaurantId) {
+		this.restaurantId = restaurantId;
 	}
 
 	public int getPreferenceId() {
@@ -33,10 +30,4 @@ public class ProfilePreferences {
 	public void setPreferenceId(int preferenceId) {
 		this.preferenceId = preferenceId;
 	}
-
-
-
-
-
-
-}//end of ProfilePreferences
+}

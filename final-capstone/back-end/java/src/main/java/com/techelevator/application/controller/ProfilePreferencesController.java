@@ -20,22 +20,21 @@ public class ProfilePreferencesController {
 		this.profilePreferencesDAO = profilePreferencesDAO;
 	}
 	
+	//TODO: REWORK THESE AND DAOS
 	@RequestMapping(path="/profile/preferences/{id}", method=RequestMethod.POST)
 	public ProfilePreferences addPreference(@RequestBody ProfilePreferences profilePreferences) {
-		return profilePreferencesDAO.addPrefererence(profilePreferences.getUserId(), profilePreferences.getPreferenceId(), profilePreferences.getTypeId());
+		return profilePreferencesDAO.addPrefererence(profilePreferences.getUserName(), profilePreferences.getPreferenceId(), profilePreferences.getTypeId());
 	}
 	
+	//TODO: REWORK THESE AND DAOS
 	@RequestMapping(path="/profile/preferences/{id}", method=RequestMethod.PUT) 
 	public void updatePreference(@PathVariable int id, @RequestBody ProfilePreferences profilePreferences) {
 		profilePreferencesDAO.updatePreference(profilePreferences);
-	
 	}
 	
+	//TODO: REWORK THESE AND DAOS
 	@RequestMapping(path="/profile/preference/{id}", method=RequestMethod.DELETE) 
 	public void deletePreference(@PathVariable ProfilePreferences profilePreferences) {
 		
 	}
-	
-	
-	
 }//end of ProfilePreferencesController
