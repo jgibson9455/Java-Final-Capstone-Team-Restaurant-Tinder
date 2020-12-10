@@ -41,6 +41,7 @@ export default new Vuex.Store({
       state.token = '';
       state.user = {};
       axios.defaults.headers.common = {};
+      state.dislikes.length = 0;
     },
 
     UPDATE_PROFILE(state, profile) {
@@ -48,6 +49,12 @@ export default new Vuex.Store({
     },
     ADD_TO_FAVES(state, restaurant) {
       state.favorites.push(restaurant);
-    }
+    },
+    ADD_TO_DISLIKE(state, restaurant) {
+      state.dislikes.push(restaurant);
+    },
+    // CLEAR_DISLIKES(state) {
+    //   state.dislikes = [];
+    //}
   }
 })

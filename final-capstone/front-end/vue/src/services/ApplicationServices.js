@@ -37,10 +37,10 @@ export default {
     },
 
     saveMatchingResult(matchingResult){
-        return http.post('/matchingResult', matchingResult);
+        return http.post('/matchingresults', matchingResult);
     },
 
     getMatchingResultsByUserName(userName){
-        return http.get(`/matchingResult/search?userName=${userName}`) 
+        return http.get(`/matchingresults/search?userName=${userName}`) 
     }
 }
