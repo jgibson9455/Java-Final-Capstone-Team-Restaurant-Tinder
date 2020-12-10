@@ -69,13 +69,27 @@ export default {
             this.matchingResult.preferenceId = 1;
             this.matchingResult.restaurantId = restaurant.restaurantId;
             ApplicationServices.saveMatchingResult(this.matchingResult);
+            this.removeFromRestaurants();
             this.getRandomRestaurant();
         },
         addToDislike(restaurant) {
             this.$store.commit('ADD_TO_DISLIKE', restaurant);
             console.log(this.$store.state.dislikes);
+            this.removeFromRestaurants();
             this.getRandomRestaurant();
+            
+        },
+        removeFromRestaurants() {
+            let dislikeId = this.randomRestaurant.restaurantId;
+            for (let i = 0; i < this.restaurants.length; i++) {
+                if(this.restaurants[i].restaurantId === dislikeId) {
+                 // let index =   this.restaurants.indexOf(this.restaurants[i]);
+                  this.restaurants.splice(i, 1);
+                  break;
+                }
+            }
         }
+
 
     }
       
