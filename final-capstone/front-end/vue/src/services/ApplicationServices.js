@@ -36,10 +36,18 @@ export default {
         return http.get(`/type/${id}`)
     },
 
+    getPreferencesByUsername(userName) {
+        return http.get(`/profile/preferences/search?userName=${userName}`)
+    },
+
+    addPreference(preference) {
+        return http.post(`/profile/preferences`, preference)
+    },
+
     getAllRestaurantTypes() {
         return http.get(`/types`)
     },
-    
+
     saveMatchingResult(matchingResult){
         return http.post('/matchingresults', matchingResult);
     },

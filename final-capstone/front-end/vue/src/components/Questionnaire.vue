@@ -17,7 +17,7 @@
 
         </div>
       <div class="margin"></div>
-        <button type="submit" v-on:click="savePreferences()" > Submit preferences </button>
+        <button type="submit" v-on:click="savePreferences()">Submit Preferences</button>
       </form>
     
 
@@ -35,6 +35,11 @@ export default {
       typeId: "",
       typeName: ""
     },
+      profilePreferences: {
+        userName: this.$store.state.user.userName,
+        typeId: "",
+        preferenceId: ""
+      },
     top20: [],
     selectedLikeIds: [],
     selectedDislikeIds: []
@@ -72,13 +77,33 @@ export default {
     }
       },
       savePreferences() {
-
+        this.selectedLikeIds.forEach((id) => {
+          this.profilePreferences.preferenceId = 1;
+          this.profilePreferences.typeId = id;
+          this.$store.state.commit('SET_PREFERENCE_LIKE_STATUS', this.profilePreferences);
+          this.appServices.addPreferences(this.profilePreferences);
+        })
+        this.selectedDislikeIds.forEach((id) => {
+          this.profilePreferences.preferenceId = 2;
+          this.profilePreferences.typeId = id;
+          this.$store.state.commit('SET_PREFERENCE_DISLIKE_STATUS', this.profilePreferences);
+          this.appServices.addPreferences(this.profilePreferences);
+        })
+        this.$router.back(`/home`);
       }
     
 },
 created() {
       appServices.getAllRestaurantTypes().then((response) => {
       this.top20 = response.data;
+      });
+
+      this.$store.state.profilePreferences.forEach((preference) => {
+        if(preference.preferenceId === 1) {
+          this.selectedLikeIds.push(preference.typeId)
+        }else if (preference.preferenceId === 2) {
+          this.selectedDislikeIds.push(preference.typeId);
+        }
       })
     }
 }

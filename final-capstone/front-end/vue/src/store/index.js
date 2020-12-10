@@ -56,7 +56,6 @@ export default new Vuex.Store({
       state.dislikes.push(restaurant);
     },
     SET_PREFERENCE_LIKE_STATUS(state, profilePreference) {
-      
       state.preferenceLikes.push(profilePreference);
     },
     SET_PREFERENCE_DISLIKE_STATUS(state, profilePreference) {
