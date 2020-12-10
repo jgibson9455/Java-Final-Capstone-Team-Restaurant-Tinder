@@ -7,46 +7,20 @@
       </div>
       <form class="preferences">
         <div class="favorites">
-          <h2>Favorite Foods: </h2>
-          
-            <input type="checkbox" id="Mexican" value="Mexican"/>
-            <label for="Mexican" class="food-form">Mexican</label><br>
+          <h2>Popular Food Preferences: </h2>
+          <div class="button-container" v-for="type in top20" v-bind:key="type.typeId"> 
+            <h5>{{type.typeName}}</h5>
+              <button class v-bind:id='type.typeId' v-on:click.prevent="preferenceLike(true)" v-if="preferenceLike(true)">remove like</button>
+              <button class v-bind:id='type.typeId' v-on:click.prevent="preferenceLike(false)" v-if="! preferenceLike(true)">like</button>
 
-            <input type="checkbox" id="Asian" value="Asian" />
-            <label for="Asian" class="food-form">Asian</label><br>
+              <button class v-bind:id='type.typeId' v-on:click.prevent="preferenceDislike(true)" v-if="preferenceDislike(true)">remove dislike</button>
+              <button class v-bind:id='type.typeId' v-on:click.prevent="preferenceDislike(false)" v-if="! preferenceDislike(true)">dislike</button>
 
-            <input type="checkbox" id="Seafood" value="Seafood" />
-            <label for="Seafood" class="food-form">Seafood</label><br>
-
-            <input type="checkbox" id="Italian" value="Italian" />
-            <label for="Italian" class="food-form">Italian</label><br>
-        </div>
-
-        <div class="dislikes">
-        <h2>Disliked Food: </h2>
-            <input type="checkbox" id="Mexican-dis" value="Mexican"/>
-            <label for="Mexican-dis" class="food-form">Mexican</label><br>
-
-            <input type="checkbox" id="Asian-dis" value="Asian"/>
-            <label for="Asian-dis" class="food-form">Asian</label><br>
-
-            <input type="checkbox" id="Seafood-dis" value="Seafood"/>
-           <label for="Seafood-dis" class="food-form">Seafood</label><br>
-
-           <input type="checkbox" id="Italian-dis" value="Italian"/>
-            <label for="Italian-dis" class="food-form">Italian</label><br>
+            </div>
+            
 
         </div>
 
-        <!--<div class="veggie">
-        <h2>Vegetarian or Vegan? </h2>
-            <input type="checkbox" id="Vegetarian"/>
-           <label for="Vegetarian" class="food-form">Vegetarian </label><br>
-
-            <input type="checkbox" id="Vegan"/>
-           <label for="Vegan" class="food-form">Vegan </label>
-
-        </div> -->
       <div class="margin"></div>
         <router-link v-bind:to="{name: 'home'}"><input class="button" type="submit"/></router-link>
       </form>
@@ -57,8 +31,34 @@
 </template>
 
 <script>
+import appServices from '@/services/ApplicationServices.js'
 export default {
-    name: 'questionnaire'
+    name: 'questionnaire',
+    data() {
+      return {
+        type: {
+      typeId: "",
+      typeName: ""
+    },
+    top20: [],
+      }
+    },
+    methods: {
+      preferenceLike(value) {
+        if(value == true) {
+            this.$store.commit('SET_LIKE_STATUS', {type: this.type, value: value}); 
+        }
+        },
+      preferenceDislike(value) {
+        this.$store.commit('SET_DISLIKE_STATUS', {type: this.type, value: value});
+      }
+      
+      },
+    created() {
+      appServices.getAllRestaurantTypes().then((response) => {
+      this.top20 = response.data;
+      })
+    }
 }
 </script>
 
