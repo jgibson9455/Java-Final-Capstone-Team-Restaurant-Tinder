@@ -6,7 +6,7 @@ public class Profile {
 	private String lastName;
 	private String userName;
 	private String email;
-	private int zipCode;
+	private String city;
 
 	
 //constructor
@@ -59,12 +59,12 @@ public void setEmail(String email) {
 }
 
 
-public int getZipCode() {
-	return zipCode;
+public String getCity() {
+	return city;
 }
 
-public void setZipCode(int zipCode) {
-	this.zipCode = zipCode;
+public void setCity(String city) {
+	this.city = city;
 }
 
 
