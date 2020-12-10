@@ -36,6 +36,10 @@ export default {
         return http.get(`/type/${id}`)
     },
 
+    getAllRestaurantTypes() {
+        return http.get(`/types`)
+    },
+    
     saveMatchingResult(matchingResult){
         return http.post('/matchingresults', matchingResult);
     },

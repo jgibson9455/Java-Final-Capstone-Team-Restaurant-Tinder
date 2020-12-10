@@ -23,7 +23,9 @@ export default new Vuex.Store({
     user: currentUser || {},
     profile: currentProfile || {},
     favorites: [],
-    dislikes: []
+    dislikes: [],
+    preferenceLikes: [],
+    preferenceDislikes: []
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -53,8 +55,11 @@ export default new Vuex.Store({
     ADD_TO_DISLIKE(state, restaurant) {
       state.dislikes.push(restaurant);
     },
-    // CLEAR_DISLIKES(state) {
-    //   state.dislikes = [];
-    //}
+    SET_PREFERENCE_LIKE_STATUS(state, profilePreference) {
+      state.preferenceLikes.push(profilePreference);
+    },
+    SET_PREFERENCE_DISLIKE_STATUS(state, profilePreference) {
+      state.preferenceDislikes.push(profilePreference);
+    }
   }
 })
