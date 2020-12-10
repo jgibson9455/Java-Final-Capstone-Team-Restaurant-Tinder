@@ -13,11 +13,11 @@
 
 
       <div class="dislike">
-         <button>Dislike</button>
+         <button v-on:click.prevent="addToDislike(randomRestaurant)">Dislike</button>
       </div>
 
       <div class="skip">
-         <button>Skip</button>
+         <button v-on:click.prevent="getRandomRestaurant()">Skip</button>
       </div>
 
       <div class="like">
@@ -38,10 +38,15 @@ export default {
     name: 'match-making',
     data() {
         return{
-        likes: [],
-        dislikes: [],
+        //likes: [],
+        //dislikes: [],
         restaurants: [],
-        randomRestaurant: {}
+        randomRestaurant: {},
+        matchingResult: {
+            userName: this.$store.state.user.username,
+            restaurantId: 0,
+            preferenceId: 0
+        }
         }
 
     },
@@ -49,19 +54,27 @@ export default {
         ApplicationServices.getAllRestaurants()
         .then(apiData => {
             this.restaurants = apiData.data;
-            this.getRestaurantsById()
+            this.getRandomRestaurant();
         })
-
+          
     },
     methods:{
-        getRestaurantsById(){
-            let randomNum = Math.floor(Math.random() * this.restaurants.length - 1);
+        getRandomRestaurant(){
+            let randomNum = Math.floor(Math.random() * this.restaurants.length-1);
             ApplicationServices.getRestaurantById(randomNum).then(apiData => {
                 this.randomRestaurant = apiData.data;
-            })    
+            })
         },
         addRestaurantToFavorites(restaurant) {
-            this.$store.commit('ADD_TO_FAVES', restaurant);
+            this.matchingResult.preferenceId = 1;
+            this.matchingResult.restaurantId = restaurant.restaurantId;
+            ApplicationServices.saveMatchingResult(this.matchingResult);
+            this.getRandomRestaurant();
+        },
+        addToDislike(restaurant) {
+            this.$store.commit('ADD_TO_DISLIKE', restaurant);
+            console.log(this.$store.state.dislikes);
+            this.getRandomRestaurant();
         }
 
     }
