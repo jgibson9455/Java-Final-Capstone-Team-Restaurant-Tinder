@@ -11,8 +11,8 @@
            <label for="email" class="profile-form">Email Address: </label>
           <input type="email" id="email" placeholder="Email" required=true v-model="profile.email"/>
 
-           <label for="zipCode" class="profile-form">Zip Code: </label>
-          <input type="text" id="zipCode" placeholder="Zip Code" required=true v-model="profile.zipCode" />
+           <label for="city" class="profile-form">Your City: </label>
+          <input type="text" id="city" placeholder="Your City" required=true v-model="profile.city" />
 
           <button type="submit" v-on:click="saveProfile()">Update Profile</button>
       </form>
@@ -30,7 +30,7 @@ export default {
             firstName: "",
             lastName: "",
             email: "",
-            zipCode: ""
+            city: ""
            }
          }
        },
@@ -38,8 +38,11 @@ export default {
          saveProfile() {
            ApplicationServices.updateProfile(this.profile)
            .then((response) =>{
+             alert(
+               "Your profile has successfully been updated!"
+             )
               this.$store.commit("UPDATE_PROFILE", response.data);
-              this.$router.push("/home");
+              this.$router.back('/home');
            })
          }
        },
