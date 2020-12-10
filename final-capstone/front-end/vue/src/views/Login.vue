@@ -86,8 +86,8 @@ export default {
             ApplicationServices.getProfileByUsername(response.data.user.username)
             .then((response) => { 
             // this.profile = response.data.profile
-            this.$store.commit("UPDATE_PROFILE", response)
-            this.$router.push("/matches")
+            this.$store.commit("UPDATE_PROFILE", response);
+            this.$router.push("/matches");
             })
           }
         })

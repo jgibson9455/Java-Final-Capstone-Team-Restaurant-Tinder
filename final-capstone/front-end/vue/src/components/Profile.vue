@@ -18,7 +18,7 @@
     
        <router-link class="restaurant-navs" v-bind:to="{name: 'restaurants'}">View Restaurant List</router-link> 
     
-       <button class="start">Start</button>
+       <router-link v-bind:to="{name: 'match-making'}"><button class="start">Continue Swiping</button></router-link>
    
    <router-link class="favorite-restaurants" v-bind:to="{name: 'favorites'}"><h3 class="fav">Favorite Restaurants</h3></router-link>
     </div>

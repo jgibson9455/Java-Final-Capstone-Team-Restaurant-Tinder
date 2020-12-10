@@ -1,20 +1,22 @@
 <template>
   <div class="favorites">
-      <matchmaking
-      v-bind:restaurant="restaurant"
+      <restaurant-card
       v-for="restaurant in $store.state.favorites"
-      v-bind:key="restaurant.restaurantId"/>
+      v-bind:key="restaurant.restaurantId"
+      v-bind:restaurant="restaurant"
+      />
   </div>
 </template>
 
 <script>
-
-import Matchmaking from '../components/Matchmaking.vue'
-
+import RestaurantCard from '../components/RestaurantCard.vue'
 export default {
   components: {
-    Matchmaking
-  }
+    RestaurantCard
+  },
+  props: [
+    'restaurant'
+  ]
 }
 
 </script>

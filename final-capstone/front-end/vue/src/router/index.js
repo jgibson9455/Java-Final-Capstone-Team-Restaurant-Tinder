@@ -81,7 +81,7 @@ const router = new Router({
     },
     {
       path: "/matches",
-      name: "matchmaking",
+      name: "match-making",
       component: Matchmaking
     },
     {

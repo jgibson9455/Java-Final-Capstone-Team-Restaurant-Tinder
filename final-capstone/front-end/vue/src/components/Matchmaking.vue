@@ -22,14 +22,12 @@
 
       <div class="like">
          <button
-         v-on:click.prevent="addRestaurantToFavorites(restaurant)"
+         v-on:click.prevent="addRestaurantToFavorites(randomRestaurant)"
          >Like</button>
       </div>
 
  </div>
 
-<router-link/>
-<router-link/>
   </div>
 
 </template>
@@ -37,7 +35,7 @@
 <script>
 import ApplicationServices from '../services/ApplicationServices.js'
 export default {
-    name: 'matchmaking',
+    name: 'match-making',
     data() {
         return{
         likes: [],
@@ -63,7 +61,7 @@ export default {
             })    
         },
         addRestaurantToFavorites(restaurant) {
-            this.$store.commit('ADD_TO_FAVES', restaurant)
+            this.$store.commit('ADD_TO_FAVES', restaurant);
         }
 
     }
