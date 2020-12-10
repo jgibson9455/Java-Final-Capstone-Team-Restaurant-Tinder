@@ -12,7 +12,12 @@
 
 <script>
 export default {
-  
+
+  created(){
+    window.addEventListener('beforeunload', ()=>{
+        this.$store.commit("LOGOUT");
+    }, false)
+  }
 }
 </script>
 
