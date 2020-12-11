@@ -114,7 +114,7 @@ export default {
   width: 400px;
   text-align: center;
   border-radius: 5%;
-  
+  border: 2px solid black;
 }
 
 body {
@@ -140,11 +140,12 @@ body {
 }
 
 body {
-  background-image: linear-gradient(to bottom left,  #FF655B, #FD297B);
+  /* background-image: linear-gradient(to bottom left,  #FF655B, #FD297B); */
   height: 700px;
 }
 
 h1 {
+  color: #FD297B;
   border-bottom: 2px solid grey;
   padding-bottom: 5px;
 }
