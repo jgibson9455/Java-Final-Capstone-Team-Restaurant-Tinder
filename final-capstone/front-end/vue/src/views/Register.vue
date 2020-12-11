@@ -133,7 +133,7 @@ export default {
   align-items: center;
   background-color: blanchedalmond;
   object-fit: fill;
-  height: 400px;
+  height: 420px;
   width: 400px;
   text-align: center;
   border-radius: 5%;

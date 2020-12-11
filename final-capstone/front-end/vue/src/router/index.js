@@ -27,11 +27,11 @@ const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
-    {
-      path: '/',
-      name: 'startup',
-      component: StartupPage
-    },
+    // {
+    //   path: '/',
+    //   name: 'startup',
+    //   component: StartupPage
+    // },
     {
       path: '/profile',
       name: 'home',
@@ -41,7 +41,7 @@ const router = new Router({
       }
     },
     {
-      path: "/login",
+      path: "/",
       name: "login",
       component: Login,
       meta: {
