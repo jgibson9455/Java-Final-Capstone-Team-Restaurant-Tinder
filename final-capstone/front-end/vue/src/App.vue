@@ -1,9 +1,15 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link v-bind:to="{ name: 'startup' }">Home</router-link>&nbsp;|&nbsp;    
-      <router-link v-bind:to="{ name: 'home' }">Profile</router-link>&nbsp;|&nbsp;
-      <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
+    <div id="nav" v-if="$store.state.token != ''">
+      <router-link v-bind:to="{ name: 'match-making' }">
+        <img class="nav-logo" src='@/img/logo-color.png'/>
+      </router-link>&nbsp;  
+      <router-link v-bind:to="{ name: 'home' }">
+        <img class="nav-profile" src='@/img/profile.png'/>
+        </router-link>&nbsp;  
+      <router-link v-bind:to="{ name: 'logout' }">
+        <img class="nav-logout" src='@/img/logout.png'/>
+        </router-link>
       
     </div>
     <router-view />
@@ -31,6 +37,18 @@ export default {
 #nav > a:hover {
   color: #FF655B;
   text-decoration: underline;
+}
+
+.nav-logo, .nav-profile, .nav-logout {
+  width: 30px;
+  border-radius: 50%;
+}
+
+.nav-logo:hover, .nav-profile:hover, .nav-logout:hover {
+  width: 40px;
+  margin-top: -10px;
+  margin-bottom: -10px;
+  transition: 0.2s ease;
 }
 
 </style>
