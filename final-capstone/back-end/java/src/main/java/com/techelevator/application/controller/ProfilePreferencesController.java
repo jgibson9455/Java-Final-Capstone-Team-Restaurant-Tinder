@@ -30,6 +30,7 @@ public class ProfilePreferencesController {
 	
 	@RequestMapping(path="/profile/preferences", method=RequestMethod.POST)
 	public void addPreference(@RequestBody ProfilePreferences profilePreferences) {
+		System.out.println("/profile/preferences - " + profilePreferences.toString());
 		profilePreferencesDAO.addPrefererence(profilePreferences);
 	}
 	

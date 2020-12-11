@@ -34,6 +34,13 @@ public class ProfilePreferences {
 		this.preferenceId = preferenceId;
 	}
 
+	@Override
+	public String toString() {
+		return "ProfilePreferences [userName=" + userName + ", typeId=" + typeId + ", preferenceId=" + preferenceId
+				+ "]";
+	}
+
+	
 
 
 
