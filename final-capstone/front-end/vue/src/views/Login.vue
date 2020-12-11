@@ -1,9 +1,14 @@
 <template>
 <body>
-  <div class="whatever"></div>
+  <div class="whatever">
+    <h1 class="title">Restaurant Tinder</h1>
+  </div>
+  <div class="banner">
+    <img src='@/img/banner.jpeg'/>
+  </div>
   <div id="login" class="text-center">
     <form class="form-signin" @submit.prevent="login">
-      <h1 class="h3 mb-3 font-weight-normal">Login</h1>
+      <h1 id="login-title" class="h3 mb-3 font-weight-normal">Login</h1>
       <div
         class="alert alert-danger"
         role="alert"
@@ -121,6 +126,7 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-areas: 
+  "banner banner banner"
   "whatever whatever whatever"
   ". login ."
   ". login ."
@@ -131,6 +137,9 @@ body {
 
 #login {
   grid-area: login;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .whatever {
@@ -139,15 +148,27 @@ body {
   padding-bottom: 40px;
 }
 
+.banner {
+  grid-area: banner;
+}
+
 body {
   /* background-image: linear-gradient(to bottom left,  #FF655B, #FD297B); */
   height: 700px;
 }
 
-h1 {
+#login-title {
   color: #FD297B;
   border-bottom: 2px solid grey;
   padding-bottom: 5px;
+}
+
+.title {
+  text-align: center;
+  font-size: 45px;
+  margin-top: -10px;
+  margin-bottom: -10px;
+  color: #FD297B;
 }
 
 #username-signin, #password-singin {
@@ -167,7 +188,7 @@ button {
   padding-top: 20px;
 }
 
-h1, .sr-only, button, .link {
+#login-title, .sr-only, button, .link, .title {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
@@ -176,9 +197,21 @@ h1, .sr-only, button, .link {
   padding-top: 11px;
 }
 
-img {
+.logo > img {
   width: 100px;
   border-radius: 50%;
+}
+
+.banner > img {
+  /* width: 1000px; */
+  width: 100%;
+  max-height: 250px;
+}
+
+.banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 a {

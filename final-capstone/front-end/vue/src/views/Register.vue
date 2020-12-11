@@ -1,6 +1,11 @@
 <template>
 <body class="register-body">
-  <div class="whatever"></div>
+  <div class="whatever">
+    <h1 class="title2">Restaurant Tinder</h1>
+  </div>
+  <div class="banner2">
+    <img src='@/img/banner.jpeg'/>
+  </div>
   <div id="register" class="text-center">
     <form class="form-register" @submit.prevent="register">
       <h1 id="create-account" class="h3 mb-3 font-weight-normal">Create Account</h1>
@@ -132,12 +137,14 @@ export default {
   width: 400px;
   text-align: center;
   border-radius: 5%;
-
+  border-radius: 5%;
+  border: 2px solid black;
 }
 .register-body {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-areas: 
+  "ban ban ban"
   "whatever whatever whatever"
   ". register ."
   ". register ."
@@ -148,6 +155,9 @@ export default {
 
 #register {
   grid-area: register;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .whatever {
@@ -156,12 +166,17 @@ export default {
   padding-bottom: 40px;
 }
 
+.banner2 {
+  grid-area: ban;
+}
+
 .register-body {
-  background-image: linear-gradient(to bottom left,  #FF655B, #FD297B);
+  /* background-image: linear-gradient(to bottom left,  #FF655B, #FD297B); */
   height: 700px;
 }
 
 #create-account {
+  color: #FD297B;
   border-bottom: 2px solid grey;
   margin-bottom: 18px;
   padding-bottom: 5px;
@@ -210,7 +225,27 @@ export default {
 .logo-account > img {
   width: 100px;
   border-radius: 50%;
+}
 
+.title2 {
+  text-align: center;
+  font-size: 45px;
+  margin-top: -10px;
+  margin-bottom: -10px;
+  color: #FD297B;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.banner2 > img {
+  /* width: 1000px; */
+  width: 100%;
+  max-height: 250px;
+}
+
+.banner2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 a {
