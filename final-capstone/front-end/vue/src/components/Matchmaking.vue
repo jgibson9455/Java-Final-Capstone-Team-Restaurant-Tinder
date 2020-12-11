@@ -19,7 +19,7 @@
       <div id="dislike">
          <a href
          v-on:click.prevent="addToDislike(randomRestaurant)">
-         <img id="dislike-pic" src="../img/Dislike.jpeg">
+         <img id="dislike-pic" src="../img/Dislike.png">
          </a>
         <h5>Nope</h5>
       </div>
@@ -28,7 +28,7 @@
       <div id="skip">
          <a href
          v-on:click.prevent="getRandomRestaurant()">
-         <img id="skip-pic" src="../img/Skip.jpeg">
+         <img id="skip-pic" src="../img/Skip.png">
          </a>
          <h5>Next</h5>
       </div>
@@ -36,7 +36,7 @@
       <div id="like">
          <a href
          v-on:click.prevent="addRestaurantToFavorites(randomRestaurant)">
-         <img id="like-pic" src="../img/Like.jpeg">
+         <img id="like-pic" src="../img/Like.png">
          </a>
          <h5>Like</h5>
       </div>
