@@ -17,7 +17,7 @@
 
         </div>
       <div class="margin"></div>
-        <button type="submit" v-on:click="savePreferences()">Submit Preferences</button>
+        <button type="submit" v-on:click.prevent="savePreferences()">Submit Preferences</button>
       </form>
     
 
@@ -36,7 +36,7 @@ export default {
       typeName: ""
     },
       profilePreferences: {
-        userName: this.$store.state.user.userName,
+        userName: this.$store.state.user.username,
         typeId: "",
         preferenceId: ""
       },
@@ -77,18 +77,24 @@ export default {
     }
       },
       savePreferences() {
-        this.selectedLikeIds.forEach((id) => {
+        if(this.selectedLikeIds.length > 0) {
+          this.selectedLikeIds.forEach((id) => {
           this.profilePreferences.preferenceId = 1;
           this.profilePreferences.typeId = id;
-          this.$store.state.commit('SET_PREFERENCE_LIKE_STATUS', this.profilePreferences);
-          this.appServices.addPreferences(this.profilePreferences);
-        })
+          console.log("hello");
+          appServices.addPreference(this.profilePreferences).then((response) =>{
+          this.$store.commit('SET_PREFERENCE_LIKE_STATUS', this.profilePreferences); // need something else so it doesnt
+          });                                                                                        //continue submitting entire array again
+        })}
+        if(this.selectedDislikeIds.length > 0) {
         this.selectedDislikeIds.forEach((id) => {
           this.profilePreferences.preferenceId = 2;
           this.profilePreferences.typeId = id;
-          this.$store.state.commit('SET_PREFERENCE_DISLIKE_STATUS', this.profilePreferences);
-          this.appServices.addPreferences(this.profilePreferences);
-        })
+          appServices.addPreference(this.profilePreferences).then((response)=>{
+          this.$store.commit('SET_PREFERENCE_DISLIKE_STATUS', this.profilePreferences);
+          });
+
+        })}
         this.$router.back(`/home`);
       }
     
@@ -98,13 +104,29 @@ created() {
       this.top20 = response.data;
       });
 
-      this.$store.state.profilePreferences.forEach((preference) => {
+      appServices.getPreferencesByUsername(this.$store.state.user.username).then((response) =>{
+        response.data.forEach((preference) =>{
+
+       
         if(preference.preferenceId === 1) {
-          this.selectedLikeIds.push(preference.typeId)
-        }else if (preference.preferenceId === 2) {
+          this.selectedLikeIds.push(preference.typeId);
+        }
+        if(preference.preferenceId === 2) {
           this.selectedDislikeIds.push(preference.typeId);
         }
       })
+      })
+
+    //   if(this.$store.state.profilePreferences.preferenceLikes.length > 0) {
+    //    this.$store.state.profilePreference.preferenceLikes.forEach((preference) => {
+    //      this.selectedLikeIds.push(preference.typeId)
+    //    })
+    // }
+    //   if(this.$store.state.profilePreferences.preferenceDislikes.length > 0) {
+    //     this.$store.state.profilePreference.preferenceDislikes.forEach((preference) =>{
+    //       this.selectedDislikeIds.push(preference.typeId)
+    //     })
+    //     }
     }
 }
 </script>
