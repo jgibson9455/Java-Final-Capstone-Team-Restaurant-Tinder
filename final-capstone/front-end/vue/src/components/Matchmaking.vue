@@ -10,8 +10,6 @@
  
   <div class="buttons">
       
-
-
       <div class="dislike">
          <button v-on:click.prevent="addToDislike(randomRestaurant)">Dislike</button>
       </div>
@@ -38,8 +36,6 @@ export default {
     name: 'match-making',
     data() {
         return{
-        //likes: [],
-        //dislikes: [],
         restaurants: [],
         randomRestaurant: {},
         matchingResult: {
@@ -48,7 +44,6 @@ export default {
             preferenceId: 0
         }
         }
-
     },
     created() {
         ApplicationServices.getAllRestaurants()
@@ -68,7 +63,6 @@ export default {
             })
                }
            }
-
         },
         addRestaurantToFavorites(restaurant) {
             this.matchingResult.preferenceId = 1;
@@ -81,23 +75,19 @@ export default {
             this.$store.commit('ADD_TO_DISLIKE', restaurant);
             console.log(this.$store.state.dislikes);
             this.removeFromRestaurants();
-            this.getRandomRestaurant();
-            
+            this.getRandomRestaurant();  
         },
         removeFromRestaurants() {
-            let dislikeId = this.randomRestaurant.restaurantId;
+            let randomId = this.randomRestaurant.restaurantId;
             for (let i = 0; i < this.restaurants.length; i++) {
-                if(this.restaurants[i].restaurantId === dislikeId) {
+                if(this.restaurants[i].restaurantId === randomId) {
                  // let index =   this.restaurants.indexOf(this.restaurants[i]);
                   this.restaurants.splice(i, 1);
                   break;
                 }
             }
         }
-
-
-    }
-      
+    }      
 }
 </script>
 
@@ -121,5 +111,4 @@ export default {
     flex-direction: row;
     justify-content: space-evenly;
 }
-
 </style>
