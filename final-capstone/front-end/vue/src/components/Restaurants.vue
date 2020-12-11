@@ -7,7 +7,7 @@
                 v-for="restaurant in restaurants"
                 v-bind:key="restaurant.id">
                 <h2>{{ restaurant.restaurantName }}</h2>
-                <h4>{{ restaurant.typeName }}</h4>
+                <h3>{{ restaurant.typeName }}</h3>
                 
                     <!-- <div class="types"
                       v-for="type in restaurantTypes"
@@ -17,8 +17,6 @@
 
                 <img class="rest-images" v-bind:src="restaurant.imageLink"/>
             </div>
-
-
 
           </div>
     </div>

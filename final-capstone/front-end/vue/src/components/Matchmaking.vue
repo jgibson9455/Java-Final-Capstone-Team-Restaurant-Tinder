@@ -10,8 +10,6 @@
  
   <div class="buttons">
       
-
-
       <div class="dislike">
          <button v-on:click.prevent="addToDislike(randomRestaurant)">Dislike</button>
       </div>
@@ -38,8 +36,6 @@ export default {
     name: 'match-making',
     data() {
         return{
-        //likes: [],
-        //dislikes: [],
         restaurants: [],
         randomRestaurant: {},
         matchingResult: {
@@ -48,7 +44,6 @@ export default {
             preferenceId: 0
         }
         }
-
     },
     created() {
         ApplicationServices.getAllRestaurants()
@@ -60,10 +55,14 @@ export default {
     },
     methods:{
         getRandomRestaurant(){
-           let randomNum = Math.floor(Math.random() * (this.restaurants.length));
-            ApplicationServices.getRestaurantById(randomNum + 1).then(apiData => {
+           let randomNum = Math.floor(Math.random() * (this.restaurants.length)) + 1;
+           for(let i = 0; i < this.restaurants.length; i++){
+               if(randomNum === this.restaurants[i].restaurantId) {
+                ApplicationServices.getRestaurantById(this.restaurants[i].restaurantId).then(apiData => {
                 this.randomRestaurant = apiData.data;
             })
+               }
+           }
         },
         addRestaurantToFavorites(restaurant) {
             this.matchingResult.preferenceId = 1;
@@ -76,23 +75,19 @@ export default {
             this.$store.commit('ADD_TO_DISLIKE', restaurant);
             console.log(this.$store.state.dislikes);
             this.removeFromRestaurants();
-            this.getRandomRestaurant();
-            
+            this.getRandomRestaurant();  
         },
         removeFromRestaurants() {
-            let dislikeId = this.randomRestaurant.id;
-            for (let i = 0; i <= this.restaurants.length; i++) {
-                if(this.restaurants[i].id === dislikeId) {
+            let randomId = this.randomRestaurant.restaurantId;
+            for (let i = 0; i < this.restaurants.length; i++) {
+                if(this.restaurants[i].restaurantId === randomId) {
                  // let index =   this.restaurants.indexOf(this.restaurants[i]);
                   this.restaurants.splice(i, 1);
                   break;
                 }
             }
         }
-
-
-    }
-      
+    }      
 }
 </script>
 
@@ -116,5 +111,4 @@ export default {
     flex-direction: row;
     justify-content: space-evenly;
 }
-
 </style>
