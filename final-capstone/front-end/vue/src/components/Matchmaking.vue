@@ -60,10 +60,15 @@ export default {
     },
     methods:{
         getRandomRestaurant(){
-           let randomNum = Math.floor(Math.random() * (this.restaurants.length));
-            ApplicationServices.getRestaurantById(randomNum + 1).then(apiData => {
+           let randomNum = Math.floor(Math.random() * (this.restaurants.length)) + 1;
+           for(let i = 0; i < this.restaurants.length; i++){
+               if(randomNum === this.restaurants[i].restaurantId) {
+                ApplicationServices.getRestaurantById(this.restaurants[i].restaurantId).then(apiData => {
                 this.randomRestaurant = apiData.data;
             })
+               }
+           }
+
         },
         addRestaurantToFavorites(restaurant) {
             this.matchingResult.preferenceId = 1;
@@ -80,9 +85,9 @@ export default {
             
         },
         removeFromRestaurants() {
-            let dislikeId = this.randomRestaurant.id;
-            for (let i = 0; i <= this.restaurants.length; i++) {
-                if(this.restaurants[i].id === dislikeId) {
+            let dislikeId = this.randomRestaurant.restaurantId;
+            for (let i = 0; i < this.restaurants.length; i++) {
+                if(this.restaurants[i].restaurantId === dislikeId) {
                  // let index =   this.restaurants.indexOf(this.restaurants[i]);
                   this.restaurants.splice(i, 1);
                   break;

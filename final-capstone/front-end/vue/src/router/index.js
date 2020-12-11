@@ -33,7 +33,7 @@ const router = new Router({
       component: StartupPage
     },
     {
-      path: '/home',
+      path: '/profile',
       name: 'home',
       component: Home,
       meta: {
