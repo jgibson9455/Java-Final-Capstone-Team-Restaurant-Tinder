@@ -1,7 +1,9 @@
 <template>
   <div class="favorites">
-    <h1 class="fav-head"><u id="fav-rest-line">My Favorites</u></h1>
-    <div class="rest-card">
+    <h2 class="fav-head"
+    v-on:click="showFavs = (showFavs ? false : true)"
+    ><u id="fav-rest-line">View Favorites</u></h2>
+    <div class="rest-card" v-if="showFavs === true">
       <restaurant-card class="flex-container"
       v-for="restaurant in fav"
       v-bind:key="restaurant.restaurantId"
@@ -19,7 +21,8 @@ export default {
   data() {
     return {
       fav: [],
-      matching: []
+      matching: [],
+      showFavs: false
     }
   },
   components: {
@@ -57,8 +60,8 @@ export default {
   color: #FF5864; 
   justify-content: center;
 }
-#fav-rest-line{
-
+#fav-rest-line:hover{
+  color: #FD297B;
 }
 .logo {
   display: flex;

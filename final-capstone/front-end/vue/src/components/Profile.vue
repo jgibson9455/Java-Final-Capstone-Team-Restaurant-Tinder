@@ -23,7 +23,7 @@
          ><b>Continue Swiping</b></button>
         </router-link>
    
-   <router-link class="favorite-restaurants" v-bind:to="{name: 'favorites'}"><h3 class="fav">Favorite Restaurants</h3></router-link>
+   <!-- <router-link class="favorite-restaurants" v-bind:to="{name: 'favorites'}"><h3 class="fav">Favorite Restaurants</h3></router-link>
     </div>
 
     <div class="fav-temp">
@@ -40,7 +40,7 @@
         <div class="rest-3"> 
             <p>Restaurant 3</p>
             <img class="last" src="../img/rest-3.jpg"/>
-        </div>
+        </div> -->
     </div>
 
   </div>
@@ -70,7 +70,8 @@ export default {
   /* display: flex;
   flex-direction: column; */
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  height: 700px;
+  /* height: 700px; */
+  height: 250px;
   align-content: center;
   padding-top: 30px;
   font-size: 17px;
