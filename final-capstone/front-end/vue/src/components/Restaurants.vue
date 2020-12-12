@@ -19,6 +19,7 @@
             </div>
 
           </div>
+          <!-- <div class="image"><img src="../img/logo-black.png"></div> -->
     </div>
 </template>
 
@@ -58,7 +59,7 @@ methods: {
 
 <style>
 .page-head {
-    color: blanchedalmond;
+    color: #FF5864 ;
     font-size: 3.5em;
     text-align: center;
     padding-top: 25px;
@@ -72,25 +73,23 @@ methods: {
       text-shadow: black 0px 0px 1px,   black 0px 0px 1px,   black 0px 0px 1px,
              black 0px 0px 1px,   black 0px 0px 1px,   black 0px 0px 1px*/
 
-   text-shadow: 2px 5px 5px rgba(8, 8, 8, 0.75),
-                -5px 6px 7px rgba(8, 8, 8, 0.75);
+   /*text-shadow: 2px 5px 5px rgba(8, 8, 8, 0.75),
+                -5px 6px 7px rgba(8, 8, 8, 0.75);*/
 
     /* -webkit-font-smoothing: antialiased; */
     }
+/* #pref-line {
+    text-decoration: none;
+    border-bottom: 5px solid #FF5864;
+} */
 h2 {
     margin-bottom: 5px;
 }
 h4 {
     margin-top: 5px;
 }
-#rest-line {
-    text-decoration: none;
-    border-bottom: 5px solid blanchedalmond;
-    -webkit-font-smoothing: antialiased;
-}
 .restaurant-page {
-
-    background-image: linear-gradient(to bottom left,  #FF655B, #FD297B);;
+    /*background-image: linear-gradient(to bottom left,  #FF655B, #FD297B);*/
     padding: 15px;
     margin-top: 15px;
     background-clip: padding-box;
@@ -102,19 +101,17 @@ h4 {
     flex-wrap: wrap;
     /* flex: 1;
     overflow: auto; */
-
 }
 .restaurant-head {
     text-align: center;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+   font-size: 22px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 20px;
     text-shadow: blanchedalmond 0px 0px .75px,   blanchedalmond 0px 0px .75px,   blanchedalmond 0px 0px .75px,
              blanchedalmond 0px 0px .75px,   blanchedalmond 0px 0px .75px,   blanchedalmond 0px 0px .75px;
     color: rgb(8, 8, 8);
     }
 .rest-type {
-    margin-top: -22px;
-    font-size: 22px;
+    margin-top: -22px;   
 }
 .rest-images {
     height: 250px;
@@ -123,6 +120,15 @@ h4 {
     border-color: black;
     border-width: 2px;
     border-radius: 5px; 
+    }
+.image {
+    display: flex;
+    justify-content: center;
+    padding: 13%;
+
     } 
+/* img {
+    width: 2%;
+} */
 
 </style>
