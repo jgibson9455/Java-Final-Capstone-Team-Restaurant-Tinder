@@ -10,8 +10,8 @@
           <h2>Popular Food Preferences: </h2>
           <div class="button-container" v-for="type in top20" v-bind:key="type.typeId" > 
             <h5>{{type.typeName}}</h5>
-              <button class v-bind:id="type.typeId" v-on:click.prevent="toggleLikes(type.typeId)">like</button>
-              <button class v-bind:id="type.typeId" v-on:click.prevent="toggleDislikes(type.typeId)">dislike</button>
+              <button class v-bind:id="type.typeId" v-on:click.prevent="addToPreferences(type.typeId,1)">like</button>
+              <button class v-bind:id="type.typeId" v-on:click.prevent="addToPreferences(type.typeId,2)">dislike</button>
             </div>
         </div>
       <div class="margin"></div>
@@ -31,8 +31,8 @@ export default {
       typeId: "",
       typeName: ""
     },
-      profilePreferences: {
-        userName: this.$store.state.user.username,
+      aProfilePreference: {
+        userName: "",
         typeId: "",
         preferenceId: ""
       },
@@ -43,78 +43,19 @@ export default {
       }
     },
     methods: {
-    toggleLikes(id){
-    //Not in either array
-    if(this.selectedLikeIds.indexOf(id) === -1 && this.selectedDislikeIds.indexOf(id) === -1){
-      this.selectedLikeIds.push(id);
-    }else{
-      //Check if the id is IN the dislikes
-      if(this.selectedDislikeIds.indexOf(id) !== -1){
-      //It is so display alert message
-        alert("You cannot have a type in both like and dislike")
-      }else{
-      //It already is in the liked array, take it out
-        this.selectedLikeIds.splice(this.selectedLikeIds.indexOf(id), 1);
-      }
-    }
-  },
-      toggleDislikes(id){
-    //Not in either array
-    if(this.selectedDislikeIds.indexOf(id) === -1 && this.selectedLikeIds.indexOf(id) === -1){
-      this.selectedDislikeIds.push(id);
-    }else{
-      //Check if the id is IN the dislikes
-      if(this.selectedLikeIds.indexOf(id) !== -1){
-      //It is so display alert message
-        alert("You cannot have a type in both like and dislike")
-      }else{
-      //It already is in the liked array, take it out
-        this.selectedDislikeIds.splice(this.selectedDislikeIds.indexOf(id), 1);
-      }
-    }
-      },
       savePreferences() {
-        if(this.selectedLikeIds.length > 0) {
-          this.selectedLikeIds.forEach((id) => {
-            let alreadyInArray = false;
-
-            // for(let i =0; i < this.savedPreferences.length; i++){
-            //   if(this.savedPreferences[i].typeId === id && this.savedPreferences[i].preferenceId === 1){
-            //     alreadyInArray = true;
-            //     break;
-            //   }
-            // }
-            if(!alreadyInArray){
-              this.profilePreferences.preferenceId = 1;
-              this.profilePreferences.typeId = id;
-              appServices.addPreference(this.profilePreferences).then(() =>{
-              this.$store.commit('SET_PREFERENCE_LIKE_STATUS', this.profilePreferences); 
-            });    
-          }                                                                        
-        })}
-        if(this.selectedDislikeIds.length > 0) {
-          this.selectedDislikeIds.forEach((id) => {
-             let alreadyInArray = false;
-
-            for(let i =0; i < this.savedPreferences.length; i++){
-              if(this.savedPreferences[i].typeId === id && this.savedPreferences[i].preferenceId === 2){
-                alreadyInArray = true;
-              }
-            }
-            if(!alreadyInArray){
-            this.profilePreferences.preferenceId = 2;
-            this.profilePreferences.typeId = id;
-            appServices.addPreference(this.profilePreferences).then(()=>{
-            this.$store.commit('SET_PREFERENCE_DISLIKE_STATUS', this.profilePreferences);
+        appServices.getPreferencesByUsername(this.$store.state.user.username).then((response) => {
+          response.data.forEach((preference) => {
+            this.savedPreferences.push(preference);
           });
-        }
-        })}
-        this.savedPreferences = "";
-        this.selectedLikeIds = "";
-        this.selectedDislikeIds = "";
-        // this.profilePreferences.typeId = "";
-        // this.profilePreferences.preferenceId = "";
-        this.$router.back(`/home`);
+        });
+        this.$router.back('/home');
+      },
+      addToPreferences(id, value){
+        this.aProfilePreference.userName = this.$store.state.user.username;
+        this.aProfilePreference.preferenceId = value;
+        this.aProfilePreference.typeId = id;
+        appServices.addPreference(this.aProfilePreference).then(()=> {this.aProfilePreference = "";})
       }
 },
 created() {

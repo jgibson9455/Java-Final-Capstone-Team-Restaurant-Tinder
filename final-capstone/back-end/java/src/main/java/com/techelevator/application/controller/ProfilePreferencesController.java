@@ -1,5 +1,7 @@
 package com.techelevator.application.controller;
 
+import java.security.Timestamp;
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -19,6 +21,8 @@ public class ProfilePreferencesController {
 
 	private ProfilePreferencesDAO profilePreferencesDAO;
 	
+	
+	
 	public ProfilePreferencesController(ProfilePreferencesDAO profilePreferencesDAO) {
 		this.profilePreferencesDAO = profilePreferencesDAO;
 	}
@@ -29,9 +33,9 @@ public class ProfilePreferencesController {
 	}
 	
 	@RequestMapping(path="/profile/preferences", method=RequestMethod.POST)
-	public void addPreference(@RequestBody ProfilePreferences profilePreferences) {
-		System.out.println("/profile/preferences - " + profilePreferences.toString());
-		profilePreferencesDAO.addPrefererence(profilePreferences);
+	public void addPreference(@RequestBody ProfilePreferences aProfilePreference) {
+		System.out.println("/profile/preferences - " + aProfilePreference);
+		profilePreferencesDAO.addPrefererence(aProfilePreference);
 	}
 	
 	@RequestMapping(path="/profile/preferences", method=RequestMethod.PUT) 
@@ -43,4 +47,10 @@ public class ProfilePreferencesController {
 	public void deletePreference(@RequestBody ProfilePreferences profilePreferences) {
 		profilePreferencesDAO.deletePreference(profilePreferences);
 	}
+	
+	static void logRequest(String message) {
+		Timestamp timestamp = new Timestamp(System.currentTimeMillis()); // why doesnt it like this?
+		System.out.println(timestamp + " - " + message);
+	}
+	
 }//end of ProfilePreferencesController

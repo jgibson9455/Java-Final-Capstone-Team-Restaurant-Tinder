@@ -1,9 +1,12 @@
 package com.techelevator.application.jdbcdao;
 
+import java.security.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.DataSource;
+
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -33,12 +36,21 @@ public class JDBCProfilePreferencesDAO implements ProfilePreferencesDAO {
 		return preferences;
 	}
 	
-	@Override
-	public void addPrefererence(ProfilePreferences profilePreference) {
-		String query = "INSERT INTO profile_preferences VALUES(?, ?, ?)";
-		jdbcTemplate.update(query, profilePreference.getUserName(), profilePreference.getTypeId(), 
-				profilePreference.getPreferenceId());
-	}
+	@Override // edited for Frank's method
+	public void addPrefererence(ProfilePreferences aPreference) {
+		String query = "INSERT INTO profile_preferences VALUES (?, ?, ?) "
+					+  "ON CONFLICT (user_name, type_id) "
+					+  "DO UPDATE SET preference_id = ?";
+		try {
+			jdbcTemplate.update(query, aPreference.getUserName(), aPreference.getTypeId(), 
+					aPreference.getPreferenceId(), aPreference.getPreferenceId());
+		}
+		catch(DataAccessException exceptionObject) {
+			System.out.println("SQL Exception when adding preference: " + aPreference + 
+					"\nError message:  " + exceptionObject.getMessage());
+		}//catch end
+		
+	}//method end
 
 	@Override
 	public void updatePreference(ProfilePreferences profilePreference) {
@@ -58,7 +70,7 @@ public class JDBCProfilePreferencesDAO implements ProfilePreferencesDAO {
 		profilePreference.setUserName(rowset.getString("user_name"));
 		profilePreference.setTypeId(rowset.getInt("type_id"));
 		profilePreference.setPreferenceId(rowset.getInt("preference_id"));
-
-		return profilePreference;
+		return profilePreference; // added addtl setPrefId bc of sql exception in console
 	}
+	
 }
