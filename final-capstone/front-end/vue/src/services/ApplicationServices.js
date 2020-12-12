@@ -40,8 +40,8 @@ export default {
         return http.get(`/profile/preferences/search?userName=${userName}`)
     },
 
-    addPreference(preference) {
-        return http.post(`/profile/preferences`, preference)
+    addPreference(aProfilePreference) {
+       http.post(`/profile/preferences`, aProfilePreference).then(()=> {return})
     },
 
     getAllRestaurantTypes() {

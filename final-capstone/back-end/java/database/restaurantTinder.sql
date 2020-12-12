@@ -38,7 +38,8 @@ CREATE TABLE matching_results(
 CREATE TABLE profile_preferences(
         user_name       VARCHAR(50),
         type_id         INTEGER,
-        preference_id   INTEGER
+        preference_id   INTEGER,
+        CONSTRAINT pk_profile_preferences_username_type_id Primary Key(user_name, type_id)
 );
 
 CREATE TABLE preferences(
