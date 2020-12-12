@@ -23,7 +23,7 @@
                 <div class="modal-overlay" v-if="showModal" @click="showModal = false"></div>
             </transition>
             <transition name="slide" appear>
-                <div class="modal">
+                <div class="modal" v-if="showModal" @click="showModal" = >
                     <img class="image" v-bind:src="randomRestaurant.imageLink"/>
                     <h1 id="match-rest-name"> {{ randomRestaurant.restaurantName }}</h1>
                     <h3 id="match-rest-city"> {{ randomRestaurant.city}}  </h3>
@@ -180,6 +180,18 @@ export default {
     bottom: 0;
     z-index: 98;
     background-color: rgba(0, 0, 0, 0.3);
+}
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 99;
+
+    width: 100%;
+    max-width: 400px;
+    background-color: #FFF;
+    border-radius: ;
 }
 .fade-enter-active,
 .fade-leave-active {
