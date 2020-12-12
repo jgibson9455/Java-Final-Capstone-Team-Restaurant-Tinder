@@ -63,6 +63,7 @@ public class JDBCRestaurantDAO implements RestaurantDAO {
 		restaurant.setRestaurantName(rowset.getString("restaurant_name"));
 		restaurant.setRestaurantDescrip(rowset.getString("description"));
 		restaurant.setZipCode(rowset.getInt("zip_code"));
+		restaurant.setCity(rowset.getString("city"));
 		restaurant.setPhoneNumber(rowset.getString("phone_number"));
 		restaurant.setImageLink(rowset.getString("image_link"));
 		restaurant.setAddress(rowset.getString("address"));
