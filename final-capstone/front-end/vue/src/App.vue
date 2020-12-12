@@ -1,19 +1,26 @@
 <template>
   <div id="app">
     <div id="nav" v-if="$store.state.token != ''">
+
       <router-link v-bind:to="{ name: 'match-making' }">
         <img class="nav-logo" src='@/img/logo-color.png'/>
       </router-link>&nbsp;  
+
       <router-link v-bind:to="{ name: 'home' }">
         <img class="nav-profile" src='@/img/profile.png'/>
-        </router-link>&nbsp;  
+      </router-link>&nbsp;  
+
       <router-link v-bind:to="{ name: 'logout' }">
         <img class="nav-logout" src='@/img/logout.png'/>
-        </router-link>
+      </router-link>
       
     </div>
-    <router-view />
-  </div>
+       <router-view />
+
+       <footer class="image"><img src="@/img/logo-black.png"></footer>
+       <!-- <h5>C 2020</h5> -->
+  
+</div>
 </template>
 
 <script>
@@ -50,5 +57,8 @@ export default {
   margin-bottom: -10px;
   transition: 0.2s ease;
 }
+img {
+    width: 5%;
 
+}
 </style>

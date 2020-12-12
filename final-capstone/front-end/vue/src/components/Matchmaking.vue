@@ -44,8 +44,8 @@
    
 
         <div class="match-links">
-          <router-link class="your-faves" v-bind:to="{name: favorites}">View Your Favorites</router-link>
-          <router-link class="all-restaurants" v-bind:to="{name: restaurants}">View All Restaurants</router-link>
+          <router-link class="your-faves" v-bind:to="{name: 'favorites'}">View Your Favorites</router-link>
+          <router-link class="all-restaurants" v-bind:to="{name: 'restaurants'}">View All Restaurants</router-link>
         </div><!--end of match-links div-->
   </div> <!--end of matches main div-->
 

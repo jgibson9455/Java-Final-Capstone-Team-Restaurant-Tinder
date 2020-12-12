@@ -18,7 +18,7 @@
         <button type="submit" v-on:click.prevent="savePreferences()">Submit Preferences</button>
       </form>
   </div>
-  </body>
+</body>
 </template>
 
 <script>
@@ -148,6 +148,7 @@ created() {
   flex-direction: column;
   align-items: center;
   background-color: blanchedalmond;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   /*object-fit: fill;*/
   height: 400px;
   flex-shrink: 2;
@@ -157,20 +158,18 @@ created() {
   margin-right: 200px;
   flex-wrap: wrap;
 }
-
 .heading {
   text-align: center;
   font-size: 2.2em;
-  padding-top: 10px;
+  padding-top: 8.5px;
   padding-bottom: 20px;
   align-content: center;
-  text-shadow: 2px 5px 5px rgba(8, 8, 8, 0.75),
-                -5px 6px 7px rgba(8, 8, 8, 0.75);
-    color: blanchedalmond;
+  /* text-shadow: 2px 5px 5px rgba(8, 8, 8, 0.75),
+                -5px 6px 7px rgba(8, 8, 8, 0.75); */
+  color: #FF5864;
 }
 .main {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  background-image: linear-gradient(to bottom left,  #FF655B, #FD297B);
   height: 700px;
 }
 .food-form{
@@ -178,23 +177,16 @@ created() {
 position: relative;
 left: -20px;
 display: inline-block;
-vertical-align: middle;
-  
+vertical-align: middle; 
 }
 input[type="checkbox"] {
   width: 20px;
   position: relative;
   left:100px;
   vertical-align: middle;
-
 }
 .margin {
   padding: 10px;
-}
-#pref-line {
-    text-decoration: none;
-    border-bottom: 5px solid blanchedalmond;
-    -webkit-font-smoothing: antialiased;
 }
 
 

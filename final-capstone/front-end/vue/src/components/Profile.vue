@@ -6,19 +6,22 @@
 
   <div class="home">
     <div class="top-half">
-          <div class="welcome">
+          <!-- <div class="welcome">
               <p>Here is where you can view a list of restaurants as well as look at your favorited restaurants that you saved for later.
               Also, you can update your profile as well as choose your food preferences with the Food Questionnaire.</p>
-          </div>
+          </div> -->
 
           <div class="profile-nav">
-              <router-link class="profile-navs" v-bind:to="{name: 'update-profile-view'}">Update Profile</router-link> |
+              <router-link class="profile-navs" v-bind:to="{name: 'update-profile-view'}">Update Profile Info</router-link> |
               <router-link class="profile-navs" v-bind:to="{name: 'questionnaire'}">Food Questionnaire</router-link>
           </div>
     
-       <router-link class="restaurant-navs" v-bind:to="{name: 'restaurants'}">View Restaurant List</router-link> 
+       <router-link class="restaurant-navs" v-bind:to="{name: 'restaurants'}">View All Restaurants</router-link> 
     
-       <router-link v-bind:to="{name: 'match-making'}"><button class="start">Continue Swiping</button></router-link>
+       <router-link v-bind:to="{name: 'match-making'}">
+         <button class="start"
+         ><b>Continue Swiping</b></button>
+        </router-link>
    
    <router-link class="favorite-restaurants" v-bind:to="{name: 'favorites'}"><h3 class="fav">Favorite Restaurants</h3></router-link>
     </div>
@@ -66,11 +69,11 @@ export default {
 .profile {
   /* display: flex;
   flex-direction: column; */
-  background-image: linear-gradient(to bottom left, #FF655B, #FD297B);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   height: 700px;
   align-content: center;
   padding-top: 30px;
+  font-size: 17px;
   /* display: grid;
   grid-template-columns: 1fr 2fr 2fr 1fr;
   grid-template-areas:
@@ -82,17 +85,22 @@ export default {
   ;
   grid-gap: 10px; */
 }
+#my-profile {
+  font-size: 2.85em;
+  padding-bottom: 25px;
+  align-content: center;
+  /* text-shadow: 2px 5px 5px rgba(59, 59, 57, 0.445),
+                -2px 6px 7px  rgba(59, 59, 57, 0.445);  */
+  color: #FF5864;
+}
 #prof-line {
-    text-decoration: none;
-    padding-bottom: 7.5px;
-    border-bottom: 5px solid blanchedalmond;
-    -webkit-font-smoothing: antialiased;
+    /* text-decoration: none;
+    border-bottom: 5px solid #FF5864; */
 }
 .home > .top-half {
   display: flex;
   flex-direction: column;
   text-align: center;
-  background-color: blanchedalmond;
   align-items: center;
   margin-left: 200px;
   margin-right: 200px;
@@ -105,41 +113,31 @@ export default {
   flex-direction: column;
   object-fit: fill; */
   /* grid-area: home; */
-
 }
-
-
 /* .space {
   grid-area: space;
 } */
-
 .profile-nav > .profile-navs {
   color: black;
-  font-size: 15px;
-  padding-bottom: 15px;
+  font-size: 25px;
 }
-
 .home > .restaurant-navs {
   color: black;
 }
-
+.restaurant-navs{
+  margin-top: 15px;
+  font-size: 22px;
+}
+.favorite-restaurants{
+    font-size: 24px;
+}
 #my-profile {
   text-align: center;
+  margin-bottom: -30px;
 }
-
 .fav {
   text-decoration: underline;
   text-decoration-color: lightgray;
-}
-
-#my-profile {
-  font-size: 2.75em;
-  padding-bottom: 25px;
-  align-content: center;
-     text-shadow: 2px 5px 5px rgba(59, 59, 57, 0.445),
-                -2px 6px 7px  rgba(59, 59, 57, 0.445); 
-    color: blanchedalmond;
-  
 }
 
 .welcome {
@@ -147,49 +145,60 @@ export default {
   margin-top: -20px;
   padding-top: 20px;
 }
-
 .middle, .first, .last {
   width: 200px;
   height: 100px;
   object-fit: cover;
 }
-
 .fav-temp {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  background-color: blanchedalmond;
   align-items: center;
   margin-left: 200px;
   margin-right: 200px;
-  padding-bottom: 50px;
+  margin-top: 80px;
+  /* padding-bottom: 50px; */
 }
-
 .middle {
   padding-left: -10px;
   padding-right: -10px;
 }
-
 .rest-1, .rest-2, .rest-3 {
   background-color: #FF5864;
   color: white;
   border: 3px solid black;
   border-radius: 3%;
 }
-
 .start {
-     display: flex;
-     background-color:#ffbfb4;
-     margin-top: 10px;;
-     padding-top: 5px;
-     padding-bottom: 5px;
-     padding-right: 18.5px;
-     padding-left: 18.5px;
-     border-style: outset;
-     border-width: 3px;
-     border-color:rgb(100, 38, 38);
-     /* margin-bottom: 2px; */
-     border-radius: 15px;
+     /* display: flex; */
+     background-color: blanchedalmond;
+     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+     box-shadow: 
+     0 1px 2px #fff, 
+     0 -1px 1px #666, 
+     inset 0 -1px 1px rgba(0,0,0,0.5),
+     inset 0 1px 1px rgba(255,255,255,0.8);  
+     /*#ffbfb4*/
+     border-radius: 40px;
+     border: none;
+     color: #FD297B;
+     padding: 16px 32px;
+     text-align: center;
+     font-size: 25px; 
+     margin: 4px 2px;
+     opacity: 0.6;
+     transition: 0.3s;
+     display: inline-block;
+     text-decoration: none;
+     cursor: pointer;
+     margin-top: 25px;
+     /* padding-top: 25px;
+     padding-bottom: 25px;
+     padding-right: 50px;  
+     padding-left: 50px;   */
 }
-
+.start:hover{
+  opacity: 1;
+}
 </style>

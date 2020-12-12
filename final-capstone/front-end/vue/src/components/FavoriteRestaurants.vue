@@ -1,13 +1,13 @@
 <template>
   <div class="favorites">
-    <h1 class="label">My Favorites</h1>
+    <h1 class="fav-head"><u id="fav-rest-line">My Favorites</u></h1>
     <div class="rest-card">
       <restaurant-card class="flex-container"
       v-for="restaurant in fav"
       v-bind:key="restaurant.restaurantId"
       v-bind:restaurant="restaurant"
       ></restaurant-card></div>
-      <div class="logo"><img src="../img/logo-black.png"></div>
+      <!-- <div class="logo"><img src="../img/logo-black.png"></div> -->
   </div>
   
 </template>
@@ -46,17 +46,19 @@ export default {
 
 <style scoped>
 .favorites {
-   font-size: 22px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+   margin-top: 39px;
+   font-size: 1.5em; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
    display: flex;
    flex-direction: column;
-
-   
 }
-.label {
+.fav-head {
   display: flex;
   /*color: #FD297B;*/
   color: #FF5864; 
   justify-content: center;
+}
+#fav-rest-line{
+
 }
 .logo {
   display: flex;
@@ -73,8 +75,5 @@ export default {
   flex-wrap: wrap;
   
   flex-direction: row;*/
-
 }
-
-
 </style>

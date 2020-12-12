@@ -19,7 +19,7 @@
             </div>
 
           </div>
-          <div class="image"><img src="../img/logo-black.png"></div>
+          <!-- <div class="image"><img src="../img/logo-black.png"></div> -->
     </div>
 </template>
 
@@ -59,7 +59,6 @@ methods: {
 
 <style>
 .page-head {
-
     color: #FF5864 ;
     font-size: 3.5em;
     text-align: center;
@@ -79,19 +78,17 @@ methods: {
 
     /* -webkit-font-smoothing: antialiased; */
     }
+/* #pref-line {
+    text-decoration: none;
+    border-bottom: 5px solid #FF5864;
+} */
 h2 {
     margin-bottom: 5px;
 }
 h4 {
     margin-top: 5px;
 }
-#rest-line {
-    text-decoration: none;
-    border-bottom: 5px solid #FD297B;
-    -webkit-font-smoothing: antialiased;
-}
 .restaurant-page {
-
     /*background-image: linear-gradient(to bottom left,  #FF655B, #FD297B);*/
     padding: 15px;
     margin-top: 15px;
@@ -104,7 +101,6 @@ h4 {
     flex-wrap: wrap;
     /* flex: 1;
     overflow: auto; */
-
 }
 .restaurant-head {
     text-align: center;
@@ -115,8 +111,7 @@ h4 {
     color: rgb(8, 8, 8);
     }
 .rest-type {
-    margin-top: -22px;
-    
+    margin-top: -22px;   
 }
 .rest-images {
     height: 250px;
@@ -132,8 +127,8 @@ h4 {
     padding: 13%;
 
     } 
-img {
+/* img {
     width: 2%;
-}
+} */
 
 </style>

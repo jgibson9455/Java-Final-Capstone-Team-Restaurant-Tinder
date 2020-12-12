@@ -1,7 +1,7 @@
 <template>
-  <div>
-  <h1>Create Profile </h1>
-      <form class="profile" >
+  <div class="update-prof-main">
+  <h1 id="prof-head">Create Profile </h1>
+      <form class="update-profile" >
           <label for="firstName" class="profile-form">First Name: </label>
           <input type="text" id="firstName" placeholder="First Name" required=true v-model="profile.firstName"/>
 
@@ -56,6 +56,50 @@ export default {
 </script>
 
 <style>
-
+.update-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: blanchedalmond;
+  /*object-fit: fill;*/
+  height: 400px;
+  flex-shrink: 2;
+  text-align: center;
+  border-radius: 2%;
+  margin-left: 200px;
+  margin-right: 200px;
+  flex-wrap: wrap;
+}
+#prof-head {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  text-align: center;
+  font-size: 2.2em;
+  padding-top: 50px;
+  padding-bottom: 20px;
+  align-content: center;
+  /* text-shadow: 2px 5px 5px rgba(8, 8, 8, 0.75),
+                -5px 6px 7px rgba(8, 8, 8, 0.75); */
+  color: #FF5864;
+}
+#update-prof-main {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  height: 700px;
+}
+/* .food-form{
+ width: 300px;
+position: relative;
+left: -20px;
+display: inline-block;
+vertical-align: middle; 
+} */
+/* input[type="checkbox"] {
+  width: 20px;
+  position: relative;
+  left:100px;
+  vertical-align: middle;
+}
+.margin {
+  padding: 10px;
+} */
 
 </style>
