@@ -12,9 +12,28 @@
         <h3 id="match-rest-city"> {{ randomRestaurant.city}}  </h3>
         <p id="match-rest-descript"> {{ randomRestaurant.restaurantDescrip}}  </p>
 
-        <!--open modal-->
-        <router-link id="details-link" v-bind:to="{name: 'details'}">Click for details</router-link>
-    
+        <!--open modal
+        v-bind:to="{name: 'details'}"-->
+        <div class="something">
+            <button id="details-link" @click="showModal = true">
+                Click for details
+            </button>
+
+            <transition name="fade" appear>
+                <div class="modal-overlay" v-if="showModal" @click="showModal = false"></div>
+            </transition>
+            <transition name="slide" appear>
+                <div class="modal">
+                    <img class="image" v-bind:src="randomRestaurant.imageLink"/>
+                    <h1 id="match-rest-name"> {{ randomRestaurant.restaurantName }}</h1>
+                    <h3 id="match-rest-city"> {{ randomRestaurant.city}}  </h3>
+                    <p id="match-rest-descript"> {{ randomRestaurant.restaurantDescrip}}  </p>
+                    <button class="button" @click="showModal = false">
+                        Close
+                    </button>
+                </div>
+            </transition>
+        </div>
         <!-- content for popup box
         <div id="modal">
             <div class="rest-content">
@@ -76,7 +95,8 @@ export default {
             userName: this.$store.state.user.username,
             restaurantId: 0,
             preferenceId: 0
-        }
+        },
+        showModal: false
         }
     },
     created() {
@@ -147,6 +167,28 @@ export default {
 </script>
 
 <style scoped>
+.something {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 98;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 1s ease-in;
+}
+.fade-enter,
+.fade-leave-to {
+    opacity: 0.5s;
+}
 .match-main {
     display: flex;
     flex-direction: column;
@@ -185,7 +227,7 @@ export default {
     border-width: 3px;
     border-radius: 5px; 
     word-wrap: break-word;
-    height: 490px;
+    height: 495px;
     width: 350px;
 }
 #match-rest-name{
@@ -202,9 +244,15 @@ export default {
     color: blue;
     font-size: larger;
     margin-top: auto;
+    /**/
+    cursor: pointer;
+    display: inline-block;
+    border-radius: 8px;
+    transition: 0.4s ease-out;
 }
 #details-link:hover {
     color: rgb(108, 108, 238);
+    box-shadow: 2px 2px rgba(0, 0, 0, 0.6);
 }
 .buttons {
     display: flex;
