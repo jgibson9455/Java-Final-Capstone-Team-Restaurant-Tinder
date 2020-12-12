@@ -14,7 +14,7 @@
 
         <!--open modal
         v-bind:to="{name: 'details'}"-->
-        <div class="something">
+        <div class="modal-test">
             <button id="details-link" @click="showModal = true">
                 Click for details
             </button>
@@ -23,11 +23,13 @@
                 <div class="modal-overlay" v-if="showModal" @click="showModal = false"></div>
             </transition>
             <transition name="slide" appear>
-                <div class="modal" v-if="showModal" @click="showModal" = >
-                    <img class="image" v-bind:src="randomRestaurant.imageLink"/>
-                    <h1 id="match-rest-name"> {{ randomRestaurant.restaurantName }}</h1>
-                    <h3 id="match-rest-city"> {{ randomRestaurant.city}}  </h3>
-                    <p id="match-rest-descript"> {{ randomRestaurant.restaurantDescrip}}  </p>
+                <div class="modal" v-if="showModal">
+                    <img class="modal-image" v-bind:src="randomRestaurant.imageLink"/>
+                    <h1 id="match-modal-rest-name"> {{ randomRestaurant.restaurantName }}</h1>
+                    <h1 id="match-modal-rest-type"> {{ randomRestaurant.typeName }}</h1>
+                    <h2 id="match-modal-rest-phone"> {{ randomRestaurant.phoneNumber}} </h2>
+                    <h3 id="match-modal-rest-address"> {{ randomRestaurant.address}} {{ randomRestaurant.city}} {{ randomRestaurant.zipCode}}  </h3>
+                    <p id="match-modal-rest-descript"> {{ randomRestaurant.restaurantDescrip}}  </p>
                     <button class="button" @click="showModal = false">
                         Close
                     </button>
@@ -113,6 +115,7 @@ export default {
                if(randomNum === this.restaurants[i].restaurantId) {
                 ApplicationServices.getRestaurantById(this.restaurants[i].restaurantId).then(apiData => {
                 this.randomRestaurant = apiData.data;
+                //this.getRestaurantTypes()
             })
                }
            }
@@ -140,37 +143,26 @@ export default {
                 }
             }
         },
-        // modalLogic() {
-        //     //get modal
-        //     let modal = document.getElementById("modal");
-        //     //get button that opens modal
-        //     let link = document.getElementById("details-link");
-        //     //get span element that closes modal
-        //     let span = document.getElementsByClassName("close")[0];
-        //     //when user clicks link, open modal
-        //     link.onclick = function() {
-        //         modal.style.display = "block";
-        //     }
-        //     //when user clicks on span (x), close the modal
-        //     span.onclick = function() {
-        //         modal.style.display = "none";
-        //     }
-        //     //when user clicks outside modal, close it
-        //     window.onclick = function(event) {
-        //         if(event.target == modal) {
-        //             modal.style.display = "none";
-        //         }
-        //     }
-        // }
+//          getRestaurantTypes() {
+//     for(let i = 0; i < this.restaurants.length; i++){
+//     ApplicationServices.getTypeById(this.restaurants[i].typeId)
+//         .then(apiData => {
+//             this.$set(this.restaurants[i], 'typeName', apiData.data.typeName)
+//         })
+
+//     }
+//  }
+
     }      
 }
 </script>
 
 <style scoped>
-.something {
+.modal-test {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 .modal-overlay {
     position: absolute;
@@ -191,15 +183,38 @@ export default {
     width: 100%;
     max-width: 400px;
     background-color: #FFF;
-    border-radius: ;
+    border-radius: 16px;
+
+    padding: 25px;
+}
+
+.modal > h1 {
+    color: #222;
+    font-size: 32px;
+    font-weight: 900;
+    margin-bottom: 15px;
+}
+.modal > p {
+    color: #666;
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 15px;   
 }
 .fade-enter-active,
 .fade-leave-active {
-    transition: opacity 1s ease-in;
+    transition: opacity .9s;
 }
 .fade-enter,
 .fade-leave-to {
-    opacity: 0.5s;
+    opacity: 0;
+}
+.slide-enter-active,
+.slide-leave-active {
+    transition: transform .5s;
+}
+.slide-enter,
+.slide-leave-to {
+    transform: translateY(-50%) translateX(100vw);
 }
 .match-main {
     display: flex;
@@ -227,6 +242,15 @@ export default {
     border-bottom-style: dotted;
     border-block-start-color: black;
 }
+ .modal-image {
+    align-self: center;
+    height: 300px;
+    width: 360px;
+    /* margin: -47px;
+    padding-bottom: .5px;
+    padding-left: 2px;
+    padding-right: 2px; */
+}
 .random {
     display: flex;
     flex-direction: column;
@@ -252,6 +276,19 @@ export default {
 /* #match-rest-descript{
     margin-bottom: 60px;
 } */
+#match-modal-rest-name{
+    margin-top: 10px;
+    margin-bottom: -25px;
+}
+ /* #match-modal-rest-type{
+    margin-bottom: 60px;
+}  */
+ #match-modal-rest-phone{
+    margin-bottom: 5px;
+} 
+ #match-modal-rest-address{
+    margin-bottom: 20px;
+} 
 #details-link {
     color: blue;
     font-size: larger;

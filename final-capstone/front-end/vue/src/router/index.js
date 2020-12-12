@@ -10,7 +10,7 @@ import Restaurants from '../views/Restaurants.vue'
 import Questionnaire from '../views/Questionnaire.vue'
 import Matchmaking from '../views/Matchmaking.vue'
 import FavoriteRestaurants from '../views/FavoriteRestaurants.vue'
-import RestaurantDetails from '../views/RestaurantDetails.vue'
+
 
 Vue.use(Router)
 
@@ -89,11 +89,7 @@ const router = new Router({
       name: "favorites",
       component: FavoriteRestaurants
     },
-    {
-      path: "/restaurantDetails",
-      name: "details",
-      component: RestaurantDetails
-    }
+
   ]
 })
 
