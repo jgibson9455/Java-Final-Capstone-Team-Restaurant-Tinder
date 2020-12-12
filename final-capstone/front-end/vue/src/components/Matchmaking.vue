@@ -9,7 +9,7 @@
         
         <img class="image" v-bind:src="randomRestaurant.imageLink"/>
         <h2 id="rest-name"> {{ randomRestaurant.restaurantName }}</h2>
-        <p id="rest-descript"> {{ randomRestaurant.Description}} The description of the restaurant will go here. I don't want it to be this wide. How do i change it from being this wide? </p> <!--???-->
+        <p id="rest-descript"> {{ randomRestaurant.Description}} The description of the restaurant will go here. </p> <!--???-->
         <router-link id="details-link" v-bind:to="{name: favorites}">Click for details</router-link>
     </div><!--end of random div-->
 
