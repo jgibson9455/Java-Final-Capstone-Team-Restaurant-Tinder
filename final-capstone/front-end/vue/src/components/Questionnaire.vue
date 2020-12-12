@@ -81,10 +81,9 @@ export default {
           this.selectedLikeIds.forEach((id) => {
           this.profilePreferences.preferenceId = 1;
           this.profilePreferences.typeId = id;
-          console.log("hello");
           appServices.addPreference(this.profilePreferences).then((response) =>{
           this.$store.commit('SET_PREFERENCE_LIKE_STATUS', this.profilePreferences); // need something else so it doesnt
-          });                                                                                        //continue submitting entire array again
+          });                                                                        // continue submitting entire array again
         })}
         if(this.selectedDislikeIds.length > 0) {
         this.selectedDislikeIds.forEach((id) => {
@@ -105,9 +104,7 @@ created() {
       });
 
       appServices.getPreferencesByUsername(this.$store.state.user.username).then((response) =>{
-        response.data.forEach((preference) =>{
-
-       
+        response.data.forEach((preference) => {
         if(preference.preferenceId === 1) {
           this.selectedLikeIds.push(preference.typeId);
         }
