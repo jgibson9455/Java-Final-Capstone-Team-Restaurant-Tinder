@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <div id="nav" v-if="$store.state.token != ''">
+      
 
       <router-link v-bind:to="{ name: 'match-making' }">
         <img class="nav-logo" src='@/img/logo-color.png'/>
@@ -14,13 +15,13 @@
         <img class="nav-logout" src='@/img/logout.png'/>
       </router-link>
       
-    </div>
+    </div> <!--if nav closing div-->
        <router-view />
 
        <footer class="image"><img src="@/img/logo-black.png"></footer>
        <!-- <h5>C 2020</h5> -->
   
-</div>
+</div> <!--id app closing div-->
 </template>
 
 <script>
@@ -31,6 +32,7 @@ export default {
   //       this.$store.commit("LOGOUT");
   //   }, false)
   // }
+
 }
 </script>
 

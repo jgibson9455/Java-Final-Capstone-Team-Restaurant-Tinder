@@ -8,9 +8,11 @@
     <div class="random">
         
         <img class="image" v-bind:src="randomRestaurant.imageLink"/>
-        <h2 id="rest-name"> {{ randomRestaurant.restaurantName }}</h2>
-        <p id="rest-descript"> {{ randomRestaurant.Description}} The description of the restaurant will go here. </p> <!--???-->
-        <router-link id="details-link" v-bind:to="{name: favorites}">Click for details</router-link>
+        <h1 id="match-rest-name"> {{ randomRestaurant.restaurantName }}</h1>
+        <h3 id="match-rest-city"> {{ randomRestaurant.city}}  </h3>
+        <p id="match-rest-descript"> {{ randomRestaurant.restaurantDescrip}}  </p>
+
+        <router-link id="details-link" v-bind:to="{name: 'favorites'}">Click for details</router-link>
     </div><!--end of random div-->
 
 
@@ -134,6 +136,11 @@ export default {
     height: 275px; /*275*/
     width: 352px; /*330*/
     margin: -47px;
+    padding-bottom: .5px;
+    padding-left: 2px;
+    padding-right: 2px;
+    border-bottom-style: dotted;
+    border-block-start-color: black;
 }
 .random {
     display: flex;
@@ -147,18 +154,26 @@ export default {
     border-width: 3px;
     border-radius: 5px; 
     word-wrap: break-word;
-    height: 475px;
+    height: 500px;
     width: 350px;
 }
-#rest-name{
-    margin-bottom: -3px;
+#match-rest-name{
+    margin-top: 50px;
+    margin-bottom: -15px;
 }
-#rest-descript{
+#match-rest-city{
+    margin-bottom: -5px;
+}
+#match-rest-descript{
     margin-bottom: 40px;
 }
 #details-link {
+    /* margin-top: -25px; */
     color: blue;
     font-size: larger;
+}
+.random > #details-link {
+    justify-content: flex-end;
 }
 #details-link:hover {
     color: rgb(108, 108, 238);
@@ -189,11 +204,13 @@ export default {
 .match-links {
     display: flex;
     flex-direction: column;
-
 }
 .your-faves{
-    margin-top: -5px;
+    margin-top: -20px;
     margin-bottom: 5px;
+}
+.all-restaurants {
+    margin-top: -5px;
 }
 .your-faves, .all-restaurants {
     color: blue;

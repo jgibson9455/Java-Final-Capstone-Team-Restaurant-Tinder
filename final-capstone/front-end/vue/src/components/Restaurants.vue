@@ -1,13 +1,16 @@
 <template>
     <div class="restaurant-page">
             <h1 class="page-head"><u id="rest-line">Restaurants</u></h1>
+         <div class="loading" v-if="!isLoading">
+                   <img src='@/img/celerywalk.gif'/>
+         </div>
           <div class="restaurant-items">
                 
             <div class="restaurant-head"
                 v-for="restaurant in restaurants"
                 v-bind:key="restaurant.id">
-                <h2>{{ restaurant.restaurantName }}</h2>
-                <h3>{{ restaurant.typeName }}</h3>
+                <h2 id="all-rest-name">{{ restaurant.restaurantName }}</h2>
+                <p id="all-rest-type">{{ restaurant.typeName }}</p>
                 
                     <!-- <div class="types"
                       v-for="type in restaurantTypes"
@@ -30,7 +33,8 @@ export default {
     name: 'restaurants',
     data(){
         return {
-            restaurants: []
+            restaurants: [],
+            isLoading: true
         }
     },
 created() {
@@ -46,7 +50,8 @@ methods: {
     for(let i = 0; i < this.restaurants.length; i++){
     theApplicationService.getTypeById(this.restaurants[i].typeId)
         .then(apiData => {
-            this.restaurants[i].typeName = apiData.data.typeName; //adds typeName to the object restaurants
+            this.$set(this.restaurants[i], 'typeName', apiData.data.typeName) //this instead of below this.$set(object, 'key', value)
+//            this.restaurants[i].typeName = apiData.data.typeName;
 
         })
 
@@ -104,12 +109,19 @@ h4 {
 }
 .restaurant-head {
     text-align: center;
-   font-size: 22px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 22px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 20px;
-    text-shadow: blanchedalmond 0px 0px .75px,   blanchedalmond 0px 0px .75px,   blanchedalmond 0px 0px .75px,
-             blanchedalmond 0px 0px .75px,   blanchedalmond 0px 0px .75px,   blanchedalmond 0px 0px .75px;
+    /* text-shadow: blanchedalmond 0px 0px .75px,   blanchedalmond 0px 0px .75px,   blanchedalmond 0px 0px .75px,
+             blanchedalmond 1px 0px .75px,   blanchedalmond 0px 0px .75px,   blanchedalmond 0px 0px .75px; */
     color: rgb(8, 8, 8);
     }
+#all-rest-name{
+
+}
+#all-rest-type{
+    margin-top: -8px;
+
+}
 .rest-type {
     margin-top: -22px;   
 }
