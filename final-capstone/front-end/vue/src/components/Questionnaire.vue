@@ -1,5 +1,6 @@
 <template>
 <body class="flex-container">
+
     <div class="main">
       <div class="heading"> 
       <h2><u id="pref-line">Preferences</u></h2>
@@ -10,13 +11,19 @@
           <h2>Popular Food Preferences: </h2>
           <div class="button-container" v-for="type in top20" v-bind:key="type.typeId" > 
             <h5>{{type.typeName}}</h5>
-              <button class v-bind:id="type.typeId" v-on:click.prevent="addToPreferences(type.typeId,1)">like</button>
-              <button class v-bind:id="type.typeId" v-on:click.prevent="addToPreferences(type.typeId,2)">dislike</button>
+              <button class="pref1" v-bind:id="type.typeId" v-on:click.prevent="addToPreferences(type.typeId,1)">like</button>
+              <button class="pref1" v-bind:id="type.typeId" v-on:click.prevent="addToPreferences(type.typeId,2)">dislike</button>
             </div>
         </div>
       <div class="margin"></div>
         <button type="submit" v-on:click.prevent="savePreferences()">Submit Preferences</button>
       </form>
+  </div>
+
+
+  <div class="all-pref"> 
+    <h3> View all food preferences </h3>
+ 
   </div>
 </body>
 </template>
@@ -69,16 +76,6 @@ created() {
       });
     });
 
-    //   if(this.$store.state.profilePreferences.preferenceLikes.length > 0) {
-    //    this.$store.state.profilePreference.preferenceLikes.forEach((preference) => {
-    //      this.selectedLikeIds.push(preference.typeId)
-    //    })
-    // }
-    //   if(this.$store.state.profilePreferences.preferenceDislikes.length > 0) {
-    //     this.$store.state.profilePreference.preferenceDislikes.forEach((preference) =>{
-    //       this.selectedDislikeIds.push(preference.typeId)
-    //     })
-    //     }
     }
 }
 </script>
@@ -114,20 +111,27 @@ created() {
   height: 700px;
 }
 .food-form{
- width: 300px;
+width: 300px;
 position: relative;
 left: -20px;
 display: inline-block;
 vertical-align: middle; 
 }
-input[type="checkbox"] {
-  width: 20px;
+button[class="pref1"] {
+  width: 75px;
   position: relative;
   left:100px;
   vertical-align: middle;
 }
 .margin {
   padding: 10px;
+}
+.button-container {
+  display: flex;
+  flex-direction: column;
+}
+.all-pref {
+  text-align: center;
 }
 
 
