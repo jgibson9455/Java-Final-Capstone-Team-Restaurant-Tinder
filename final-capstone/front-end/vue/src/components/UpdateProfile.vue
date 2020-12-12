@@ -1,6 +1,6 @@
 <template>
   <div class="update-prof-main">
-  <h1 id="prof-head">Create Profile </h1>
+  <h1 id="prof-head"><u id="update-prof-line">Create Profile</u></h1>
       <form class="update-profile" >
           <label for="firstName" class="profile-form">First Name: </label>
           <input type="text" id="firstName" placeholder="First Name" required=true v-model="profile.firstName"/>
@@ -57,6 +57,7 @@ export default {
 
 <style>
 .update-profile {
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -73,8 +74,8 @@ export default {
 #prof-head {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   text-align: center;
-  font-size: 2.2em;
-  padding-top: 50px;
+  font-size: 2.75em;
+  padding-top: 43px;
   padding-bottom: 20px;
   align-content: center;
   /* text-shadow: 2px 5px 5px rgba(8, 8, 8, 0.75),
