@@ -5,12 +5,12 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
-import StartupPage from '../views/StartupPage.vue'
 import UpdateProfile from '../views/UpdateProfile.vue'
 import Restaurants from '../views/Restaurants.vue'
 import Questionnaire from '../views/Questionnaire.vue'
 import Matchmaking from '../views/Matchmaking.vue'
 import FavoriteRestaurants from '../views/FavoriteRestaurants.vue'
+import RestaurantDetails from '../views/RestaurantDetails.vue'
 
 Vue.use(Router)
 
@@ -88,6 +88,11 @@ const router = new Router({
       path: "/favorites",
       name: "favorites",
       component: FavoriteRestaurants
+    },
+    {
+      path: "/restaurantDetails",
+      name: "details",
+      component: RestaurantDetails
     }
   ]
 })

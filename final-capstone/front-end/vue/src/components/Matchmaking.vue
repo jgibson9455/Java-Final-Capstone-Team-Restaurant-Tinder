@@ -12,7 +12,17 @@
         <h3 id="match-rest-city"> {{ randomRestaurant.city}}  </h3>
         <p id="match-rest-descript"> {{ randomRestaurant.restaurantDescrip}}  </p>
 
-        <router-link id="details-link" v-bind:to="{name: 'favorites'}">Click for details</router-link>
+        <!--open modal-->
+        <router-link id="details-link" v-bind:to="{name: 'details'}">Click for details</router-link>
+    
+        <!-- content for popup box
+        <div id="modal">
+            <div class="rest-content">
+                <span class="close">&times;</span>
+                <p> {{randomRestaurant.restaurantName}}</p>
+            </div> end of content div
+        </div>end of modal div -->
+
     </div><!--end of random div-->
 
 
@@ -74,8 +84,7 @@ export default {
         .then(apiData => {
             this.restaurants = apiData.data;
             this.getRandomRestaurant();
-        })
-          
+        })      
     },
     methods:{
         getRandomRestaurant(){
@@ -110,7 +119,29 @@ export default {
                   break;
                 }
             }
-        }
+        },
+        // modalLogic() {
+        //     //get modal
+        //     let modal = document.getElementById("modal");
+        //     //get button that opens modal
+        //     let link = document.getElementById("details-link");
+        //     //get span element that closes modal
+        //     let span = document.getElementsByClassName("close")[0];
+        //     //when user clicks link, open modal
+        //     link.onclick = function() {
+        //         modal.style.display = "block";
+        //     }
+        //     //when user clicks on span (x), close the modal
+        //     span.onclick = function() {
+        //         modal.style.display = "none";
+        //     }
+        //     //when user clicks outside modal, close it
+        //     window.onclick = function(event) {
+        //         if(event.target == modal) {
+        //             modal.style.display = "none";
+        //         }
+        //     }
+        // }
     }      
 }
 </script>
@@ -126,7 +157,7 @@ export default {
     color: #FF5C5C;
     font-size: x-large;
     margin-top: -35px;
-    margin-bottom: -20px;
+    margin-bottom: -25px;
     /* text-shadow: 2px 5px 5px rgba(59, 59, 57, 0.445),
                 -2px 6px 7px  rgba(59, 59, 57, 0.445);  */
     /* color: blanchedalmond; */
@@ -154,7 +185,7 @@ export default {
     border-width: 3px;
     border-radius: 5px; 
     word-wrap: break-word;
-    height: 500px;
+    height: 490px;
     width: 350px;
 }
 #match-rest-name{
@@ -164,16 +195,13 @@ export default {
 #match-rest-city{
     margin-bottom: -5px;
 }
-#match-rest-descript{
-    margin-bottom: 40px;
-}
+/* #match-rest-descript{
+    margin-bottom: 60px;
+} */
 #details-link {
-    /* margin-top: -25px; */
     color: blue;
     font-size: larger;
-}
-.random > #details-link {
-    justify-content: flex-end;
+    margin-top: auto;
 }
 #details-link:hover {
     color: rgb(108, 108, 238);
