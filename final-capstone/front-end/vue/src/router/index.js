@@ -82,7 +82,15 @@ const router = new Router({
     {
       path: "/matches",
       name: "match-making",
-      component: Matchmaking
+      component: Matchmaking,
+      //this is the navigation guard
+      // beforeEnter: (to, from, next) => {
+      //   if(store.state.profileUpdated == false) {
+      //     next("/update-profile");
+      //   } else {
+      //     next();
+      //   }
+      // }
     },
     {
       path: "/favorites",

@@ -99,7 +99,7 @@ export default {
               this.profile.userName = this.user.username;
               this.registerProfile();
               this.$router.push({
-                path: '/login',
+                path: '/',
                 query: { registration: 'success' },
               });
             }

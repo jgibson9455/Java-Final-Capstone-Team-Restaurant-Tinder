@@ -76,7 +76,7 @@ export default {
             firstName: "",
             lastName: "",
             email: "",
-            zipCode: ""
+            city: ""
       }
     };
   },
@@ -92,7 +92,27 @@ export default {
             .then((response) => { 
             // this.profile = response.data.profile
             this.$store.commit("UPDATE_PROFILE", response);
-            this.$router.push("/matches");
+
+              //LOGIC for navigation guards. this logic uses mutations in the store 
+              //and the commented out section in the '/matches' route in router index.js**
+
+              // if(this.profile.firstName != null && this.profile.lastName != null &&
+              //   this.profile.email != null  && this.profile.city != null ){
+              //       this.$store.commit("SET_UPDATE_STATUS", true)
+              //       this.$router.push({ path: '/matches' });
+              //   } else if(this.profile.firstName == null || this.profile.lastName == null ||
+              //     this.profile.email == null  || this.profile.city == null ){
+              //       console.log("please update profile")
+              //   }
+            
+            // if(this.profile.firstName === null || this.profile.lastName === null ||
+            // this.profile.email === null  || this.profile.city === null ){
+            //  this.$router.push({ path: '/update-profile' });
+            // } else 
+            // if(this.profile.firstName != null || this.profile.lastName != null ||
+            // this.profile.email != null  || this.profile.city != null ){
+            //   this.$router.push({ path: '/matches' });
+            // }
             })
           }
         })

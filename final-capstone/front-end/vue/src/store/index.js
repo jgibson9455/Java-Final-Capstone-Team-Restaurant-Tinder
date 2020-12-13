@@ -21,6 +21,8 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
+    //for navigation guard
+    profileUpdated: false,
     profile: currentProfile || {},
     favorites: [],
     dislikes: [],
@@ -30,6 +32,10 @@ export default new Vuex.Store({
     }
   },
   mutations: {
+    //for navigation guard
+    SET_UPDATE_STATUS(state, status) {
+      state.profileUpdated = status;
+    },
     SET_AUTH_TOKEN(state, token) {
       state.token = token;
       localStorage.setItem('token', token);
@@ -47,7 +53,6 @@ export default new Vuex.Store({
       axios.defaults.headers.common = {};
       state.dislikes.length = 0;
     },
-
     UPDATE_PROFILE(state, profile) {
       state.profile = profile;
     },
