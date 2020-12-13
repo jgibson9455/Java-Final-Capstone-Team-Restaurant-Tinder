@@ -1,30 +1,37 @@
 <template>
-<body class="flex-container">
+<body>
 
-    <div class="main">
+   
       <div class="heading"> 
-      <h2><u id="pref-line">Preferences</u></h2>
+      <h2>Preferences</h2>
       </div>
+ 
+
       <form class="preferences">
+        <h2>Popular Food Preferences: </h2>
         <div class="favorites">
 
-          <h2>Popular Food Preferences: </h2>
           <div class="button-container" v-for="type in top20" v-bind:key="type.typeId" > 
             <h5>{{type.typeName}}</h5>
               <button class="pref1" v-bind:id="type.typeId" v-on:click.prevent="addToPreferences(type.typeId,1)">like</button>
               <button class="pref1" v-bind:id="type.typeId" v-on:click.prevent="addToPreferences(type.typeId,2)">dislike</button>
             </div>
-        </div>
-      <div class="margin"></div>
-        <button type="submit" v-on:click.prevent="savePreferences()">Submit Preferences</button>
+
+        </div> <!-- favorites div -->
+
+           
+           <button class="submit" type="submit" v-on:click.prevent="savePreferences()">Submit Preferences</button>
       </form>
-  </div>
+  
 
 
   <div class="all-pref"> 
-    <h3> View all food preferences </h3>
- 
+    <button class="submit" v-on:click.prevent="toggleShowAllPrefs()"> View all food preferences </button>
   </div>
+
+
+
+
 </body>
 </template>
 
@@ -63,6 +70,9 @@ export default {
         this.aProfilePreference.preferenceId = value;
         this.aProfilePreference.typeId = id;
         appServices.addPreference(this.aProfilePreference).then(()=> {this.aProfilePreference = "";})
+      },
+      toggleShowAllPrefs() {
+        alert('here');
       }
 },
 created() {
@@ -80,59 +90,52 @@ created() {
 }
 </script>
 
-<style>
-.preferences {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: blanchedalmond;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  /*object-fit: fill;*/
-  height: 400px;
-  flex-shrink: 2;
-  text-align: center;
-  border-radius: 2%;
-  margin-left: 200px;
-  margin-right: 200px;
-  flex-wrap: wrap;
+<style scoped>
+body{
+  display: grid;
+  grid-template-columns: .25fr 1fr 1fr 1fr .25fr;
+  grid-template-areas: 
+  "head head    head    head    head"
+  ".    cont    cont    cont    ."
+  ".    allpref allpref allpref ."
+  "foot foot    foot    foot    foot"
+
 }
+.preferences {
+  grid-area: cont;
+  background-color: blanchedalmond;
+  border-radius: 2%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  align-items: center;
+  text-align: center;
+  }
+
+.favorites {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  padding-bottom: 50px;
+  }
+
 .heading {
+  grid-area: head;
   text-align: center;
   font-size: 2.2em;
   padding-top: 8.5px;
   padding-bottom: 20px;
   align-content: center;
-  /* text-shadow: 2px 5px 5px rgba(8, 8, 8, 0.75),
-                -5px 6px 7px rgba(8, 8, 8, 0.75); */
   color: #FF5864;
 }
-.main {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  height: 700px;
-}
-.food-form{
-width: 300px;
-position: relative;
-left: -20px;
-display: inline-block;
-vertical-align: middle; 
-}
-button[class="pref1"] {
-  width: 75px;
-  position: relative;
-  left:100px;
-  vertical-align: middle;
-}
-.margin {
-  padding: 10px;
-}
-.button-container {
-  display: flex;
-  flex-direction: column;
-}
+
 .all-pref {
+  grid-area: allpref;
   text-align: center;
 }
+ button {
+   padding: 5px;
+   margin: 5px;
+ }
+
+
 
 
 @media screen and (max-width: 800px) {
