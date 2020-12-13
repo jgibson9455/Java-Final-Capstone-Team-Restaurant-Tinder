@@ -92,6 +92,7 @@ export default {
             .then((response) => { 
             // this.profile = response.data.profile
             this.$store.commit("UPDATE_PROFILE", response);
+            this.$router.push({ path: '/matches' });
 
               //LOGIC for navigation guards. this logic uses mutations in the store 
               //and the commented out section in the '/matches' route in router index.js**

@@ -42,7 +42,7 @@ export default {
                "Your profile has successfully been updated!"
              )
               this.$store.commit("UPDATE_PROFILE", response.data);
-              this.$router.back('/home');
+              this.$router.back('/profile' );
            })
          }
        },
