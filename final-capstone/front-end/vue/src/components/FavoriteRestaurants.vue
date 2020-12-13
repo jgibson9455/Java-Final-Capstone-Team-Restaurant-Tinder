@@ -2,7 +2,7 @@
   <div class="favorites">
     <h2 class="fav-head"
     v-on:click="showFavs = (showFavs ? false : true)"
-    ><u id="fav-rest-line">View Favorites</u></h2>
+    ><u id="fav-rest-line">{{showFavs === false ? "View Favorites" : "Hide Favorites"}}</u></h2>
     <div class="rest-card" v-if="showFavs === true">
       <restaurant-card class="flex-container"
       v-for="restaurant in fav"
@@ -50,7 +50,8 @@ export default {
 <style scoped>
 .favorites {
    margin-top: 39px;
-   font-size: 1.5em; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+   font-size: 1.5em; 
+   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
    display: flex;
    flex-direction: column;
 }
@@ -60,8 +61,13 @@ export default {
   color: #FF5864; 
   justify-content: center;
 }
-#fav-rest-line:hover{
+#fav-rest-line {
   color: #FD297B;
+  cursor: pointer;
+}
+
+#fav-rest-line:hover{
+  color: #FF655B;
 }
 .logo {
   display: flex;
