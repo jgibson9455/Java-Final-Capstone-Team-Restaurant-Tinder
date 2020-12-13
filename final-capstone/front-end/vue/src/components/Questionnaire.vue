@@ -26,7 +26,15 @@
 
 
   <div class="all-pref"> 
-    <button class="submit" v-on:click.prevent="toggleShowAllPrefs()"> View all food preferences </button>
+    <button class="submit" v-on:click.prevent="isHidden = !isHidden"> View all food preferences </button>
+
+    <div class="hidden-preferences" v-if="!isHidden" >
+      <p> test </p>
+      <!-- method that iterates thru zomato call for all cuisines and creates a like and dislike button for
+      each one, like we have above.  -->
+
+      </div>
+
   </div>
 
 
@@ -53,7 +61,8 @@ export default {
     top20: [],
     selectedLikeIds: [],
     selectedDislikeIds: [],
-    savedPreferences: []
+    savedPreferences: [],
+    isHidden: true
       }
     },
     methods: {
@@ -72,7 +81,7 @@ export default {
         appServices.addPreference(this.aProfilePreference).then(()=> {this.aProfilePreference = "";})
       },
       toggleShowAllPrefs() {
-        alert('here');
+        
       }
 },
 created() {
