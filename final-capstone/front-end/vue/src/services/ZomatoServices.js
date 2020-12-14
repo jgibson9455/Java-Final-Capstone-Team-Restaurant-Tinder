@@ -30,5 +30,13 @@ export default{
                     'user-key': keyOne
                 }
             })
+        },
+        
+        getAllCuisines(cityId) {
+            return http.get(`/cuisines?city_id=${cityId}`, {
+                headers: {
+                    'user-key': keyTwo
+                }
+            })
         }
 }

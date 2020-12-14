@@ -21,21 +21,24 @@
 
            
            <button class="submit" type="submit" v-on:click.prevent="savePreferences()">Submit Preferences</button>
+           
+          
+            
       </form>
   
+ 
+    <div class="all-pref">
+    <button class="submit" v-on:click.prevent="isHidden = !isHidden">{{isHidden ? "View all food preferences" : "Hide all food preferences"}} </button>
+            <div class="button-container" v-for="type in allCuisines" v-bind:key="type.cuisine_id"> 
+            <p>{{type.typeName}}</p>
+              <button class="pref1" v-bind:id="type.typeId" v-on:click.prevent="addToPreferences(type.typeId,1)">like</button>
+              <button class="pref1" v-bind:id="type.typeId" v-on:click.prevent="addToPreferences(type.typeId,2)">dislike</button>
+            </div>
 
+</div>
+     
 
-  <div class="all-pref"> 
-    <button class="submit" v-on:click.prevent="isHidden = !isHidden"> View all food preferences </button>
-
-    <div class="hidden-preferences" v-if="!isHidden" >
-      <p> test </p>
-      <!-- method that iterates thru zomato call for all cuisines and creates a like and dislike button for
-      each one, like we have above.  -->
-
-      </div>
-
-  </div>
+ 
 
 
 
@@ -45,6 +48,7 @@
 
 <script>
 import appServices from '@/services/ApplicationServices.js'
+import zomatoServices from '@/services/ZomatoServices.js'
 export default {
     name: 'questionnaire',
     data() {
@@ -62,7 +66,9 @@ export default {
     selectedLikeIds: [],
     selectedDislikeIds: [],
     savedPreferences: [],
-    isHidden: true
+    allCuisines: [],
+    isHidden: true,
+    cityId: ""
       }
     },
     methods: {
@@ -79,9 +85,6 @@ export default {
         this.aProfilePreference.preferenceId = value;
         this.aProfilePreference.typeId = id;
         appServices.addPreference(this.aProfilePreference).then(()=> {this.aProfilePreference = "";})
-      },
-      toggleShowAllPrefs() {
-        
       }
 },
 created() {
@@ -93,8 +96,25 @@ created() {
         response.data.forEach((preference) =>{
           this.savedPreferences.push(preference);
       });
-    });
+    }),
 
+  
+      appServices.getProfileByUsername(this.$store.state.user.username).then((response)=>{
+        this.profile = response.data;
+
+      zomatoServices.getCityInfo(this.profile.city).then((response) =>{
+        this.cityId = response.data.location_suggestions[0].city_id;
+
+        zomatoServices.getAllCuisines(this.cityId).then((response) =>{ 
+          response.data.cuisines.forEach((cuisine)=> {
+            this.type.typeId = cuisine.cuisine.cuisine_id
+            this.type.typeName = cuisine.cuisine.cuisine_name
+            this.allCuisines.push(this.type);
+            this.type= {};
+          })
+          })
+        })
+      })
     }
 }
 </script>
@@ -106,6 +126,7 @@ body{
   grid-template-areas: 
   "head head    head    head    head"
   ".    cont    cont    cont    ."
+  ".    .       bttn    .       ."
   ".    allpref allpref allpref ."
   "foot foot    foot    foot    foot"
 
@@ -137,13 +158,20 @@ body{
 
 .all-pref {
   grid-area: allpref;
+  display: grid;
   text-align: center;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
  button {
    padding: 5px;
    margin: 5px;
  }
-
+.submit-bttn {
+  display: grid;
+  grid-area: bttn;
+  align-items: center;
+  
+}
 
 
 
