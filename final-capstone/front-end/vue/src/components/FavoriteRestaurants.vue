@@ -87,6 +87,7 @@ export default {
 #fav-rest-line {
   color: #FD297B;
   cursor: pointer;
+  padding-top: 20px;
 }
 
 #fav-rest-line:hover{
