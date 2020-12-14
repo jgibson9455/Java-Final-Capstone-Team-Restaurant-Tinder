@@ -11,7 +11,8 @@ export default{
     getImage(name, location){
         return http.get(`/search?term=${name}&location=${location}`,{
             headers:{
-                //"Accept": "application/json",
+                "Access-Control-Allow-Origin": 'https://api.yelp.com/v3/businesses',
+                "Accept": "application/json",
                 "Authorization": `Bearer  ${token}`
             }
         })

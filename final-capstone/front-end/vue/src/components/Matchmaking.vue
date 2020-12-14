@@ -134,11 +134,11 @@ export default {
                             this.restaurant.city =  place.restaurant.location.locality;
                             this.restaurant.phoneNumber =  place.restaurant.phone_numbers;
                             this.restaurant.address =  place.restaurant.location.address;
-                            this.restaurant.imageLink = 'https://thumbor.thedailymeal.com/PPNZWK5FSKvqmb7aJrSfKweqKb8=/870x565/https://www.thedailymeal.com/sites/default/files/2016/04/01/3%20-shutterstock_397138453.jpg'
+                            //this.restaurant.imageLink = 'https://thumbor.thedailymeal.com/PPNZWK5FSKvqmb7aJrSfKweqKb8=/870x565/https://www.thedailymeal.com/sites/default/files/2016/04/01/3%20-shutterstock_397138453.jpg'
 
-                            // YelpServices.getImage(this.restaurant.restaurantName, this.profile.city).then((response)=>{
-                            //     this.restaurant.imageLink = response.businesses[0].image_url
-                            // });
+                            YelpServices.getImage(this.restaurant.restaurantName, this.profile.city).then((response)=>{
+                                this.restaurant.imageLink = response.businesses[0].image_url
+                            });
 
                             this.restaurants.push(this.restaurant);
                             this.restaurant = {};
