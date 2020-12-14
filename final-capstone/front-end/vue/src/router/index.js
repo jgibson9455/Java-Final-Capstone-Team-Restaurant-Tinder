@@ -70,7 +70,22 @@ const router = new Router({
       component: UpdateProfile,
       meta: {
         requiresAuth: true
-      }
+      },
+      //before you enter update profile
+      //if you are coming from register
+      //go back to login
+      //if you are coming from profile page
+      //go to profile page
+      //to is route going to
+      //from is route coming from
+      //next is ?
+      // beforeEnter: (to, from, next) => {
+      //   if(store.state.profileUpdated == false) {
+      //     next("/update-profile");
+      //   } else {
+      //     next();
+      //   }
+      // }
     },
     {
       path: "/restaurants",
@@ -92,14 +107,6 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
-      //this is the navigation guard
-      // beforeEnter: (to, from, next) => {
-      //   if(store.state.profileUpdated == false) {
-      //     next("/update-profile");
-      //   } else {
-      //     next();
-      //   }
-      // }
     },
     {
       path: "/favorites",
