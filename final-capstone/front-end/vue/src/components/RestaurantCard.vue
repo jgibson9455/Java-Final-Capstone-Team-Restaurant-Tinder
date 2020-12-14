@@ -1,8 +1,8 @@
 <template>
     <div>
         <div id="card">
-        <h2>{{this.restaurant.restaurantName}}</h2>
-        <img class="company-logo" v-bind:src="this.restaurant.imageLink"/>
+            <h2>{{this.restaurant.restaurantName}}</h2>
+            <img class="company-logo" v-bind:src="this.restaurant.imageLink"/>
         </div>
 
         <div class="details">
@@ -40,9 +40,13 @@ export default {
 }
 </script>
 <style scoped>
+#card {
+    padding-right: 50px;
+}
 img.company-logo {
     background-color: rgb(209, 209, 209);
     border-radius: 5%;
+    height: 150px;
     width: 200px;
     border: black solid 2px;
 }
@@ -122,6 +126,7 @@ img.company-logo {
     display: inline-block;
     border-radius: 8px;
     transition: 0.4s ease-out;
+    margin-right: 50px;
 }
 
 .details-btn:hover {

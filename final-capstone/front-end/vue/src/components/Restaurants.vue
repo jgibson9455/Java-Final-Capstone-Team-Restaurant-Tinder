@@ -1,29 +1,25 @@
 <template>
     <div class="restaurant-page">
             <h1 class="page-head"><u id="rest-line">Restaurants</u></h1>
-            <div class="loading" v-if="!isLoading">
+            <!-- <div class="loading" v-if="!isLoading">
                    <img src='@/img/celerywalk.gif'/>
-            </div>
+            </div> -->
         <div class="restaurant-items">
                 
-            <div class="restaurant-head"
-
-            
-
+            <div class="restaurant-head">
+            <restaurant-card
                     v-for="restaurant in restaurants"
-                    v-bind:key="restaurant.id">
-            
-            
-
- 
+                    v-bind:key="restaurant.id"
+                    v-bind:restaurant="restaurant">
+            </restaurant-card>
             </div>
-              <!--<h2 id="all-rest-name">{{ restaurant.restaurantName }}</h2>
+              <!-- <h2 id="all-rest-name">{{ restaurant.restaurantName }}</h2>
                 <p id="all-rest-type">{{ restaurant.typeName }}</p>
                 
 
-                <img class="rest-images" v-bind:src="restaurant.imageLink"/>
+                <img class="rest-images" v-bind:src="restaurant.imageLink"/> -->
             
-            <div class="modal-main">
+            <!--<div class="modal-main">
              <button id="details-link" @click="showModal = true">
                 Click for details
              </button>
@@ -53,7 +49,7 @@
 
 <script>
 
-// import RestaurantCard from '../components/RestaurantCard.vue'
+import RestaurantCard from '../components/RestaurantCard.vue'
 import theApplicationService from '../services/ApplicationServices'
 
 export default {
@@ -65,12 +61,12 @@ export default {
             showModal: false   
         }
     },
-    // components: {
-    //     RestaurantCard
-    // },
-    // props: [
-    //     'restaurant'
-    // ],
+    components: {
+        RestaurantCard
+    },
+    props: [
+        'restaurant'
+    ],
 created() {
     theApplicationService.getAllRestaurants()
         .then(apiData => {
@@ -97,7 +93,7 @@ methods: {
 </script>
 
 <style scoped>
-.modal-main {
+/* .modal-main {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -158,29 +154,29 @@ methods: {
     height: 300px;
     width: 360px;
     margin: -45px;
-    /* padding-top: 10px;
-    padding-bottom: 5px; */
-    /* padding-left: 20px;
-    padding-right: 20px; */
+    // padding-top: 10px;
+    padding-bottom: 5px; //
+    // padding-left: 20px;
+    padding-right: 20px; //
 }
 #match-modal-rest-name{
     margin-top: 10px;
     margin-bottom: -25px;
 }
- /* #match-modal-rest-type{
+ // #match-modal-rest-type{
     margin-bottom: 60px;
-}  */
+}  //
  #match-modal-rest-phone{
     margin-bottom: 5px;
 } 
  #match-modal-rest-address{
     margin-bottom: 20px;
-} 
-.details-link {
+} */
+/*.details-link {
     color: blue;
     font-size: larger;
     margin-top: auto;
-    /**/
+    
     cursor: pointer;
     display: inline-block;
     border-radius: 8px;
@@ -189,7 +185,7 @@ methods: {
 .details-link:hover {
     color: rgb(108, 108, 238);
     box-shadow: 2px 2px rgba(0, 0, 0, 0.6);
-}
+}*/
 .page-head {
     color: #FF5864 ;
     font-size: 3.5em;
@@ -235,7 +231,10 @@ h4 {
     overflow: auto; */
 }
 .restaurant-head {
+    display: flex;
+    flex-wrap: wrap;
     text-align: center;
+    justify-content: space-between;
     font-size: 22px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 20px;
     /* text-shadow: blanchedalmond 0px 0px .75px,   blanchedalmond 0px 0px .75px,   blanchedalmond 0px 0px .75px,
