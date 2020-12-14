@@ -105,7 +105,7 @@ export default {
 }
 .form {
   display: flex;
-justify-content: center;
+  justify-content: center;
 }
 #update-prof-main {
   /* display: flex; */
