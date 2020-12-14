@@ -98,7 +98,15 @@ export default {
             if (response.status == 201) {
               this.profile.userName = this.user.username;
               this.registerProfile();
-              this.$router.push({
+              authService
+                .login(this.user)
+                .then(response => {
+                  if (response.status == 200) {
+                  this.$store.commit("SET_AUTH_TOKEN", response.data.token)
+                  this.$store.commit("SET_USER", response.data.user)
+                  }
+                })
+                this.$router.push({
                 path: '/update-profile',
                 query: { registration: 'success' },
               });

@@ -42,7 +42,13 @@ export default {
                "Your profile has successfully been updated!"
              )
               this.$store.commit("UPDATE_PROFILE", response.data);
-              this.$router.back('/profile' );
+              // if (this.$store.state.token != "") {
+              //   this.$router.back({path: '/profile'});
+              // } else {
+              //   this.$router.push({path: '/'});
+              // }
+              this.$router.push({path: '/profile'});
+              
            })
          }
        },
