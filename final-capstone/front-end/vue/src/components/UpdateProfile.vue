@@ -1,6 +1,7 @@
 <template>
   <div class="update-prof-main">
   <h1 id="prof-head"><u id="update-prof-line">Create Profile</u></h1>
+    <div class="form">
       <form class="update-profile" >
           <label for="firstName" class="profile-form">First Name: </label>
           <input type="text" id="firstName" placeholder="First Name" v-model="profile.firstName" required="true"/>
@@ -14,8 +15,14 @@
            <label for="city" class="profile-form">Your City: </label>
           <input type="text" id="city" placeholder="Your City" required=true v-model="profile.city" />
 
-          <button type="submit" v-on:click.prevent="saveProfile()">Update Profile</button>
+          <button id="update-button" type="submit" v-on:click.prevent="saveProfile()">Update Profile</button>
       </form>
+    </div>
+
+      <!-- <div class="banner">
+        <img src='@/img/banner.jpeg'/>
+      </div> -->
+
   </div>
 </template>
 
@@ -63,20 +70,28 @@ export default {
 
 <style scoped>
 .update-profile {
-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center; 
+  /* align-content: center; */
+  /* justify-content: center; */
+  /* align-self: center; */
   background-color: blanchedalmond;
-  /*object-fit: fill;*/
-  height: 400px;
-  flex-shrink: 2;
+  padding-top: 50px;
+  /* height: 250px; */
+  width: 300px;
   text-align: center;
   border-radius: 2%;
+
   margin-left: 200px;
   margin-right: 200px;
+  padding-left: 25px;
+  padding-right: 25px;
   flex-wrap: wrap;
 }
+  /* flex-shrink: 2; */
+
 #prof-head {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   text-align: center;
@@ -88,9 +103,29 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
                 -5px 6px 7px rgba(8, 8, 8, 0.75); */
   color: #FF5864;
 }
+.form {
+  display: flex;
+justify-content: center;
+}
 #update-prof-main {
+  /* display: flex; */
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  height: 700px;
+  /* height: 700px; */
+  /* justify-content: center; */
+}
+.banner > img {
+  /* width: 1000px; */
+  width: 100%;
+  max-height: 125px;
+}
+.banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#update-button {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 /* .food-form{
  width: 300px;
