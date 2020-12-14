@@ -45,7 +45,7 @@ const router = new Router({
       name: "login",
       component: Login,
       meta: {
-        requiresAuth: false
+        requiresAuth: false 
       }
     },
     {
@@ -69,7 +69,7 @@ const router = new Router({
       name: "update-profile-view",
       component: UpdateProfile,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
@@ -80,12 +80,18 @@ const router = new Router({
     {
       path: "/questionnaire",
       name: "questionnaire",
-      component: Questionnaire
+      component: Questionnaire,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: "/matches",
       name: "match-making",
       component: Matchmaking,
+      meta: {
+        requiresAuth: true
+      }
       //this is the navigation guard
       // beforeEnter: (to, from, next) => {
       //   if(store.state.profileUpdated == false) {
@@ -98,7 +104,10 @@ const router = new Router({
     {
       path: "/favorites",
       name: "favorites",
-      component: FavoriteRestaurants
+      component: FavoriteRestaurants,
+      meta: {
+        requiresAuth: true
+      }
     },
 
   ]
