@@ -126,7 +126,7 @@ export default {
 
 
 
-<style>
+<style scoped>
  .form-register {
    display: flex;
   flex-direction: column;
