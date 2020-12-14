@@ -91,7 +91,7 @@ export default {
             ApplicationServices.getProfileByUsername(response.data.user.username)
             .then((response) => { 
             // this.profile = response.data.profile
-            this.$store.commit("UPDATE_PROFILE", response);
+            this.$store.commit("UPDATE_PROFILE", response.data);
             this.$router.push({ path: '/matches' });
 
               //LOGIC for navigation guards. this logic uses mutations in the store 

@@ -27,15 +27,19 @@
 
   <div class="all-pref"> 
     <button class="submit" v-on:click.prevent="isHidden = !isHidden"> View all food preferences </button>
+    <p> test </p>
+      <div class="button-container" v-for="type in allCuisines" v-bind:key="type.cuisine_id" > 
+            <h5>{{type.typeName}}</h5>
+              <button class="pref1" v-bind:id="type.typeId" v-on:click.prevent="addToPreferences(type.typeId,1)">like</button>
+              <button class="pref1" v-bind:id="type.typeId" v-on:click.prevent="addToPreferences(type.typeId,2)">dislike</button>
+            </div>
 
-    <div class="hidden-preferences" v-if="!isHidden" >
-      <p> test </p>
       <!-- method that iterates thru zomato call for all cuisines and creates a like and dislike button for
       each one, like we have above.  -->
+</div>
+     
 
-      </div>
-
-  </div>
+ 
 
 
 
@@ -45,6 +49,7 @@
 
 <script>
 import appServices from '@/services/ApplicationServices.js'
+import zomatoServices from '@/services/ZomatoServices.js'
 export default {
     name: 'questionnaire',
     data() {
@@ -62,6 +67,7 @@ export default {
     selectedLikeIds: [],
     selectedDislikeIds: [],
     savedPreferences: [],
+    allCuisines: [],
     isHidden: true
       }
     },
@@ -93,8 +99,23 @@ created() {
         response.data.forEach((preference) =>{
           this.savedPreferences.push(preference);
       });
-    });
+    }),
 
+      console.log(this.$store.state.profile.city);
+  
+      appServices.getProfileByUsername(this.$store.state.user.username).then((response)=>{
+        this.profile = response.data;
+
+      zomatoServices.getCityInfo(this.profile.city).then((response) =>{
+        this.cityId = response.data.locations_suggestions[0].city_id;
+
+        zomatoServices.getAllCuisines(this.cityId).then((response) =>{ 
+          response.data.forEach((cuisine)=> {
+            this.allCuisines.push(cuisine);
+          })
+          })
+        })
+      })
     }
 }
 </script>
