@@ -1,9 +1,10 @@
 <template>
     <div class="restaurant-page">
             <h1 class="page-head"><u id="rest-line">Restaurants</u></h1>
-            <!-- <div class="loading" v-if="!isLoading">
+
+            <div class="loading" v-if="isLoading">
                    <img src='@/img/celerywalk.gif'/>
-            </div> -->
+            </div>
         <div class="restaurant-items">
                 
             <div class="restaurant-head">
@@ -15,11 +16,9 @@
             </div>
               <!-- <h2 id="all-rest-name">{{ restaurant.restaurantName }}</h2>
                 <p id="all-rest-type">{{ restaurant.typeName }}</p>
-                
 
                 <img class="rest-images" v-bind:src="restaurant.imageLink"/> -->
-
-        
+      
         </div>    
     </div>  
 </template>
@@ -49,6 +48,7 @@ created() {
         .then(apiData => {
             this.restaurants = apiData.data;
             this.getRestaurantTypes();
+            this.isLoading = false;
         })
 },
 
@@ -70,7 +70,10 @@ methods: {
 </script>
 
 <style scoped>
-
+.loading {
+    display: flex;
+    justify-content: center;
+}
 .page-head {
     color: #FF5864 ;
     font-size: 3.5em;
