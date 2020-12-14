@@ -134,7 +134,7 @@ export default {
                             this.restaurant.city =  place.restaurant.location.locality;
                             this.restaurant.phoneNumber =  place.restaurant.phone_numbers;
                             this.restaurant.address =  place.restaurant.location.address;
-                            //this.restaurant.imageLink = 'https://thumbor.thedailymeal.com/PPNZWK5FSKvqmb7aJrSfKweqKb8=/870x565/https://www.thedailymeal.com/sites/default/files/2016/04/01/3%20-shutterstock_397138453.jpg'
+                            this.restaurant.imageLink = 'https://cdn.dribbble.com/users/1012566/screenshots/4187820/topic-2.jpg'
 
                             YelpServices.getImage(this.restaurant.restaurantName, this.profile.city).then((response)=>{
                                 this.restaurant.imageLink = response.businesses[0].image_url
@@ -168,12 +168,13 @@ export default {
             this.getRandomRestaurant();  
         },
         removeFromRestaurants() {
-            let randomId = this.randomRestaurant.restaurantId;
-            for (let i = 0; i < this.restaurants.length; i++) {
-                if(this.restaurants[i].restaurantId === randomId) {
-                 // let index =   this.restaurants.indexOf(this.restaurants[i]);
-                  this.restaurants.splice(i, 1);
-                  break;
+            if(this.randomRestaurant){
+                let randomId = this.randomRestaurant.restaurantId;
+                for(let i = 0; i < this.restaurants.length; i++){
+                    if(this.restaurants[i].restaurantId === randomId){
+                        this.restaurants.splice(i, 1);
+                        break;
+                    }
                 }
             }
         },
