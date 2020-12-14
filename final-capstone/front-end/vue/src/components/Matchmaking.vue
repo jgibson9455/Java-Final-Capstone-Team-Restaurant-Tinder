@@ -5,6 +5,10 @@
         <h1>How's this sound?</h1>  
     </div><!--end of heading-->
 
+    <div class="loading" v-if="isLoading">
+       <img src='@/img/celerywalk.gif'/>
+    </div>
+
     <div class="random">
         
         <img class="image" v-bind:src="randomRestaurant.imageLink"/>
@@ -93,6 +97,7 @@ export default {
     name: 'match-making',
     data() {
         return{
+        isLoading: true,
         restaurants: [],
         randomRestaurant: {},
         matchingResult: {
@@ -144,8 +149,10 @@ export default {
                             this.restaurant = {};
                         });
                        this.getRandomRestaurant();
+                      
                     });
                 });
+                 this.isLoading = false;
             });     
     },
     methods:{
@@ -193,6 +200,10 @@ export default {
 </script>
 
 <style scoped>
+.loading {
+    display: flex;
+    justify-content: center;
+}
 .modal-test {
     margin: 0;
     padding: 0;
@@ -302,11 +313,11 @@ export default {
     width: 350px;
 }
 #match-rest-name{
-    margin-top: 50px;
+    margin-top: 25px;
     margin-bottom: -15px;
 }
 #match-rest-city{
-    margin-bottom: -5px;
+    margin-bottom: 5px;
 }
 /* #match-rest-descript{
     margin-bottom: 60px;
@@ -327,12 +338,13 @@ export default {
 #details-link {
     color: blue;
     font-size: larger;
-    margin-top: 30px;
-    /**/
+    /* margin-top: 30px; */
+    align-self: flex-end;
     cursor: pointer;
     display: inline-block;
     border-radius: 8px;
     transition: 0.4s ease-out;
+    /* position: fixed; */
 }
 #details-link:hover {
     color: rgb(108, 108, 238);
