@@ -22,12 +22,14 @@
 <script>
 import RestaurantCard from '../components/RestaurantCard.vue'
 import appService from '../services/ApplicationServices'
+import ZomatoServices from '../services/ZomatoServices'
 export default {
   data() {
     return {
+      favoriteRestaurant: {},
       fav: [],
       matching: [],
-      showFavs: false
+      showFavs: true
       // isLoading: true
     }
   },
@@ -35,16 +37,26 @@ export default {
     RestaurantCard
   },
   created() {
-    appService.getMatchingResultsByUserName(this.$store.state.user.username).then(response => {
+    appService.getMatchingResultsByUserName(this.$store.state.user.username).then((response) =>{
       this.matching = response.data;
-    }).then(res => {
-      this.matching.forEach((match) => {
-      appService.getRestaurantById(match.restaurantId).then(response => {
-        this.fav.push(response.data);
-        // this.isLoading = false;
+    }).then(() =>{
+      this.matching.forEach((match) =>{
+        ZomatoServices.getRestaurantById(match.restaurantId).then((apiData) =>{
+            this.favoriteRestaurant.restaurantId = apiData.data.id;
+            this.favoriteRestaurant.restaurantName =  apiData.data.name;
+            this.favoriteRestaurant.restaurantDescrip = "Cuisines: " + apiData.data.cuisines  + 
+            " Hours of Operation: " + apiData.data.timings + " Average Rating: " +
+            apiData.data.user_rating.aggregate_rating;
+            this.favoriteRestaurant.zipCode =  apiData.data.location.zipcode;
+            this.favoriteRestaurant.city =  apiData.data.location.locality;
+            this.favoriteRestaurant.phoneNumber =  apiData.data.phone_numbers;
+            this.favoriteRestaurant.address =  apiData.data.location.address;
+            this.favoriteRestaurant.imageLink = 'https://cdn.dribbble.com/users/1012566/screenshots/4187820/topic-2.jpg'
+
+          this.fav.push(this.favoriteRestaurant);
+          this.favoriteRestaurant = {};
+        })
       })
-      })
-      console.log(res);
     })
   },
   props: [

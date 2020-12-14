@@ -74,6 +74,6 @@ INSERT INTO profile_preferences VALUES((SELECT user_name FROM profile WHERE user
 (SELECT type_id FROM restaurant_type WHERE type_name = 'Sushi'),2);
 
 --Test Data For Matching_results
-INSERT INTO matching_results VALUES((SELECT user_name FROM profile WHERE user_name = 'user'), 1,1);
+--INSERT INTO matching_results VALUES((SELECT user_name FROM profile WHERE user_name = 'user'), 1,1);
 
 COMMIT;
