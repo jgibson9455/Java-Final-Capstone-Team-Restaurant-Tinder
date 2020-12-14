@@ -88,7 +88,6 @@
 <script>
 import ApplicationServices from '../services/ApplicationServices.js'
 import ZomatoServices from '../services/ZomatoServices.js'
-import BingServices from '../services/BingServices.js'
 export default {
     name: 'match-making',
     data() {
@@ -137,19 +136,15 @@ export default {
                             this.restaurants.push(this.restaurant);
                             this.restaurant = {};
                         });
+                       this.getRandomRestaurant();
                     });
                 });
-                this.getRandomRestaurant();
             });     
     },
     methods:{
         getRandomRestaurant(){
             let randomNum = Math.floor(Math.random() * (this.restaurants.length)) + 1;
             this.randomRestaurant = this.restaurants[randomNum];
-
-             BingServices.getImage(this.randomRestaurant.restaurantName).then((apiData)=>{
-                        this.randomRestaurant.imageLink = apiData.data.value[0].contentUrl;
-            });
         },
 
         addRestaurantToFavorites(restaurant) {
