@@ -1,5 +1,10 @@
 <template>
   <div class="favorites">
+
+    <!-- <div class="loading" v-if="isLoading">
+       <img src='@/img/celerywalk.gif'/>
+    </div> -->
+
     <h2 class="fav-head"
     v-on:click="showFavs = (showFavs ? false : true)"
     ><u id="fav-rest-line">{{showFavs === false ? "View Favorites" : "Hide Favorites"}}</u></h2>
@@ -23,6 +28,7 @@ export default {
       fav: [],
       matching: [],
       showFavs: false
+      // isLoading: true
     }
   },
   components: {
@@ -35,6 +41,7 @@ export default {
       this.matching.forEach((match) => {
       appService.getRestaurantById(match.restaurantId).then(response => {
         this.fav.push(response.data);
+        // this.isLoading = false;
       })
       })
       console.log(res);
@@ -48,6 +55,10 @@ export default {
 </script>
 
 <style scoped>
+/* .loading {
+    display: flex;
+    justify-content: center;
+} */
 .favorites {
    margin-top: 39px;
    font-size: 1.5em; 

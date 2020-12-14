@@ -10,7 +10,7 @@
         <img class="image" v-bind:src="randomRestaurant.imageLink"/>
         <h1 id="match-rest-name"> {{ randomRestaurant.restaurantName }}</h1>
         <h3 id="match-rest-city"> {{ randomRestaurant.city}}  </h3>
-        <p id="match-rest-descript"> {{ randomRestaurant.restaurantDescrip}}  </p>
+        <!-- <p id="match-rest-descript"> {{ randomRestaurant.restaurantDescrip}}  </p> -->
 
         <!--open modal
         v-bind:to="{name: 'details'}"-->
@@ -88,6 +88,7 @@
 <script>
 import ApplicationServices from '../services/ApplicationServices.js'
 import ZomatoServices from '../services/ZomatoServices.js'
+import YelpServices from '../services/YelpServices.js'
 export default {
     name: 'match-making',
     data() {
@@ -133,6 +134,12 @@ export default {
                             this.restaurant.city =  place.restaurant.location.locality;
                             this.restaurant.phoneNumber =  place.restaurant.phone_numbers;
                             this.restaurant.address =  place.restaurant.location.address;
+                            //this.restaurant.imageLink = 'https://thumbor.thedailymeal.com/PPNZWK5FSKvqmb7aJrSfKweqKb8=/870x565/https://www.thedailymeal.com/sites/default/files/2016/04/01/3%20-shutterstock_397138453.jpg'
+
+                            YelpServices.getImage(this.restaurant.restaurantName, this.profile.city).then((response)=>{
+                                this.restaurant.imageLink = response.businesses[0].image_url
+                            });
+
                             this.restaurants.push(this.restaurant);
                             this.restaurant = {};
                         });
@@ -260,9 +267,9 @@ export default {
 }
  .image {
     align-self: center;
-    height: 275px; /*275*/
+    max-height: 350px; /*275*/
     width: 352px; /*330*/
-    margin: -47px;
+    /* margin: -5px; */
     padding-bottom: .5px;
     padding-left: 2px;
     padding-right: 2px;
@@ -319,7 +326,7 @@ export default {
 #details-link {
     color: blue;
     font-size: larger;
-    margin-top: auto;
+    margin-top: 30px;
     /**/
     cursor: pointer;
     display: inline-block;

@@ -3,6 +3,12 @@
   <div class="whatever">
     <h1 class="title">Restaurant Tinder</h1>
   </div>
+  
+  <div class="loading" v-if="isLoading">
+    <img src='@/img/celerywalk.gif'/>
+  </div>
+
+
   <div class="banner">
     <img src='@/img/banner.jpeg'/>
   </div>
@@ -66,6 +72,7 @@ export default {
   components: {},
   data() {
     return {
+      isLoading: true,
       user: {
         username: "",
         password: ""
@@ -79,6 +86,9 @@ export default {
             city: ""
       }
     };
+  },
+  created() {
+    this.isLoading = false;
   },
   methods: {
     login() {

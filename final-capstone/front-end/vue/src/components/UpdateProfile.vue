@@ -3,7 +3,7 @@
   <h1 id="prof-head"><u id="update-prof-line">Create Profile</u></h1>
       <form class="update-profile" >
           <label for="firstName" class="profile-form">First Name: </label>
-          <input type="text" id="firstName" placeholder="First Name" required v-model="profile.firstName"/>
+          <input type="text" id="firstName" placeholder="First Name" v-model="profile.firstName" required="true"/>
 
            <label for="lastName" class="profile-form">Last Name: </label>
           <input type="text" id="lastName"  placeholder="Last Name" required=true v-model="profile.lastName" />

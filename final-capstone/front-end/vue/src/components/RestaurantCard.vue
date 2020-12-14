@@ -1,7 +1,8 @@
 <template>
     <div>
         <div id="card">
-            <h2>{{this.restaurant.restaurantName}}</h2>
+            <h2 id="card-name">{{this.restaurant.restaurantName}}</h2>
+            <h3 id="card-type">{{this.restaurant.typeName}}</h3>
             <img class="company-logo" v-bind:src="this.restaurant.imageLink"/>
         </div>
 
@@ -29,6 +30,7 @@
         </div>
     </div>
 </template>
+
 <script>
 export default {
     data() {
@@ -42,6 +44,9 @@ export default {
 <style scoped>
 #card {
     padding-right: 50px;
+}
+#card-name {
+    margin-bottom: -20px;
 }
 img.company-logo {
     background-color: rgb(209, 209, 209);
