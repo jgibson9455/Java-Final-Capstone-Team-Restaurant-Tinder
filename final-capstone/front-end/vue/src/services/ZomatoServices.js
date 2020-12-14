@@ -9,7 +9,7 @@ const keyTwo = 'fbea855555e5029ba34ae13446d594f8'
 
 export default{
         getCityInfo(cityName){
-            http.get(`/locations?query=${cityName}`, {
+            return http.get(`/locations?query=${cityName}`, {
                 headers:{
                     'user-key' : keyOne
                 }
@@ -17,7 +17,7 @@ export default{
         },
 
         getAllRestaurantsByEntities(entityId, entityType){
-            http.get(`search?entity_id=${entityId}&entity_type=${entityType}`, {
+            return http.get(`search?entity_id=${entityId}&entity_type=${entityType}`, {
                 headers:{
                     'user-key' : keyTwo
                 }
@@ -25,7 +25,7 @@ export default{
         },
 
         getRestaurantById(id){
-            http.get(`/restaurant?res_id=${id}`, {
+            return http.get(`/restaurant?res_id=${id}`, {
                 headers:{
                     'user-key': keyOne
                 }

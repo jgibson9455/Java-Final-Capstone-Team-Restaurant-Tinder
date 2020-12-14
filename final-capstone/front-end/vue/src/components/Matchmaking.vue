@@ -87,6 +87,8 @@
 
 <script>
 import ApplicationServices from '../services/ApplicationServices.js'
+import ZomatoServices from '../services/ZomatoServices.js'
+import BingServices from '../services/BingServices.js'
 export default {
     name: 'match-making',
     data() {
@@ -98,28 +100,58 @@ export default {
             restaurantId: 0,
             preferenceId: 0
         },
+        restaurant: {},
+        profile:{
+            userName: "",
+            firstName: "",
+            lastName: "",
+            email: "",
+            city: ""
+        },
+        cityEntityType: "",
+        cityEntityId: "",
         showModal: false
         }
     },
     created() {
-        ApplicationServices.getAllRestaurants()
-        .then(apiData => {
-            this.restaurants = apiData.data;
-            this.getRandomRestaurant();
-        })      
+        ApplicationServices.getProfileByUsername(this.$store.state.user.username)
+        .then((response) =>{
+            this.profile = response.data;
+            ZomatoServices.getCityInfo(this.profile.city)
+            .then((response) =>{
+                this.cityEntityType = response.data.location_suggestions[0].entity_type;
+                this.cityEntityId = response.data.location_suggestions[0].entity_id;
+
+                ZomatoServices.getAllRestaurantsByEntities(this.cityEntityId, this.cityEntityType)
+                    .then((response) =>{
+                        response.data.restaurants.forEach((place) =>{
+                            this.restaurant.restaurantId = place.restaurant.id;
+                            this.restaurant.restaurantName =  place.restaurant.name;
+                            this.restaurant.restaurantDescrip = "Cuisines: " + place.restaurant.cuisines  + 
+                            " Hours of Operation: " + place.restaurant.timings + " Average Rating: " +
+                            place.restaurant.user_rating.aggregate_rating;
+                            this.restaurant.zipCode =  place.restaurant.location.zipcode;
+                            this.restaurant.city =  place.restaurant.location.locality;
+                            this.restaurant.phoneNumber =  place.restaurant.phone_numbers;
+                            this.restaurant.address =  place.restaurant.location.address;
+                            this.restaurants.push(this.restaurant);
+                            this.restaurant = {};
+                        });
+                    });
+                });
+                this.getRandomRestaurant();
+            });     
     },
     methods:{
         getRandomRestaurant(){
-           let randomNum = Math.floor(Math.random() * (this.restaurants.length)) + 1;
-           for(let i = 0; i < this.restaurants.length; i++){
-               if(randomNum === this.restaurants[i].restaurantId) {
-                ApplicationServices.getRestaurantById(this.restaurants[i].restaurantId).then(apiData => {
-                this.randomRestaurant = apiData.data;
-                //this.getRestaurantTypes()
-            })
-               }
-           }
+            let randomNum = Math.floor(Math.random() * (this.restaurants.length)) + 1;
+            this.randomRestaurant = this.restaurants[randomNum];
+
+             BingServices.getImage(this.randomRestaurant.restaurantName).then((apiData)=>{
+                        this.randomRestaurant.imageLink = apiData.data.value[0].contentUrl;
+            });
         },
+
         addRestaurantToFavorites(restaurant) {
             this.matchingResult.preferenceId = 1;
             this.matchingResult.restaurantId = restaurant.restaurantId;

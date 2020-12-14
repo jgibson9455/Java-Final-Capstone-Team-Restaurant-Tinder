@@ -58,7 +58,7 @@ export default {
            firstName: "",
            lastName: "",
            email: "",
-           zipCode: ""
+           city: ""
       }
     }
   }
