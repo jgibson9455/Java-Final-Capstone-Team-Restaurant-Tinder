@@ -2,9 +2,13 @@
 <body class="profile">
   <div class="space"></div>
 
+  <div class='pic'>
+    <img class="profile-pic" src='@/img/profile.png'/>
+  </div>
+
   <h1 id="my-profile"><u id="prof-line">My Profile</u></h1>
 
-
+  
 
   <div class="home">
     <div class="top-half">
@@ -203,5 +207,16 @@ export default {
 }
 .start:hover{
   opacity: 1;
+}
+
+.profile-pic {
+  border-radius: 50%;
+  width: 60px;
+}
+
+.pic {
+  display: flex;
+  justify-content: center;
+  margin-bottom: -20px;
 }
 </style>

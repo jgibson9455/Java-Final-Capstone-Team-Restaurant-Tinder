@@ -92,7 +92,7 @@
 <script>
 import ApplicationServices from '../services/ApplicationServices.js'
 import ZomatoServices from '../services/ZomatoServices.js'
-import YelpServices from '../services/YelpServices.js'
+//import YelpServices from '../services/YelpServices.js'
 export default {
     name: 'match-making',
     data() {
@@ -115,7 +115,8 @@ export default {
         },
         cityEntityType: "",
         cityEntityId: "",
-        showModal: false
+        showModal: false,
+        alreadyInFavorites: {}
         }
     },
     created() {
@@ -141,15 +142,17 @@ export default {
                             this.restaurant.address =  place.restaurant.location.address;
                             this.restaurant.imageLink = 'https://cdn.dribbble.com/users/1012566/screenshots/4187820/topic-2.jpg'
 
-                            YelpServices.getImage(this.restaurant.restaurantName, this.profile.city).then((response)=>{
-                                this.restaurant.imageLink = response.businesses[0].image_url
-                            });
-
                             this.restaurants.push(this.restaurant);
                             this.restaurant = {};
                         });
-                       this.getRandomRestaurant();
-                      
+                        
+                    ApplicationServices.getMatchingResultsByUserName(this.$store.state.user.username)
+                    .then((response) =>{
+                        this.alreadyInFavorites = response.data;
+                    });
+
+                    this.checkIfFavorite();
+                    this.getRandomRestaurant();
                     });
                 });
                  this.isLoading = false;
@@ -159,6 +162,21 @@ export default {
         getRandomRestaurant(){
             let randomNum = Math.floor(Math.random() * (this.restaurants.length)) + 1;
             this.randomRestaurant = this.restaurants[randomNum];
+
+            //  YelpServices.getImage(this.randomRestaurant.restaurantName, this.profile.city).then((response)=>{
+            //                     this.restaurant.imageLink = response.businesses[0].image_url
+            //     });
+        },
+
+        checkIfFavorite(){
+            for(let i = 0; i < this.restaurants.length; i++){
+                for(let j = 0; j < this.alreadyInFavorites.length; j++){
+                    if(this.restaurants[i].restaurantId === this.alreadyInFavorites[j].restaurantId
+                    && this.alreadyInFavorites[j].preferenceId === 1){
+                        this.restaurants.splice(i, 1);
+                    }
+                }
+            }
         },
 
         addRestaurantToFavorites(restaurant) {

@@ -21,20 +21,21 @@
 
            
            <button class="submit" type="submit" v-on:click.prevent="savePreferences()">Submit Preferences</button>
-           
+           <button class="submit" v-on:click.prevent="isHidden = !isHidden">{{isHidden ? "View all food preferences" : "Hide all food preferences"}} </button>
           
             
       </form>
+      
   
  
-    <div class="all-pref">
-    <button class="submit" v-on:click.prevent="isHidden = !isHidden">{{isHidden ? "View all food preferences" : "Hide all food preferences"}} </button>
-            <div class="button-container" v-for="type in allCuisines" v-bind:key="type.cuisine_id"> 
+    <div class="all-pref" v-if="isHidden === false">
+
+     
+            <div class="button-container"   v-for="type in allCuisines" v-bind:key="type.cuisine_id" > 
             <p>{{type.typeName}}</p>
               <button class="pref1" v-bind:id="type.typeId" v-on:click.prevent="addToPreferences(type.typeId,1)">like</button>
               <button class="pref1" v-bind:id="type.typeId" v-on:click.prevent="addToPreferences(type.typeId,2)">dislike</button>
             </div>
-
 </div>
      
 
@@ -55,7 +56,8 @@ export default {
       return {
       type: {
       typeId: "",
-      typeName: ""
+      typeName: "",
+      showPrefs: true
     },
       aProfilePreference: {
         userName: "",
@@ -154,6 +156,7 @@ body{
   padding-bottom: 20px;
   align-content: center;
   color: #FF5864;
+   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .all-pref {
