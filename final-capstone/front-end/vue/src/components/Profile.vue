@@ -289,12 +289,13 @@ img {
 .footer{
   /* position: fixed;  */
   display: flex;
-  align-items: center;
+  /*align-items: center;*/
+  align-content: center;
   justify-content: center;
-  margin-top: 175px;
-  bottom: 0; 
-  width: 100%; 
-  height: 3em; 
+  /*margin-top: 175px;*/
+  /*bottom: 0;*/ 
+  width: 86em; 
+/*  height: 3em; */
   background:#FF5C5C; 
   opacity: 65%;
 }

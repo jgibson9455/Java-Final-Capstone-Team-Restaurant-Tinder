@@ -58,7 +58,7 @@
     </div>
     </form>
   </div>
-    <footer class="footer"><img src="@/img/logo-black.png"></footer>
+    <!-- <footer class="footer"><img src="@/img/logo-black.png"></footer> -->
   </body>
 </template>
 
@@ -271,7 +271,7 @@ a:hover {
   color: #FF655B;
   text-decoration: underline;
 }
-img {
+/* img {
     width: 2em;
 }
 .footer{
@@ -285,5 +285,5 @@ img {
   height: 3em; 
   background:#FF5C5C; 
   opacity: 65%;
-}
+} */
 </style>
