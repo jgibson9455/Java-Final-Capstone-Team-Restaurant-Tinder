@@ -60,21 +60,21 @@ export default {
   margin-bottom: -10px;
   transition: 0.2s ease;
 }
-img {
+/* img {
     width: 2em;
 }
 .footer{
-  /* position: fixed;  */
+  /* position: fixed;  
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 175px;
   bottom: 0; 
   width: 100%; 
-  /* Height of the footer*/  
+  /* Height of the footer  
   height: 3em; 
   background:#FF5C5C; 
   opacity: 65%;
-}
+} */
 
 </style>
