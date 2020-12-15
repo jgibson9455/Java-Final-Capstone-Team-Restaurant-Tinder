@@ -82,8 +82,8 @@
 
         <div class="match-links">
           <router-link class="your-faves"
-          v-bind:to="{name: 'home'}">View Your Favorites</router-link>
-          <router-link class="all-restaurants" v-bind:to="{name: 'restaurants'}">View All Restaurants</router-link>
+          v-bind:to="{name: 'home'}"><strong>View Your Favorites</strong></router-link>
+          <router-link class="all-restaurants" v-bind:to="{name: 'restaurants'}"><strong>View All Restaurants</strong></router-link>
         </div><!--end of match-links div-->
   </div> <!--end of matches main div-->
 
@@ -366,7 +366,7 @@ export default {
     margin-bottom: 20px;
 } 
 #details-link {
-    color: blue;
+    color: #FE3C72;
     font-size: larger;
     /* margin-top: 30px; */
     align-self: flex-end;
@@ -375,9 +375,10 @@ export default {
     border-radius: 8px;
     transition: 0.4s ease-out;
     /* position: fixed; */
+    background-color: white;
 }
 #details-link:hover {
-    color: rgb(108, 108, 238);
+    color: black;
     box-shadow: 2px 2px rgba(0, 0, 0, 0.6);
 }
 .buttons {
@@ -415,11 +416,14 @@ export default {
     margin-top: -5px;
 }
 .your-faves, .all-restaurants {
-    color: blue;
+    color: #FE3C72;
     text-align: center;
+    text-decoration: none;
+    padding-top: 5px;
 }
 .your-faves:hover, .all-restaurants:hover {
-    color: rgb(108, 108, 238);
+    color: black;
+    text-decoration: underline;
 }
 
 
