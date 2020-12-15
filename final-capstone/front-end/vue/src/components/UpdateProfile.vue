@@ -1,6 +1,8 @@
 <template>
+<!-- <u id="update-prof-line">-->
   <div class="update-prof-main">
-  <h1 id="prof-head"><u id="update-prof-line">Create Profile</u></h1>
+    
+  <h1 id="prof-head"><strong>Create Profile</strong></h1>
     <div class="form">
       <form class="update-profile" >
           <label for="firstName" class="profile-form">First Name: </label>
@@ -69,6 +71,8 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Mada:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bad+Script&display=swap');
 .update-profile {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   display: flex;
@@ -93,11 +97,14 @@ export default {
   /* flex-shrink: 2; */
 
 #prof-head {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  /*font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;*/
+  /*font-family: 'mada', sans-serif;*/
+  font-family: 'Bad Script', cursive;
   text-align: center;
-  font-size: 2.75em;
+  font-size: 3.75em;
   padding-top: 43px;
   padding-bottom: 20px;
+  margin-bottom: -10px;
   align-content: center;
   /* text-shadow: 2px 5px 5px rgba(8, 8, 8, 0.75),
                 -5px 6px 7px rgba(8, 8, 8, 0.75); */

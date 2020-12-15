@@ -1,7 +1,7 @@
 <template>
 <body>
   <div class="whatever">
-    <h1 class="title">Restaurant Tinder</h1>
+    <h1 class="title"><strong>Restaurant Tinder</strong></h1>
   </div>
   
   <div class="loading" v-if="isLoading">
@@ -119,6 +119,7 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Bad+Script&display=swap');
 form {
 margin-bottom: 50px;
 }
@@ -131,6 +132,7 @@ margin-bottom: 50px;
   height: 420px;
   width: 400px;
   text-align: center;
+  border-radius: 5%;
   border-radius: 5%;
   border: 2px solid black;
 }
@@ -178,10 +180,11 @@ body {
 
 .title {
   text-align: center;
-  font-size: 45px;
+  font-size: 50px;
   margin-top: -10px;
-  margin-bottom: -10px;
+  margin-bottom: -20px;
   color: #FD297B;
+  font-family: 'Bad Script', cursive;
 }
 
 #username-signin, #password-singin {
@@ -201,7 +204,7 @@ button {
   padding-top: 20px;
 }
 
-#login-title, .sr-only, button, .link, .title {
+#login-title, .sr-only, button, .link {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
@@ -231,6 +234,7 @@ a {
   color: #FD297B;
   text-decoration: none;
   font-weight: 600;
+  font-size: 20px;
 }
 
 a:hover {
