@@ -68,10 +68,10 @@ INSERT INTO profile VALUES(1, 'Test', 'User', (SELECT username FROM users WHERE 
 --Test Data For -- profile_preferences
 --VALUES(user_id, type, like(1)/dislike(2))
 INSERT INTO profile_preferences VALUES((SELECT user_name FROM profile WHERE user_name = 'user'),
-(SELECT type_id FROM restaurant_type WHERE type_name = 'Mexican'),1);
+(SELECT type_id FROM restaurant_type WHERE type_name = 'Mexican'),1, 'Mexican');
 
 INSERT INTO profile_preferences VALUES((SELECT user_name FROM profile WHERE user_name = 'user'),
-(SELECT type_id FROM restaurant_type WHERE type_name = 'Sushi'),2);
+(SELECT type_id FROM restaurant_type WHERE type_name = 'Sushi'),2, 'Sushi');
 
 --Test Data For Matching_results
 --INSERT INTO matching_results VALUES((SELECT user_name FROM profile WHERE user_name = 'user'), 1,1);

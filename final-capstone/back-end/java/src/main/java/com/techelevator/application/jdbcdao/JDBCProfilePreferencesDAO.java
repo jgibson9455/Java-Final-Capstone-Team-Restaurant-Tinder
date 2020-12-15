@@ -1,6 +1,5 @@
 package com.techelevator.application.jdbcdao;
 
-import java.security.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,12 +37,12 @@ public class JDBCProfilePreferencesDAO implements ProfilePreferencesDAO {
 	
 	@Override // edited for Frank's method
 	public void addPrefererence(ProfilePreferences aPreference) {
-		String query = "INSERT INTO profile_preferences VALUES (?, ?, ?) "
-					+  "ON CONFLICT (user_name, type_id) "
+		String query = "INSERT INTO profile_preferences VALUES (?, ?, ?, ?) "
+					+  "ON CONFLICT (user_name, type_id, type_name) "
 					+  "DO UPDATE SET preference_id = ?";
 		try {
 			jdbcTemplate.update(query, aPreference.getUserName(), aPreference.getTypeId(), 
-					aPreference.getPreferenceId(), aPreference.getPreferenceId());
+					aPreference.getPreferenceId(), aPreference.getPreferenceId(), aPreference.getTypeName());
 		}
 		catch(DataAccessException exceptionObject) {
 			System.out.println("SQL Exception when adding preference: " + aPreference + 
@@ -70,6 +69,7 @@ public class JDBCProfilePreferencesDAO implements ProfilePreferencesDAO {
 		profilePreference.setUserName(rowset.getString("user_name"));
 		profilePreference.setTypeId(rowset.getInt("type_id"));
 		profilePreference.setPreferenceId(rowset.getInt("preference_id"));
+		profilePreference.setTypeName(rowset.getString("type_name"));
 		return profilePreference; // added addtl setPrefId bc of sql exception in console
 	}
 	
