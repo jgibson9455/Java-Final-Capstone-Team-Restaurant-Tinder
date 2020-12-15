@@ -140,6 +140,9 @@ export default {
 </script>
 
 <style scoped>
+form {
+margin-bottom: 50px;
+}
 .form-signin {
   display: flex;
   flex-direction: column;
