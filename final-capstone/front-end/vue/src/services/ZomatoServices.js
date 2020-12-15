@@ -18,7 +18,7 @@ export default{
         },
 
         getAllRestaurantsByEntities(entityId, entityType){
-            return http.get(`search?entity_id=${entityId}&entity_type=${entityType}`, {
+            return http.get(`search?entity_id=${entityId}&entity_type=${entityType}&count=40`, {
                 headers:{
                     'user-key' : keyTwo
                 }
