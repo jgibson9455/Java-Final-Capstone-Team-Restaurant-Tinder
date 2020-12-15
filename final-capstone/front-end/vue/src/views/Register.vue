@@ -107,7 +107,7 @@ export default {
                   }
                 })
                 this.$router.push({
-                path: '/update-profile',
+                path: "/update-profile",
                 query: { registration: 'success' },
               });
             }
