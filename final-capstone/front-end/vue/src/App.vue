@@ -60,6 +60,12 @@ export default {
   margin-bottom: -10px;
   transition: 0.2s ease;
 }
+
+@media screen and (max-width: 768px) {
+  #nav {
+    margin-bottom: 25px;
+  }
+}
 /* img {
     width: 2em;
 }

@@ -177,13 +177,25 @@ export default {
                         isValid = false
                     }
                 }
-                let splitCuisiens  = this.restaurants[randomNum].cuisines.split(',');
+                let splitCuisiens  = this.restaurants[randomNum].cuisines.split(', ');
                 console.log(splitCuisiens);
                 console.log(splitCuisiens.length)
 
-                // for(let i = 0; i < splitCuisiens.length; i++){
+                let matchedDislikes = 0;
+                for(let i = 0; i < this.dislikedPreferences.length; i++){
+                    console.log(this.dislikedPreferences[i].typeName);
+                    if(this.dislikedPreferences[i].preferenceId == 2 && 
+                    splitCuisiens.indexOf(this.dislikedPreferences[i].typeName) > -1){
+                        console.log("included!");
+                        matchedDislikes++;
+                        console.log(matchedDislikes);
+                    }
+                }
 
-                // }
+                 if(matchedDislikes >= splitCuisiens.length){
+                    isValid = false;
+                    console.log('Taken out due to 0 matches')
+                }
 
                 if(isValid){
                     this.randomRestaurant = this.restaurants[randomNum];

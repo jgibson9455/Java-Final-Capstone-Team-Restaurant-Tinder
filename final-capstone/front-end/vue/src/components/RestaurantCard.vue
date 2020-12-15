@@ -1,6 +1,9 @@
 <template>
     <div>
-        
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet">
+
+
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Mada&display=swap" rel="stylesheet">
 
@@ -47,9 +50,12 @@ export default {
 </script>
 <style scoped>
 #card {
-    padding-right: 50px;
+    padding-right: 25px;
+    padding-left: 25px;
+    width: 200px;
 }
 #card-name {
+    font-family: 'Bad Script', cursive;
     margin-bottom: -20px;
 }
 img.company-logo {
@@ -128,6 +134,7 @@ img.company-logo {
 }
 
 .details-btn {
+
     color:#FE3C72;
     font-size: 20px;
     margin-top: auto;
@@ -135,7 +142,6 @@ img.company-logo {
     display: inline-block;
     border-radius: 8px;
     transition: 0.4s ease-out;
-    margin-right: 50px;
     background-color: blanchedalmond;
 }
 
