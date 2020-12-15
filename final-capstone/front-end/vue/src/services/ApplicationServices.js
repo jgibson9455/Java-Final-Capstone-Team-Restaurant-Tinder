@@ -41,7 +41,7 @@ export default {
     },
 
     addPreference(aProfilePreference) {
-       http.post(`/profile/preferences`, aProfilePreference).then(()=> {return})
+       return http.post(`/profile/preferences`, aProfilePreference).then(()=> {return})
     },
 
     getAllRestaurantTypes() {
