@@ -60,6 +60,7 @@
     </form>
     
   </div>
+    <footer class="footer"><img src="@/img/logo-black.png"></footer>
 </body>
 </template>
 
@@ -145,7 +146,7 @@ body {
   "whatever whatever whatever"
   ". login ."
   ". login ."
-  ". . ."
+  ". footer ."
   ;
   grid-gap: 10px;
 }
@@ -244,5 +245,21 @@ a {
 a:hover {
   color: #FF655B;
   text-decoration: underline;
+}
+img {
+    width: 2em;
+}
+.footer{
+  grid-area: footer;
+  /* position: fixed;  */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 175px;
+  bottom: 0; 
+  width: 92em; 
+  height: 3em; 
+  background:#FF5C5C; 
+  opacity: 65%;
 }
 </style>
