@@ -4,6 +4,7 @@ public class ProfilePreferences {
 	private String userName;
 	private int typeId;
 	private int preferenceId;
+	private String typeName;
 
 //constructor
 	public ProfilePreferences() {
@@ -38,6 +39,14 @@ public class ProfilePreferences {
 	public String toString() {
 		return "ProfilePreferences [userName=" + userName + ", typeId=" + typeId + ", preferenceId=" + preferenceId
 				+ "]";
+	}
+
+	public String getTypeName() {
+		return typeName;
+	}
+
+	public void setTypeName(String typeName) {
+		this.typeName = typeName;
 	}
 
 	
