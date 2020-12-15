@@ -1,5 +1,9 @@
 <template>
     <div>
+        
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Mada&display=swap" rel="stylesheet">
+
         <div id="card">
             <h2 id="card-name">{{this.restaurant.restaurantName}}</h2>
             <h3 id="card-type">{{this.restaurant.typeName}}</h3>

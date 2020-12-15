@@ -1,5 +1,8 @@
 <template>
+
 <body class="profile">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Mada&display=swap" rel="stylesheet">
   <div class="space"></div>
 
   <div class="banner">
@@ -118,7 +121,8 @@ export default {
   /* opacity: 50%; */
 }
 .profile {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'Mada', sans-serif;
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
   height: 250px;
   align-content: center;
   padding-top: 30px;
