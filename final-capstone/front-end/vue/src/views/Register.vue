@@ -135,6 +135,8 @@ export default {
 
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Bad+Script&display=swap');
+
  .form-register {
    display: flex;
   flex-direction: column;
@@ -226,7 +228,7 @@ export default {
 
 .logo-account {
   text-align: center;
-  padding-top: 4px;
+  padding-top: 5px;
   
 }
 
@@ -237,12 +239,12 @@ export default {
 
 .title2 {
   text-align: center;
-  font-size: 45px;
+  font-size: 50px;
   margin-top: -10px;
-  margin-bottom: -10px;
+  margin-bottom: -20px;
   color: #FD297B;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
+  font-family: 'Bad Script', cursive;
+  }
 
 .banner2 > img {
   /* width: 1000px; */

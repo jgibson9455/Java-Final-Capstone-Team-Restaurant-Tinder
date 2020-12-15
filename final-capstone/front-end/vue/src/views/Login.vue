@@ -133,6 +133,7 @@ margin-bottom: 50px;
   width: 400px;
   text-align: center;
   border-radius: 5%;
+  border-radius: 5%;
   border: 2px solid black;
 }
 
@@ -233,6 +234,7 @@ a {
   color: #FD297B;
   text-decoration: none;
   font-weight: 600;
+  font-size: 20px;
 }
 
 a:hover {
