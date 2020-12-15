@@ -92,7 +92,7 @@
 <script>
 import ApplicationServices from '../services/ApplicationServices.js'
 import ZomatoServices from '../services/ZomatoServices.js'
-//import YelpServices from '../services/YelpServices.js'
+
 export default {
     name: 'match-making',
     data() {
@@ -116,7 +116,9 @@ export default {
         cityEntityType: "",
         cityEntityId: "",
         showModal: false,
-        alreadyInFavorites: {}
+        alreadyInFavorites: [],
+        allCuisines: [],
+        dislikedPreferences: []
         }
     },
     created() {
@@ -136,6 +138,7 @@ export default {
                             this.restaurant.restaurantDescrip = "Cuisines: " + place.restaurant.cuisines  + 
                             " Hours of Operation: " + place.restaurant.timings + " Average Rating: " +
                             place.restaurant.user_rating.aggregate_rating;
+                            this.restaurant.cuisines = place.restaurant.cuisines;
                             this.restaurant.zipCode =  place.restaurant.location.zipcode;
                             this.restaurant.city =  place.restaurant.location.locality;
                             this.restaurant.phoneNumber =  place.restaurant.phone_numbers;
@@ -149,10 +152,14 @@ export default {
                     ApplicationServices.getMatchingResultsByUserName(this.$store.state.user.username)
                     .then((response) =>{
                         this.alreadyInFavorites = response.data;
-                        this.getRandomRestaurant();
                     });
 
-                    //this.getRandomRestaurant();
+                    ApplicationServices.getPreferencesByUsername(this.$store.state.user.username)
+                    .then((response)=>{
+                        this.dislikedPreferences = response.data;
+                    });
+
+                    this.getRandomRestaurant();
                     });
                 });
                  this.isLoading = false;
@@ -169,7 +176,15 @@ export default {
                     if(this.alreadyInFavorites[i].restaurantId == this.restaurants[randomNum].restaurantId){
                         isValid = false
                     }
-                }   
+                }
+                let splitCuisiens  = this.restaurants[randomNum].cuisines.split(',');
+                console.log(splitCuisiens);
+                console.log(splitCuisiens.length)
+
+                // for(let i = 0; i < splitCuisiens.length; i++){
+
+                // }
+
                 if(isValid){
                     this.randomRestaurant = this.restaurants[randomNum];
                 }

@@ -27,6 +27,7 @@
 
 import RestaurantCard from '../components/RestaurantCard.vue'
 import theApplicationService from '../services/ApplicationServices'
+import ZomatoServices from '../services/ZomatoServices.js';
 
 export default {
     name: 'restaurants',
