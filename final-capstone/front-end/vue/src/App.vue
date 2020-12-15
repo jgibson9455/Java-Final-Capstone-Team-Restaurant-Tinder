@@ -19,7 +19,7 @@
        <router-view />
 
       
-       <footer class="footer"><img src="@/img/logo-black.png"></footer>
+       <!-- <footer class="footer"><img src="@/img/logo-black.png"></footer> -->
        <!-- <h5>C 2020</h5> -->
   
 </div> <!--id app closing div-->

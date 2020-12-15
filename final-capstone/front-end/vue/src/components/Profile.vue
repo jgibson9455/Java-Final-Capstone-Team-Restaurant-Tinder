@@ -31,17 +31,22 @@
          ><b>Continue Swiping</b></button>
         </router-link>
 
-            <!-- <h2 class="fav-head"
-    v-on:click="showFavs = (showFavs ? false : true)"
-    ><u id="fav-rest-line">{{showFavs === false ? "View Favorites" : "Hide Favorites"}}</u></h2>
-    <div class="rest-card" v-if="showFavs === true">
-      <restaurant-card class="flex-container"
-      v-for="restaurant in fav"
-      v-bind:key="restaurant.restaurantId"
-      v-bind:restaurant="restaurant"
-      ></restaurant-card></div> -->
+        <h2 class="fav-head"
+          v-on:click="showFavs = (showFavs ? false : true)"
+          ><u id="fav-rest-line">{{showFavs === false ? "View Favorites" : "Hide Favorites"}}</u></h2>
+      
+      <div class="rest-card" v-if="showFavs === true">
+        
+        <restaurant-card class="flex-container"
+          v-for="restaurant in fav"
+          v-bind:key="restaurant.restaurantId"
+          v-bind:restaurant="restaurant"
+        ></restaurant-card>
+        
+      </div>
    
    <!-- <router-link class="favorite-restaurants" v-bind:to="{name: 'favorites'}"><h3 class="fav">Favorite Restaurants</h3></router-link>-->
+       <footer class="footer"><img src="@/img/logo-black.png"></footer>
 
     </div>
 
@@ -50,7 +55,9 @@
 </template>
 
 <script>
-// import RestaurantCard from '../components/RestaurantCard.vue'
+import RestaurantCard from '../components/RestaurantCard.vue'
+import appService from '../services/ApplicationServices'
+import ZomatoServices from '../services/ZomatoServices'
 
 export default {
     name: 'profile',
@@ -62,12 +69,40 @@ export default {
            lastName: "",
            email: "",
            city: ""
-      }
+      },
+      favoriteRestaurant: {},
+      fav: [],
+      matching: [],
+      showFavs: true
+
     }
   },
-  //   components: {
-  //   RestaurantCard
-  // },
+    components: {
+    RestaurantCard
+  },
+  created() {
+    appService.getMatchingResultsByUserName(this.$store.state.user.username).then((response) =>{
+      this.matching = response.data;
+    }).then(() =>{
+      this.matching.forEach((match) =>{
+        ZomatoServices.getRestaurantById(match.restaurantId).then((apiData) =>{
+            this.favoriteRestaurant.restaurantId = apiData.data.id;
+            this.favoriteRestaurant.restaurantName =  apiData.data.name;
+            this.favoriteRestaurant.restaurantDescrip = "Cuisines: " + apiData.data.cuisines  + 
+            " Hours of Operation: " + apiData.data.timings + " Average Rating: " +
+            apiData.data.user_rating.aggregate_rating;
+            this.favoriteRestaurant.zipCode =  apiData.data.location.zipcode;
+            this.favoriteRestaurant.city =  apiData.data.location.locality;
+            this.favoriteRestaurant.phoneNumber =  apiData.data.phone_numbers;
+            this.favoriteRestaurant.address =  apiData.data.location.address;
+            this.favoriteRestaurant.imageLink = 'https://cdn.dribbble.com/users/1012566/screenshots/4187820/topic-2.jpg'
+
+          this.fav.push(this.favoriteRestaurant);
+          this.favoriteRestaurant = {};
+        })
+      })
+    })
+  },  
 }
 </script>
 
@@ -200,7 +235,7 @@ export default {
 } */
 
 
-/* .favorites {
+.favorites {
    font-size: 1.5em; 
    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
    display: flex;
@@ -218,5 +253,21 @@ export default {
 
 #fav-rest-line:hover{
   color: #FF655B;
-} */
+}
+img {
+    width: 2em;
+}
+.footer{
+  position: fixed; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 175px;
+  bottom: 0; 
+  width: 100%; 
+  /* Height of the footer*/  
+  height: 3em; 
+  background:#FF5C5C; 
+  opacity: 65%;
+}
 </style>

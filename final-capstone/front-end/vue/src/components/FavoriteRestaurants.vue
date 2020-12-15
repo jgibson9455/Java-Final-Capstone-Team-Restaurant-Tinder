@@ -5,7 +5,7 @@
        <img src='@/img/celerywalk.gif'/>
     </div> -->
 
-    <h2 class="fav-head"
+    <!-- <h2 class="fav-head"
     v-on:click="showFavs = (showFavs ? false : true)"
     ><u id="fav-rest-line">{{showFavs === false ? "View Favorites" : "Hide Favorites"}}</u></h2>
     <div class="rest-card" v-if="showFavs === true">
@@ -13,7 +13,7 @@
       v-for="restaurant in fav"
       v-bind:key="restaurant.restaurantId"
       v-bind:restaurant="restaurant"
-      ></restaurant-card></div>
+      ></restaurant-card></div> -->
 
       <!-- <div class="logo"><img src="../img/logo-black.png"></div> -->
   </div>
@@ -21,9 +21,9 @@
 </template>
 
 <script>
-import RestaurantCard from '../components/RestaurantCard.vue'
-import appService from '../services/ApplicationServices'
-import ZomatoServices from '../services/ZomatoServices'
+// import RestaurantCard from '../components/RestaurantCard.vue'
+// import appService from '../services/ApplicationServices'
+// import ZomatoServices from '../services/ZomatoServices'
 export default {
   data() {
     return {
@@ -34,9 +34,9 @@ export default {
       // isLoading: true
     }
   },
-  components: {
-    RestaurantCard
-  },
+  // components: {
+  //   RestaurantCard
+  // },
   created() {
     appService.getMatchingResultsByUserName(this.$store.state.user.username).then((response) =>{
       this.matching = response.data;
@@ -72,6 +72,7 @@ export default {
     display: flex;
     justify-content: center;
 } */
+
 .favorites {
    margin-top: 39px;
    font-size: 1.5em; 
@@ -81,8 +82,9 @@ export default {
 }
 .fav-head {
   display: flex;
-  padding-top: 6em;
+  padding-top: 0px;
   margin-bottom: 5px;
+  margin-top: 0px;
   /*color: #FD297B;*/
   color: #FF5864; 
   justify-content: center;
