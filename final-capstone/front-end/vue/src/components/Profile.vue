@@ -258,6 +258,17 @@ export default {
 #fav-rest-line:hover{
   color: #FF655B;
 }
+.logo {
+  display: flex;
+  justify-content: center;
+  padding: 5%;
+}
+.rest-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  text-align: center;
+  align-items: center;
+}
 img {
     width: 2em;
 }
