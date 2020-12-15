@@ -1,5 +1,7 @@
 <template>
+<body>
     <div class="restaurant-page">
+        <div class="space">
             <h1 class="page-head"><u id="rest-line">Restaurants</u></h1>
 
             <div class="loading" v-if="isLoading">
@@ -8,7 +10,7 @@
         <div class="restaurant-items">
                 
             <div class="restaurant-head">
-            <restaurant-card
+            <restaurant-card class="card"
                     v-for="restaurant in restaurants"
                     v-bind:key="restaurant.id"
                     v-bind:restaurant="restaurant">
@@ -19,8 +21,11 @@
 
                 <img class="rest-images" v-bind:src="restaurant.imageLink"/> -->
       
-        </div>    
+        </div> 
+        </div>   
     </div>  
+      <footer class="footer"><img src="@/img/logo-black.png"></footer>
+</body>
 </template>
 
 <script>
@@ -109,21 +114,23 @@ methods: {
     margin-top: 5px;
     margin-bottom: -15px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    /* text-shadow: 2px 5px 5px rgba(59, 59, 57, 0.445),
-                -5px 6px 7px  rgba(59, 59, 57, 0.445); 
-                
-      text-shadow: black 0px 0px 1px,   black 0px 0px 1px,   black 0px 0px 1px,
-             black 0px 0px 1px,   black 0px 0px 1px,   black 0px 0px 1px*/
-
-   /*text-shadow: 2px 5px 5px rgba(8, 8, 8, 0.75),
-                -5px 6px 7px rgba(8, 8, 8, 0.75);*/
-
-    /* -webkit-font-smoothing: antialiased; */
+  }
+.restaurant-items {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.restaurant-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    text-align: center;
+    justify-content: space-around;
+    font-size: 22px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 20px;
+    color: rgb(8, 8, 8);
     }
-/* #pref-line {
-    text-decoration: none;
-    border-bottom: 5px solid #FF5864;
-} */
 h2 {
     margin-bottom: 5px;
 }
@@ -131,33 +138,12 @@ h4 {
     margin-top: 5px;
 }
 .restaurant-page {
-    /*background-image: linear-gradient(to bottom left,  #FF655B, #FD297B);*/
     padding: 15px;
     margin-top: 15px;
     background-clip: padding-box;
     padding-bottom: 40em;
 }
-.restaurant-items {
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    /* flex: 1;
-    overflow: auto; */
-}
-.restaurant-head {
-    display: flex;
-    flex-wrap: wrap;
-    text-align: center;
-    justify-content: space-between;
-    font-size: 22px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 20px;
-    /* text-shadow: blanchedalmond 0px 0px .75px,   blanchedalmond 0px 0px .75px,   blanchedalmond 0px 0px .75px,
-             blanchedalmond 1px 0px .75px,   blanchedalmond 0px 0px .75px,   blanchedalmond 0px 0px .75px; */
-    color: rgb(8, 8, 8);
-    }
-#all-rest-name{
 
-}
 #all-rest-type{
     margin-top: -8px;
 
@@ -174,13 +160,27 @@ h4 {
     border-radius: 5px; 
     }
 .image {
-    display: flex;
-    justify-content: center;
+    /* display: flex;
+    justify-content: center; */
     padding: 13%;
 
     } 
 /* img {
     width: 2%;
 } */
-
+img {
+    width: 2em;
+}
+.footer{
+  /* position: fixed;  */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 175px;
+  bottom: 0; 
+  width: 100%; 
+  height: 3em; 
+  background:#FF5C5C; 
+  opacity: 65%;
+}
 </style>

@@ -1,8 +1,9 @@
 <template>
 
 <body class="profile">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Mada&display=swap" rel="stylesheet">
+    <!-- <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Mada&display=swap" rel="stylesheet"> -->
+
   <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet">
 
@@ -15,15 +16,11 @@
   <div class='pic'>
     <img class="profile-pic" src='@/img/profile.png'/>
   </div>
-<!--<u id="prof-line">-->
+
   <h1 id="my-profile">My Profile</h1>
 
   <div class="home">
     <div class="top-half">
-          <!-- <div class="welcome">
-              <p>Here is where you can view a list of restaurants as well as look at your favorited restaurants that you saved for later.
-              Also, you can update your profile as well as choose your food preferences with the Food Questionnaire.</p>
-          </div> -->
 
           <div class="profile-nav">
               <router-link class="profile-navs" v-bind:to="{name: 'update-profile-view'}">Update Profile Info</router-link> |
@@ -51,9 +48,6 @@
         
       </div>
    
-   <!-- <router-link class="favorite-restaurants" v-bind:to="{name: 'favorites'}"><h3 class="fav">Favorite Restaurants</h3></router-link>-->
-     
-
     </div>
   <footer class="footer"><img src="@/img/logo-black.png"></footer>
   </div>
@@ -280,10 +274,14 @@ export default {
   padding: 5%;
 }
 .rest-card {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  /* display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr; */
   text-align: center;
-  align-items: center;
+
 }
 img {
     width: 2em;
