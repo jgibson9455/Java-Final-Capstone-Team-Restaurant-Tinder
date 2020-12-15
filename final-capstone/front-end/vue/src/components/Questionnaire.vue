@@ -28,15 +28,13 @@
       
   
  
-    <div class="all-pref" v-if="isHidden === false">
-
-     
+    <div class="scroll" v-if="isHidden === false">
             <div class="button-container"   v-for="type in allCuisines" v-bind:key="type.cuisine_id" > 
             <p>{{type.typeName}}</p>
               <button class="pref1" v-bind:id="type.typeId" v-on:click.prevent="addToPreferences(type.typeId,1)">like</button>
               <button class="pref1" v-bind:id="type.typeId" v-on:click.prevent="addToPreferences(type.typeId,2)">dislike</button>
             </div>
-</div>
+    </div> <!--scoll div -->
      
 
  
@@ -159,11 +157,16 @@ body{
    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-.all-pref {
+.scroll {
   grid-area: allpref;
   display: grid;
   text-align: center;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  overflow-x: hidden;
+  overflow-y:auto;
+  width: 1300px;
+  height: 300px;
+  margin: 50px;
 }
  button {
    padding: 5px;

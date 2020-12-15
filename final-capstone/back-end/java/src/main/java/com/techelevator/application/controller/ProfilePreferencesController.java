@@ -49,8 +49,7 @@ public class ProfilePreferencesController {
 	}
 	
 	static void logRequest(String message) {
-		Timestamp timestamp = new Timestamp(System.currentTimeMillis()); // why doesnt it like this?
-		System.out.println(timestamp + " - " + message);
+		System.out.println(message);
 	}
 	
 }//end of ProfilePreferencesController
