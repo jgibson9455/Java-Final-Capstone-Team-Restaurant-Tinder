@@ -6,6 +6,7 @@ const http = axios.create({
 
 const keyOne = '608eb3b4550d3c0f6a57e85f9a26fad0'
 const keyTwo = 'fbea855555e5029ba34ae13446d594f8'
+const backupKey ='059bc4082b3c0d39d438c86b72cc26fb'
 
 export default{
         getCityInfo(cityName){

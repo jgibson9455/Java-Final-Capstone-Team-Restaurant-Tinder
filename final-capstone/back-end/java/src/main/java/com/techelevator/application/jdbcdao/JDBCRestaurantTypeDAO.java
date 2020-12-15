@@ -20,10 +20,10 @@ public class JDBCRestaurantTypeDAO implements RestaurantTypeDAO {
 	}
 	
 	@Override
-	public List<RestaurantType> getAllTypes(){
+	public List<RestaurantType> getTop20Types(){
 		List<RestaurantType> types = new ArrayList<>();
 		
-		String query = "SELECT * FROM restaurant_type";
+		String query = "SELECT * FROM restaurant_type WHERE isTop20 = 'y'";
 		SqlRowSet rowSet = jdbcTemplate.queryForRowSet(query);
 		while(rowSet.next()) {
 			RestaurantType type = mapRowToRestaurantType(rowSet);
@@ -32,6 +32,21 @@ public class JDBCRestaurantTypeDAO implements RestaurantTypeDAO {
 		
 		return types;
 	}
+	
+	@Override
+	public List<RestaurantType> getNonTop20Types(){
+		List<RestaurantType> types = new ArrayList<>();
+		String query = "SELECT * FROM restaurant_type WHERE isTop20 = 'n'";
+		SqlRowSet rowSet = jdbcTemplate.queryForRowSet(query);
+		while(rowSet.next()) {
+			RestaurantType type = mapRowToRestaurantType(rowSet);
+			types.add(type);
+		}
+		
+		return types;
+	}
+	
+	
 	
 	@Override
 	public RestaurantType getTypeById(int id) {
@@ -50,7 +65,7 @@ public class JDBCRestaurantTypeDAO implements RestaurantTypeDAO {
 		RestaurantType restaurantType = new RestaurantType();
 		restaurantType.setTypeId(rowset.getInt("type_id"));
 		restaurantType.setTypeName(rowset.getString("type_name"));
-
+		restaurantType.setIsTop20(rowset.getString("isTop20"));
 		return restaurantType;
 	}
 

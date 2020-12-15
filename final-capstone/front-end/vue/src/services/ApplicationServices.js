@@ -41,11 +41,15 @@ export default {
     },
 
     addPreference(aProfilePreference) {
-       return http.post(`/profile/preferences`, aProfilePreference).then(()=> {return})
+       http.post(`/profile/preferences`, aProfilePreference).then(()=> {return})
     },
 
-    getAllRestaurantTypes() {
-        return http.get(`/types`)
+    getTop20Types() {
+        return http.get(`/types/top20`)
+    },
+
+    getNonTop20Types() {
+        return http.get(`/types/nonTop20`)
     },
 
     saveMatchingResult(matchingResult){

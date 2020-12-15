@@ -38,11 +38,11 @@ public class JDBCProfilePreferencesDAO implements ProfilePreferencesDAO {
 	@Override // edited for Frank's method
 	public void addPrefererence(ProfilePreferences aPreference) {
 		String query = "INSERT INTO profile_preferences VALUES (?, ?, ?, ?) "
-					+  "ON CONFLICT (user_name, type_id, type_name) "
+					+  "ON CONFLICT (user_name, type_id) "
 					+  "DO UPDATE SET preference_id = ?";
 		try {
 			jdbcTemplate.update(query, aPreference.getUserName(), aPreference.getTypeId(), 
-					aPreference.getPreferenceId(), aPreference.getPreferenceId(), aPreference.getTypeName());
+					aPreference.getPreferenceId(), aPreference.getTypeName(), aPreference.getPreferenceId());
 		}
 		catch(DataAccessException exceptionObject) {
 			System.out.println("SQL Exception when adding preference: " + aPreference + 

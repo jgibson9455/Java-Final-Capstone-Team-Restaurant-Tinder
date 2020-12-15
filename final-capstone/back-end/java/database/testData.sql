@@ -14,26 +14,28 @@ INSERT INTO preferences(description) VALUES('Like');
 INSERT INTO preferences(description) VALUES('Dislike');
 
 --Test Data for -- Restaurant_Types
-INSERT INTO restaurant_type VALUES(1, 'American');
-INSERT INTO restaurant_type VALUES(3, 'Asian');
-INSERT INTO restaurant_type VALUES(193, 'BBQ');
-INSERT INTO restaurant_type VALUES(227,'Bar Food');
-INSERT INTO restaurant_type VALUES(182, 'Breakfast');
-INSERT INTO restaurant_type VALUES(168, 'Burger');
-INSERT INTO restaurant_type VALUES(40, 'Fast Food');
-INSERT INTO restaurant_type VALUES(148, 'Indian');
-INSERT INTO restaurant_type VALUES(55, 'Italian');
-INSERT INTO restaurant_type VALUES(60, 'Japanese');
-INSERT INTO restaurant_type VALUES(70, 'Mediterranian');
-INSERT INTO restaurant_type VALUES(73, 'Mexican');
-INSERT INTO restaurant_type VALUES(82, 'Pizza');
-INSERT INTO restaurant_type VALUES(998, 'Salad');
-INSERT INTO restaurant_type VALUES(304, 'Sandwich');
-INSERT INTO restaurant_type VALUES(83, 'Seafood');
-INSERT INTO restaurant_type VALUES(141, 'Steak');
-INSERT INTO restaurant_type VALUES(177, 'Sushi');
-INSERT INTO restaurant_type VALUES(95, 'Thai');
-INSERT INTO restaurant_type VALUES(308, 'Vegetarian');
+INSERT INTO restaurant_type VALUES(1, 'American', 'y');
+INSERT INTO restaurant_type VALUES(3, 'Asian', 'y');
+INSERT INTO restaurant_type VALUES(193, 'BBQ', 'y');
+INSERT INTO restaurant_type VALUES(227,'Bar Food', 'y');
+INSERT INTO restaurant_type VALUES(182, 'Breakfast', 'y');
+INSERT INTO restaurant_type VALUES(168, 'Burger', 'y');
+INSERT INTO restaurant_type VALUES(40, 'Fast Food', 'y');
+INSERT INTO restaurant_type VALUES(148, 'Indian', 'y');
+INSERT INTO restaurant_type VALUES(55, 'Italian', 'y');
+INSERT INTO restaurant_type VALUES(60, 'Japanese', 'y');
+INSERT INTO restaurant_type VALUES(70, 'Mediterranian', 'y');
+INSERT INTO restaurant_type VALUES(73, 'Mexican', 'y');
+INSERT INTO restaurant_type VALUES(82, 'Pizza', 'y');
+INSERT INTO restaurant_type VALUES(998, 'Salad', 'y');
+INSERT INTO restaurant_type VALUES(304, 'Sandwich', 'y');
+INSERT INTO restaurant_type VALUES(83, 'Seafood', 'y');
+INSERT INTO restaurant_type VALUES(141, 'Steak', 'y');
+INSERT INTO restaurant_type VALUES(177, 'Sushi', 'y');
+INSERT INTO restaurant_type VALUES(95, 'Thai', 'y');
+INSERT INTO restaurant_type VALUES(308, 'Vegetarian', 'y');
+
+INSERT INTO restaurant_type VALUES(666, 'Hellfire', 'n');
 
 --Test Data for -- Restaurants
 INSERT INTO restaurant(restaurant_name, description, city, zip_code, phone_number, image_link, address, type_id)

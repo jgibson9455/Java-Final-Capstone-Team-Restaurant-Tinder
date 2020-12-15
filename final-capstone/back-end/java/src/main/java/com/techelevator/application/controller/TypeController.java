@@ -21,9 +21,14 @@ public class TypeController {
 		this.typeDao = typeDao;
 	}
 	
-	@RequestMapping(path="/types", method= RequestMethod.GET)
-	public List<RestaurantType> getAllTypes(){
-		return typeDao.getAllTypes();
+	@RequestMapping(path="/types/top20", method= RequestMethod.GET)
+	public List<RestaurantType> getTop20Types(){
+		return typeDao.getTop20Types();
+	}
+	
+	@RequestMapping(path="/types/nonTop20", method= RequestMethod.GET)
+	public List<RestaurantType> getNonTop20Types(){
+		return typeDao.getNonTop20Types();
 	}
 	
 	@RequestMapping(path="/type/{id}", method= RequestMethod.GET)

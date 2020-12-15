@@ -6,6 +6,7 @@ import com.techelevator.application.model.RestaurantType;
 
 public interface RestaurantTypeDAO {
 	
-	List<RestaurantType> getAllTypes();
+	List<RestaurantType> getTop20Types();
+	List<RestaurantType> getNonTop20Types();
 	RestaurantType getTypeById(int id);
 }

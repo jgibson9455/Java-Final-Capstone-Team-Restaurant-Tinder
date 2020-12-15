@@ -13,8 +13,8 @@
 
           <div class="button-container" v-for="type in top20" v-bind:key="type.typeId" > 
             <h5>{{type.typeName}}</h5>
-              <button class="pref1" v-bind:id="type.typeId" v-on:click.prevent="addToPreferences(type.typeId,1)">like</button>
-              <button class="pref1" v-bind:id="type.typeId" v-on:click.prevent="addToPreferences(type.typeId,2)">dislike</button>
+              <button class="pref1" v-bind:id="type.typeId" v-on:click.prevent="addToPreferences(type.typeId,1, type.typeName)"><img src="../img/Like.png"/></button>
+              <button class="pref1" v-bind:id="type.typeId" v-on:click.prevent="addToPreferences(type.typeId,2, type.typeName)"><img src="../img/Dislike.png"/></button>
             </div>
 
         </div> <!-- favorites div -->
@@ -26,8 +26,8 @@
          <div class="scroll" v-if="isHidden === false">
             <div class="button-container" v-for="type in allCuisines" v-bind:key="type.cuisine_id" > 
             <h5>{{type.typeName}}</h5>
-              <button class="pref1" v-bind:id="type.typeId" v-on:click.prevent="addToPreferences(type.typeId,1)">like</button>
-              <button class="pref1" v-bind:id="type.typeId" v-on:click.prevent="addToPreferences(type.typeId,2)">dislike</button>
+              <button class="pref1"  v-bind:id="type.typeId" v-on:click.prevent="addToPreferences(type.typeId,1, type.typeName)"><img src="../img/Like.png"/></button>
+              <button class="pref1" v-bind:id="type.typeId" v-on:click.prevent="addToPreferences(type.typeId,2, type.typeName)"><img src="../img/Dislike.png"/></button>
             </div>
     </div> <!--scoll div -->    
       </form>
@@ -38,7 +38,7 @@
 
 <script>
 import appServices from '@/services/ApplicationServices.js'
-import zomatoServices from '@/services/ZomatoServices.js'
+// import zomatoServices from '@/services/ZomatoServices.js'
 export default {
     name: 'questionnaire',
     data() {
@@ -51,6 +51,7 @@ export default {
       aProfilePreference: {
         userName: "",
         typeId: "",
+        typeName: "",
         preferenceId: ""
       },
     top20: [],
@@ -71,41 +72,46 @@ export default {
         });
         this.$router.back('/home');
       },
-      addToPreferences(id, value){
+      addToPreferences(id, value, name){
         this.aProfilePreference.userName = this.$store.state.user.username;
         this.aProfilePreference.preferenceId = value;
         this.aProfilePreference.typeId = id;
+        this.aProfilePreference.typeName = name;
         appServices.addPreference(this.aProfilePreference).then(()=> {this.aProfilePreference = "";})
       }
 },
 created() {
-      appServices.getAllRestaurantTypes().then((response) => {
+      appServices.getTop20Types().then((response) => {
       this.top20 = response.data;
       });
+
+      appServices.getNonTop20Types().then((response)=>{
+      this.allCuisines = response.data;
+      })
 
       appServices.getPreferencesByUsername(this.$store.state.user.username).then((response) =>{
         response.data.forEach((preference) =>{
           this.savedPreferences.push(preference);
       });
-    }),
+    })
 
   
-      appServices.getProfileByUsername(this.$store.state.user.username).then((response)=>{
-        this.profile = response.data;
+      // appServices.getProfileByUsername(this.$store.state.user.username).then((response)=>{
+      //   this.profile = response.data;
 
-      zomatoServices.getCityInfo(this.profile.city).then((response) =>{
-        this.cityId = response.data.location_suggestions[0].city_id;
+      // zomatoServices.getCityInfo(this.profile.city).then((response) =>{
+      //   this.cityId = response.data.location_suggestions[0].city_id;
 
-        zomatoServices.getAllCuisines(this.cityId).then((response) =>{ 
-          response.data.cuisines.forEach((cuisine)=> {
-            this.type.typeId = cuisine.cuisine.cuisine_id
-            this.type.typeName = cuisine.cuisine.cuisine_name
-            this.allCuisines.push(this.type);
-            this.type= {};
-          })
-          })
-        })
-      })
+      //   zomatoServices.getAllCuisines(this.cityId).then((response) =>{ 
+      //     response.data.cuisines.forEach((cuisine)=> {
+      //       this.type.typeId = cuisine.cuisine.cuisine_id
+      //       this.type.typeName = cuisine.cuisine.cuisine_name
+      //       this.allCuisines.push(this.type);
+      //       this.type= {};
+      //     })
+      //     })
+      //   })
+      // })
     }
 }
 </script>
@@ -174,9 +180,8 @@ button.submit-bttn {
   align-items: center;
 } 
 button.pref1 {
-  background-color: lightgray;
-  color: black;
-  
+  background-color: transparent; 
+  border: none; 
 }
  
 

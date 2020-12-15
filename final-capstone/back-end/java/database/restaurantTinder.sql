@@ -51,7 +51,8 @@ CREATE TABLE preferences(
 
 CREATE TABLE restaurant_type(
         type_id         INTEGER PRIMARY KEY,
-        type_name       VARCHAR(50)
+        type_name       VARCHAR(50),
+        isTop20         VARCHAR(3)
 );
 
 
