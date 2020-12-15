@@ -21,26 +21,17 @@
 
            
            <button class="submit" type="submit" v-on:click.prevent="savePreferences()">Submit Preferences</button>
-           <button class="submit" v-on:click.prevent="isHidden = !isHidden">{{isHidden ? "View all food preferences" : "Hide all food preferences"}} </button>
+           <button v-on:click.prevent="isHidden = !isHidden">{{isHidden ? "View all food preferences" : "Hide all food preferences"}} </button>
           
-            
-      </form>
-      
-  
- 
-    <div class="scroll" v-if="isHidden === false">
-            <div class="button-container"   v-for="type in allCuisines" v-bind:key="type.cuisine_id" > 
-            <p>{{type.typeName}}</p>
+         <div class="scroll" v-if="isHidden === false">
+            <div class="button-container" v-for="type in allCuisines" v-bind:key="type.cuisine_id" > 
+            <h5>{{type.typeName}}</h5>
               <button class="pref1" v-bind:id="type.typeId" v-on:click.prevent="addToPreferences(type.typeId,1)">like</button>
               <button class="pref1" v-bind:id="type.typeId" v-on:click.prevent="addToPreferences(type.typeId,2)">dislike</button>
             </div>
-    </div> <!--scoll div -->
-     
-
- 
-
-
-
+    </div> <!--scoll div -->    
+      </form>
+      
 
 </body>
 </template>
@@ -161,24 +152,33 @@ body{
   grid-area: allpref;
   display: grid;
   text-align: center;
+  align-items: stretch;
+  justify-items: center;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   overflow-x: hidden;
   overflow-y:auto;
   width: 1300px;
-  height: 300px;
+  height: 368px;
   margin: 50px;
+  background: url("../img/gradient-blob.png") no-repeat;
+  border-radius: 2%;
 }
  button {
    padding: 5px;
    margin: 5px;
+   font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
  }
-.submit-bttn {
+button.submit-bttn {
   display: grid;
   grid-area: bttn;
   align-items: center;
+} 
+button.pref1 {
+  background-color: lightgray;
+  color: black;
   
 }
-
+ 
 
 
 @media screen and (max-width: 800px) {

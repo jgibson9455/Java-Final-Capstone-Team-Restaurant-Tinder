@@ -128,7 +128,7 @@ img.company-logo {
 }
 
 .details-btn {
-    color: blue;
+    color:#FE3C72;
     font-size: 20px;
     margin-top: auto;
     cursor: pointer;
@@ -136,10 +136,11 @@ img.company-logo {
     border-radius: 8px;
     transition: 0.4s ease-out;
     margin-right: 50px;
+    background-color: blanchedalmond;
 }
 
 .details-btn:hover {
-    color: rgb(108, 108, 238);
+    color:black;
     box-shadow: 2px 2px rgba(0, 0, 0, 0.6);
 }
 </style>
