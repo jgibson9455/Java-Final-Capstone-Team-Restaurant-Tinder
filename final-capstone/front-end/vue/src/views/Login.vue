@@ -179,9 +179,9 @@ body {
 
 .title {
   text-align: center;
-  font-size: 45px;
+  font-size: 50px;
   margin-top: -10px;
-  margin-bottom: -10px;
+  margin-bottom: -20px;
   color: #FD297B;
   font-family: 'Bad Script', cursive;
 }
