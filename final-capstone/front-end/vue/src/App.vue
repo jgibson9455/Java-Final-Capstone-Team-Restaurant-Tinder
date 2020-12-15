@@ -18,7 +18,8 @@
     </div> <!--if nav closing div-->
        <router-view />
 
-       <!-- <footer class="image"><img src="@/img/logo-black.png"></footer> -->
+      
+       <footer class="footer"><img src="@/img/logo-black.png"></footer>
        <!-- <h5>C 2020</h5> -->
   
 </div> <!--id app closing div-->
@@ -61,6 +62,20 @@ export default {
 }
 img {
     width: 5%;
-
 }
+.footer{
+  /* position: fixed;  */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 175px;
+  padding: 10px 10px 0px 10px; 
+  bottom: 0; 
+  width: 100%; 
+  /* Height of the footer*/  
+  height: 90px; 
+  background:#FF5C5C; 
+  opacity: 75%;
+}
+
 </style>

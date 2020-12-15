@@ -2,13 +2,15 @@
 <body class="profile">
   <div class="space"></div>
 
+  <div class="banner">
+    <img src='@/img/banner.jpeg'/>
+  </div>
+
   <div class='pic'>
     <img class="profile-pic" src='@/img/profile.png'/>
   </div>
 
   <h1 id="my-profile"><u id="prof-line">My Profile</u></h1>
-
-  
 
   <div class="home">
     <div class="top-half">
@@ -28,25 +30,19 @@
          <button class="start"
          ><b>Continue Swiping</b></button>
         </router-link>
+
+            <h2 class="fav-head"
+    v-on:click="showFavs = (showFavs ? false : true)"
+    ><u id="fav-rest-line">{{showFavs === false ? "View Favorites" : "Hide Favorites"}}</u></h2>
+    <div class="rest-card" v-if="showFavs === true">
+      <restaurant-card class="flex-container"
+      v-for="restaurant in fav"
+      v-bind:key="restaurant.restaurantId"
+      v-bind:restaurant="restaurant"
+      ></restaurant-card></div>
    
-   <!-- <router-link class="favorite-restaurants" v-bind:to="{name: 'favorites'}"><h3 class="fav">Favorite Restaurants</h3></router-link>
-    </div>
+   <!-- <router-link class="favorite-restaurants" v-bind:to="{name: 'favorites'}"><h3 class="fav">Favorite Restaurants</h3></router-link>-->
 
-    <div class="fav-temp">
-        <div class="rest-1">
-            <p>Restaurant 1</p>
-            <img class="first" src="../img/rest-1.jpg"/>
-        </div>
-
-        <div class="rest-2">
-            <p>Restaurant 2</p>
-            <img class="middle" src="../img/rest-2.jpg"/>
-        </div>
-
-        <div class="rest-3"> 
-            <p>Restaurant 3</p>
-            <img class="last" src="../img/rest-3.jpg"/>
-        </div> -->
     </div>
 
   </div>
@@ -54,6 +50,7 @@
 </template>
 
 <script>
+import RestaurantCard from '../components/RestaurantCard.vue'
 
 export default {
     name: 'profile',
@@ -67,42 +64,38 @@ export default {
            city: ""
       }
     }
-  }
+  },
+    components: {
+    RestaurantCard
+  },
 }
 </script>
 
 <style>
+.banner > img {
+  width: 150%;
+  max-height: 175px;
+}
+
+.banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* opacity: 50%; */
+}
 .profile {
-  /* display: flex;
-  flex-direction: column; */
+
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  /* height: 700px; */
   height: 250px;
   align-content: center;
   padding-top: 30px;
   font-size: 17px;
-  /* display: grid;
-  grid-template-columns: 1fr 2fr 2fr 1fr;
-  grid-template-areas:
-  "space space space space"
-  ". home home ."
-  ". home home ."
-  ". home home ."
-  ". . . ."
-  ;
-  grid-gap: 10px; */
 }
 #my-profile {
   font-size: 2.85em;
   padding-bottom: 25px;
   align-content: center;
-  /* text-shadow: 2px 5px 5px rgba(59, 59, 57, 0.445),
-                -2px 6px 7px  rgba(59, 59, 57, 0.445);  */
   color: #FF5864;
-}
-#prof-line {
-    /* text-decoration: none;
-    border-bottom: 5px solid #FF5864; */
 }
 .home > .top-half {
   display: flex;
@@ -112,18 +105,11 @@ export default {
   margin-left: 200px;
   margin-right: 200px;
   padding-top: 25px;
-  /* width: 700px; */
-  /* align-content: center; */
   padding-bottom: 20px;
-  /* justify-content: space-around; */
-  /* display: flex;
-  flex-direction: column;
-  object-fit: fill; */
-  /* grid-area: home; */
 }
-/* .space {
-  grid-area: space;
-} */
+.profile-nav {
+  margin-top: -50px;
+}
 .profile-nav > .profile-navs {
   color: black;
   font-size: 25px;
@@ -132,6 +118,7 @@ export default {
   color: black;
 }
 .restaurant-navs{
+  cursor: pointer;
   margin-top: 15px;
   font-size: 22px;
 }
@@ -139,14 +126,14 @@ export default {
     font-size: 24px;
 }
 #my-profile {
-  text-align: center;
+  /* text-align: center; */
   margin-bottom: -30px;
+  margin-top: -10px;
 }
 .fav {
   text-decoration: underline;
   text-decoration-color: lightgray;
 }
-
 .welcome {
   font-size: 15px;
   margin-top: -20px;
@@ -165,7 +152,6 @@ export default {
   margin-left: 200px;
   margin-right: 200px;
   margin-top: 80px;
-  /* padding-bottom: 50px; */
 }
 .middle {
   padding-left: -10px;
@@ -178,7 +164,6 @@ export default {
   border-radius: 3%;
 }
 .start {
-     /* display: flex; */
      background-color: blanchedalmond;
      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
      box-shadow: 
@@ -186,37 +171,56 @@ export default {
      0 -1px 1px #666, 
      inset 0 -1px 1px rgba(0,0,0,0.5),
      inset 0 1px 1px rgba(255,255,255,0.8);  
-     /*#ffbfb4*/
      border-radius: 40px;
      border: none;
      color: #FD297B;
      padding: 16px 32px;
      text-align: center;
-     font-size: 25px; 
-     margin: 4px 2px;
+     font-size: 40px; 
+     /* margin: 2px 1px; */
      opacity: 0.6;
      transition: 0.3s;
      display: inline-block;
      text-decoration: none;
      cursor: pointer;
-     margin-top: 25px;
-     /* padding-top: 25px;
-     padding-bottom: 25px;
-     padding-right: 50px;  
-     padding-left: 50px;   */
+     margin-top: 50px;
 }
 .start:hover{
   opacity: 1;
 }
-
 .profile-pic {
   border-radius: 50%;
-  width: 60px;
+  width: 10em;
+  margin-top: -70px;
+  margin-left: 20px;
+  /* opacity: 100%; */
 }
-
-.pic {
+/* .pic {
   display: flex;
   justify-content: center;
   margin-bottom: -20px;
+} */
+.favorites {
+   /* margin-top: 39px; */
+   font-size: 1.5em; 
+   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+   display: flex;
+   flex-direction: column;
+}
+.fav-head {
+  display: flex;
+  /* margin-bottom: 5px; */
+  /*color: #FD297B;*/
+  color: #FF5864; 
+  justify-content: center;
+}
+#fav-rest-line {
+  color: #FD297B;
+  cursor: pointer;
+  /* padding-top: 20px; */
+}
+
+#fav-rest-line:hover{
+  color: #FF655B;
 }
 </style>
