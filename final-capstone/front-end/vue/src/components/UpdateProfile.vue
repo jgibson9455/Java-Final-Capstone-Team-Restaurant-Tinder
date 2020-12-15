@@ -2,7 +2,7 @@
 <!-- <u id="update-prof-line">-->
   <div class="update-prof-main">
     
-  <h1 id="prof-head"><strong>Create Profile</strong></h1>
+  <h1 id="prof-head"><strong>Update Profile</strong></h1>
     <div class="form">
       <form class="update-profile" >
           <label for="firstName" class="profile-form">First Name: </label>

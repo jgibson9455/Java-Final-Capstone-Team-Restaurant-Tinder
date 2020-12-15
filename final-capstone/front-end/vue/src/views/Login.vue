@@ -192,6 +192,10 @@ body {
   padding: 20px;
 }
 
+.form-control {
+  padding: 5px;
+}
+
 .sr-only {
   font-size: 20px;
 }
