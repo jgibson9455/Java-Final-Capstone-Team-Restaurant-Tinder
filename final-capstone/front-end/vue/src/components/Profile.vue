@@ -3,6 +3,9 @@
 <body class="profile">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Mada&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet">
+
   <div class="space"></div>
 
   <div class="banner">
@@ -12,8 +15,8 @@
   <div class='pic'>
     <img class="profile-pic" src='@/img/profile.png'/>
   </div>
-
-  <h1 id="my-profile"><u id="prof-line">My Profile</u></h1>
+<!--<u id="prof-line">-->
+  <h1 id="my-profile">My Profile</h1>
 
   <div class="home">
     <div class="top-half">
@@ -49,10 +52,10 @@
       </div>
    
    <!-- <router-link class="favorite-restaurants" v-bind:to="{name: 'favorites'}"><h3 class="fav">Favorite Restaurants</h3></router-link>-->
-       <footer class="footer"><img src="@/img/logo-black.png"></footer>
+     
 
     </div>
-
+  <footer class="footer"><img src="@/img/logo-black.png"></footer>
   </div>
 </body>
 </template>
@@ -118,17 +121,17 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* opacity: 50%; */
 }
 .profile {
-  font-family: 'Mada', sans-serif;
   /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
-  height: 250px;
+  /* font-family: 'Mada', sans-serif; */
+  height: 25em;
   align-content: center;
   padding-top: 30px;
   font-size: 17px;
 }
 #my-profile {
+  font-family: 'Bad Script', cursive;
   font-size: 2.85em;
   padding-bottom: 25px;
   align-content: center;
@@ -146,18 +149,27 @@ export default {
 }
 .profile-nav {
   margin-top: -30px;
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
+  font-family: 'Mada', sans-serif;
 }
 .profile-nav > .profile-navs {
   color: black;
   font-size: 25px;
 }
-.home > .restaurant-navs {
-  color: black;
-}
 .restaurant-navs{
+  color: black;
   cursor: pointer;
   margin-top: 15px;
   font-size: 22px;
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
+  font-family: 'Mada', sans-serif;
+
+}
+.restaurant-navs:hover{
+  color: #FE3C72;
+}
+.profile-navs:hover{
+  color: #FE3C72;  
 }
 .favorite-restaurants{
     font-size: 24px;
@@ -227,7 +239,7 @@ export default {
 }
 .profile-pic {
   border-radius: 50%;
-  width: 10em;
+  width: 8.5em;
   margin-top: -70px;
   margin-left: 20px;
   /* opacity: 100%; */
@@ -241,22 +253,26 @@ export default {
 
 .favorites {
    font-size: 1.5em; 
-   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
    display: flex;
    flex-direction: column;
 }
 .fav-head {
   display: flex;
-  color: #FF5864; 
+  color: #FE3C72;
   justify-content: center;
+  font-size: xx-large;
+  font-family: 'Mada', sans-serif;
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
+  font-family: 'Mada', sans-serif;
+
 }
 #fav-rest-line {
-  color: #FD297B;
+  color: #FE3C72;
   cursor: pointer;
 }
 
 #fav-rest-line:hover{
-  color: #FF655B;
+  color: black;
 }
 .logo {
   display: flex;
@@ -273,14 +289,13 @@ img {
     width: 2em;
 }
 .footer{
-  position: fixed; 
+  /* position: fixed;  */
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 175px;
   bottom: 0; 
   width: 100%; 
-  /* Height of the footer*/  
   height: 3em; 
   background:#FF5C5C; 
   opacity: 65%;
