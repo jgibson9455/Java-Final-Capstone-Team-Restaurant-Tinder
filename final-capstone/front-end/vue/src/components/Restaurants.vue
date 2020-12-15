@@ -34,6 +34,7 @@ export default {
     data(){
         return {
             restaurants: [],
+            localRestaurant: {},
             isLoading: true,
             showModal: false   
         }
@@ -45,12 +46,36 @@ export default {
         'restaurant'
     ],
 created() {
-    theApplicationService.getAllRestaurants()
-        .then(apiData => {
-            this.restaurants = apiData.data;
-            this.getRestaurantTypes();
-            this.isLoading = false;
-        })
+    theApplicationService.getProfileByUsername(this.$store.state.user.username)
+        .then((response) =>{
+            this.profile = response.data;
+            ZomatoServices.getCityInfo(this.profile.city)
+            .then((response) =>{
+                this.cityEntityType = response.data.location_suggestions[0].entity_type;
+                this.cityEntityId = response.data.location_suggestions[0].entity_id;
+
+                ZomatoServices.getAllRestaurantsByEntities(this.cityEntityId, this.cityEntityType)
+                    .then((response) =>{
+                        response.data.restaurants.forEach((place) =>{
+                            this.localRestaurant.restaurantId = place.restaurant.id;
+                            this.localRestaurant.restaurantName =  place.restaurant.name;
+                            this.localRestaurant.restaurantDescrip = "Cuisines: " + place.restaurant.cuisines  + 
+                            " Hours of Operation: " + place.restaurant.timings + " Average Rating: " +
+                            place.restaurant.user_rating.aggregate_rating;
+                            this.localRestaurant.cuisines = place.restaurant.cuisines;
+                            this.localRestaurant.zipCode =  place.restaurant.location.zipcode;
+                            this.localRestaurant.city =  place.restaurant.location.locality;
+                            this.localRestaurant.phoneNumber =  place.restaurant.phone_numbers;
+                            this.localRestaurant.address =  place.restaurant.location.address;
+                            this.localRestaurant.imageLink = 'https://cdn.dribbble.com/users/1012566/screenshots/4187820/topic-2.jpg'
+
+                            this.restaurants.push(this.localRestaurant);
+                            this.localRestaurant = {};
+                        });
+                        this.isLoading = false;
+                    });
+            });
+        });
 },
 
 methods: {
