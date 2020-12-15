@@ -61,7 +61,7 @@ export default {
   transition: 0.2s ease;
 }
 img {
-    width: 5%;
+    width: 2em;
 }
 .footer{
   /* position: fixed;  */
@@ -69,13 +69,12 @@ img {
   align-items: center;
   justify-content: center;
   margin-top: 175px;
-  padding: 10px 10px 0px 10px; 
   bottom: 0; 
   width: 100%; 
   /* Height of the footer*/  
-  height: 90px; 
+  height: 3em; 
   background:#FF5C5C; 
-  opacity: 75%;
+  opacity: 65%;
 }
 
 </style>

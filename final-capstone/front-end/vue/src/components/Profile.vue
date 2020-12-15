@@ -31,7 +31,7 @@
          ><b>Continue Swiping</b></button>
         </router-link>
 
-            <h2 class="fav-head"
+            <!-- <h2 class="fav-head"
     v-on:click="showFavs = (showFavs ? false : true)"
     ><u id="fav-rest-line">{{showFavs === false ? "View Favorites" : "Hide Favorites"}}</u></h2>
     <div class="rest-card" v-if="showFavs === true">
@@ -39,7 +39,7 @@
       v-for="restaurant in fav"
       v-bind:key="restaurant.restaurantId"
       v-bind:restaurant="restaurant"
-      ></restaurant-card></div>
+      ></restaurant-card></div> -->
    
    <!-- <router-link class="favorite-restaurants" v-bind:to="{name: 'favorites'}"><h3 class="fav">Favorite Restaurants</h3></router-link>-->
 
@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import RestaurantCard from '../components/RestaurantCard.vue'
+// import RestaurantCard from '../components/RestaurantCard.vue'
 
 export default {
     name: 'profile',
@@ -65,9 +65,9 @@ export default {
       }
     }
   },
-    components: {
-    RestaurantCard
-  },
+  //   components: {
+  //   RestaurantCard
+  // },
 }
 </script>
 
@@ -76,7 +76,6 @@ export default {
   width: 150%;
   max-height: 175px;
 }
-
 .banner {
   display: flex;
   justify-content: center;
@@ -84,7 +83,6 @@ export default {
   /* opacity: 50%; */
 }
 .profile {
-
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   height: 250px;
   align-content: center;
@@ -108,7 +106,7 @@ export default {
   padding-bottom: 20px;
 }
 .profile-nav {
-  margin-top: -50px;
+  margin-top: -30px;
 }
 .profile-nav > .profile-navs {
   color: black;
@@ -183,7 +181,7 @@ export default {
      display: inline-block;
      text-decoration: none;
      cursor: pointer;
-     margin-top: 50px;
+     margin-top: 30px;
 }
 .start:hover{
   opacity: 1;
@@ -200,8 +198,9 @@ export default {
   justify-content: center;
   margin-bottom: -20px;
 } */
-.favorites {
-   /* margin-top: 39px; */
+
+
+/* .favorites {
    font-size: 1.5em; 
    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
    display: flex;
@@ -209,18 +208,15 @@ export default {
 }
 .fav-head {
   display: flex;
-  /* margin-bottom: 5px; */
-  /*color: #FD297B;*/
   color: #FF5864; 
   justify-content: center;
 }
 #fav-rest-line {
   color: #FD297B;
   cursor: pointer;
-  /* padding-top: 20px; */
 }
 
 #fav-rest-line:hover{
   color: #FF655B;
-}
+} */
 </style>

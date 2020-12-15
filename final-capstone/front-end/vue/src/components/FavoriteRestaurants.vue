@@ -5,7 +5,7 @@
        <img src='@/img/celerywalk.gif'/>
     </div> -->
 
-    <!-- <h2 class="fav-head"
+    <h2 class="fav-head"
     v-on:click="showFavs = (showFavs ? false : true)"
     ><u id="fav-rest-line">{{showFavs === false ? "View Favorites" : "Hide Favorites"}}</u></h2>
     <div class="rest-card" v-if="showFavs === true">
@@ -13,7 +13,7 @@
       v-for="restaurant in fav"
       v-bind:key="restaurant.restaurantId"
       v-bind:restaurant="restaurant"
-      ></restaurant-card></div> -->
+      ></restaurant-card></div>
 
       <!-- <div class="logo"><img src="../img/logo-black.png"></div> -->
   </div>
@@ -21,7 +21,7 @@
 </template>
 
 <script>
-// import RestaurantCard from '../components/RestaurantCard.vue'
+import RestaurantCard from '../components/RestaurantCard.vue'
 import appService from '../services/ApplicationServices'
 import ZomatoServices from '../services/ZomatoServices'
 export default {
@@ -34,9 +34,9 @@ export default {
       // isLoading: true
     }
   },
-  // components: {
-  //   RestaurantCard
-  // },
+  components: {
+    RestaurantCard
+  },
   created() {
     appService.getMatchingResultsByUserName(this.$store.state.user.username).then((response) =>{
       this.matching = response.data;
@@ -90,9 +90,8 @@ export default {
 #fav-rest-line {
   color: #FD297B;
   cursor: pointer;
-  padding-top: 20px;
+  padding-top: 1.75em;
 }
-
 #fav-rest-line:hover{
   color: #FF655B;
 }
@@ -112,4 +111,5 @@ export default {
   
   flex-direction: row;*/
 }
+
 </style>
