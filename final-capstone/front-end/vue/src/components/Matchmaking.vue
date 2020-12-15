@@ -145,14 +145,14 @@ export default {
                             this.restaurants.push(this.restaurant);
                             this.restaurant = {};
                         });
-                        
+
                     ApplicationServices.getMatchingResultsByUserName(this.$store.state.user.username)
                     .then((response) =>{
                         this.alreadyInFavorites = response.data;
+                        this.getRandomRestaurant();
                     });
 
-                    this.checkIfFavorite();
-                    this.getRandomRestaurant();
+                    //this.getRandomRestaurant();
                     });
                 });
                  this.isLoading = false;
@@ -160,23 +160,20 @@ export default {
     },
     methods:{
         getRandomRestaurant(){
-            let randomNum = Math.floor(Math.random() * (this.restaurants.length)) + 1;
-            this.randomRestaurant = this.restaurants[randomNum];
-
-            //  YelpServices.getImage(this.randomRestaurant.restaurantName, this.profile.city).then((response)=>{
-            //                     this.restaurant.imageLink = response.businesses[0].image_url
-            //     });
-        },
-
-        checkIfFavorite(){
-            for(let i = 0; i < this.restaurants.length; i++){
-                for(let j = 0; j < this.alreadyInFavorites.length; j++){
-                    if(this.restaurants[i].restaurantId === this.alreadyInFavorites[j].restaurantId
-                    && this.alreadyInFavorites[j].preferenceId === 1){
-                        this.restaurants.splice(i, 1);
+            let isValid;
+            do{
+                isValid = true;
+                let randomNum = Math.floor(Math.random() * (this.restaurants.length));
+            
+                for(let i = 0; i < this.alreadyInFavorites.length; i++){
+                    if(this.alreadyInFavorites[i].restaurantId == this.restaurants[randomNum].restaurantId){
+                        isValid = false
                     }
+                }   
+                if(isValid){
+                    this.randomRestaurant = this.restaurants[randomNum];
                 }
-            }
+            }while(!isValid);
         },
 
         addRestaurantToFavorites(restaurant) {
