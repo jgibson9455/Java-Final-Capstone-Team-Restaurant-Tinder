@@ -135,10 +135,6 @@ export default {
                         this.cityEntityId = location.entity_id
                     }
                 })
-
-                // this.cityEntityType = response.data.location_suggestions[0].entity_type;
-                // this.cityEntityId = response.data.location_suggestions[0].entity_id;
-
                 ZomatoServices.getAllRestaurantsByEntities(this.cityEntityId, this.cityEntityType)
                     .then((response) =>{
                         response.data.restaurants.forEach((place) =>{
