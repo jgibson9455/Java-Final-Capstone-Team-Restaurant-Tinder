@@ -107,7 +107,7 @@ export default {
 
 <style>
 .banner > img {
-  width: 150%;
+  width: 100%;
   max-height: 175px;
 }
 .banner {

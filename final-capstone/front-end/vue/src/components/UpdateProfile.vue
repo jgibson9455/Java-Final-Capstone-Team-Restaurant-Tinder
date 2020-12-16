@@ -116,7 +116,7 @@ export default {
 }
 .banner > img {
   width: 100%;
-  height: 100px;
+  height: 175px;
 }
 .banner {
   display: flex;
