@@ -1,6 +1,7 @@
 <template>
 <div class="match-main">
-
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet">
     <div class="match-heading">
         <h1>How's this sound?</h1>  
     </div><!--end of heading-->
@@ -11,17 +12,24 @@
 
     <div class="random">
         
-        <img class="image" v-bind:src="randomRestaurant.imageLink"/>
-        <h1 id="match-rest-name"> {{ randomRestaurant.restaurantName }}</h1>
-        <h3 id="match-rest-city"> {{ randomRestaurant.city}}  </h3>
-        <!-- <p id="match-rest-descript"> {{ randomRestaurant.restaurantDescrip}}  </p> -->
+            <div class="match-elements">
+                <img class="image" v-bind:src="randomRestaurant.imageLink"/>
+                    <div class="match-info">
+                        <h1 id="match-rest-name"> {{ randomRestaurant.restaurantName }}</h1>
+                        <h3 id="match-rest-city"> {{ randomRestaurant.city}}  </h3>
+                    
+                    <div class="flex-end">
+                        <button id="details-link" @click="showModal = true">
+                            Click for details
+                        </button>
+                    </div><!--flex end-->
 
-        <!--open modal
-        v-bind:to="{name: 'details'}"-->
+                    </div><!--match info-->
+                <!-- <p id="match-rest-descript"> {{ randomRestaurant.restaurantDescrip}}  </p> -->
+            </div><!--match elements-->
+
         <div class="modal-test">
-            <button id="details-link" @click="showModal = true">
-                Click for details
-            </button>
+
 
             <transition name="fade" appear>
                 <div class="modal-overlay" v-if="showModal" @click="showModal = false"></div>
@@ -37,16 +45,9 @@
                     <button class="button" @click="showModal = false">
                         Close
                     </button>
-                </div>
+                </div> <!--modal-->
             </transition>
-        </div>
-        <!-- content for popup box
-        <div id="modal">
-            <div class="rest-content">
-                <span class="close">&times;</span>
-                <p> {{randomRestaurant.restaurantName}}</p>
-            </div> end of content div
-        </div>end of modal div -->
+        </div><!--random-->
 
     </div><!--end of random div-->
 
@@ -275,7 +276,6 @@ export default {
 
     padding: 25px;
 }
-
 .modal > h1 {
     color: #222;
     font-size: 32px;
@@ -311,39 +311,39 @@ export default {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 .match-heading {
-    color: #FF5C5C;
+    font-family: 'Bad Script', cursive;
+    color: #FF5864;
     font-size: x-large;
     margin-top: -35px;
-    margin-bottom: -25px;
-    /* text-shadow: 2px 5px 5px rgba(59, 59, 57, 0.445),
-                -2px 6px 7px  rgba(59, 59, 57, 0.445);  */
-    /* color: blanchedalmond; */
+    margin-bottom: -35px;
 }
  .image {
     align-self: center;
-    max-height: 350px; /*275*/
-    width: 352px; /*330*/
-    /* margin: -5px; */
-    padding-bottom: .5px;
-    padding-left: 2px;
-    padding-right: 2px;
+    width: 350px;
+    border-radius: 5px;
+    padding-left: 3px;
+    padding-right: 3px;
     border-bottom-style: dotted;
     border-block-start-color: black;
 }
+.match-elements{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+#match-rest-city{
+    margin-top: -15px;
+    margin-bottom: 5px;
+} 
  .modal-image {
     align-self: center;
     height: 300px;
     width: 360px;
-    /* margin: -47px;
-    padding-bottom: .5px;
-    padding-left: 2px;
-    padding-right: 2px; */
 }
 .random {
     display: flex;
     flex-direction: column;
-    /* justify-content: center;
-    align-items: center; */
+    justify-content: flex-start;
     text-align: center;
     background-color: blanchedalmond;
     border-style: solid;
@@ -354,23 +354,10 @@ export default {
     height: 495px;
     width: 350px;
 }
-#match-rest-name{
-    margin-top: 25px;
-    margin-bottom: -15px;
-}
-#match-rest-city{
-    margin-bottom: 5px;
-}
-/* #match-rest-descript{
-    margin-bottom: 60px;
-} */
 #match-modal-rest-name{
     margin-top: 10px;
     margin-bottom: -25px;
 }
- /* #match-modal-rest-type{
-    margin-bottom: 60px;
-}  */
  #match-modal-rest-phone{
     margin-bottom: 5px;
 } 
@@ -380,13 +367,10 @@ export default {
 #details-link {
     color: #FE3C72;
     font-size: larger;
-    /* margin-top: 30px; */
-    align-self: flex-end;
     cursor: pointer;
     display: inline-block;
     border-radius: 8px;
     transition: 0.4s ease-out;
-    /* position: fixed; */
     background-color: white;
 }
 #details-link:hover {
@@ -431,6 +415,7 @@ export default {
     color: #FE3C72;
     text-align: center;
     text-decoration: none;
+    font-size: larger;
     padding-top: 5px;
 }
 .your-faves:hover, .all-restaurants:hover {

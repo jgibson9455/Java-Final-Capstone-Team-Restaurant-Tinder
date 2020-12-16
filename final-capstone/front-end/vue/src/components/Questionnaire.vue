@@ -1,6 +1,8 @@
 <template>
 <body>
-
+  <head> <meta name="viewport" content="width=device-width, initial-scale=1.0"> </head>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet">
    
       <div class="heading"> 
       <h2>Preferences</h2>
@@ -26,7 +28,7 @@
          <div class="scroll" v-if="isHidden === false">
             <div class="button-container" v-for="type in allCuisines" v-bind:key="type.cuisine_id" > 
             <h5>{{type.typeName}}</h5>
-              <button class="pref1"  v-bind:id="type.typeId" v-on:click.prevent="addToPreferences(type.typeId,1, type.typeName)"><img src="../img/Like.png"/></button>
+              <button class="pref1" v-bind:id="type.typeId" v-on:click.prevent="addToPreferences(type.typeId,1, type.typeName)"><img src="../img/Like.png"/></button>
               <button class="pref1" v-bind:id="type.typeId" v-on:click.prevent="addToPreferences(type.typeId,2, type.typeName)"><img src="../img/Dislike.png"/></button>
             </div>
     </div> <!--scoll div -->    
@@ -117,13 +119,15 @@ created() {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Bad+Script&display=swap');
+
 body{
   display: grid;
   grid-template-columns: .25fr 1fr 1fr 1fr .25fr;
   grid-template-areas: 
   "head head    head    head    head"
   ".    cont    cont    cont    ."
-  ".    .       bttn    .       ."
+  /* ".    .       bttn    .       ." */
   ".    allpref allpref allpref ."
   "foot foot    foot    foot    foot"
 
@@ -135,6 +139,7 @@ body{
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   align-items: center;
   text-align: center;
+  
   }
 
 .favorites {
@@ -148,41 +153,62 @@ body{
   text-align: center;
   font-size: 2.2em;
   padding-top: 8.5px;
-  padding-bottom: 20px;
   align-content: center;
   color: #FF5864;
-   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'Bad Script', cursive;
 }
 
 .scroll {
   grid-area: allpref;
   display: grid;
   text-align: center;
-  align-items: stretch;
+  align-items: stretch; 
   justify-items: center;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   overflow-x: hidden;
   overflow-y:auto;
-  width: 1300px;
+  width: 93%;
   height: 368px;
   margin: 50px;
   background: url("../img/gradient-blob.png") no-repeat;
+  background-size: contain;
   border-radius: 2%;
+ 
 }
+
  button {
-   padding: 5px;
-   margin: 5px;
+   margin: 1px;
    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
  }
-button.submit-bttn {
+button.submit {
   display: grid;
-  grid-area: bttn;
-  align-items: center;
+  text-align: center;
+  padding: 10px 20px;
+  align-content: center;
+  justify-content: center;
 } 
 button.pref1 {
   background-color: transparent; 
+  border-radius: 50%;
   border: none; 
+  width: 30%;
+  
+  
 }
+img {
+  height: auto;
+  width: 65%;
+  transform: scale(0.98);
+  box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24); 
+  border-radius: 80%;
+  background-size: contain;
+}
+ img:active {
+  transform: scale(0.98);
+  box-shadow: 6px 4px 34px 2px rgba(0, 0, 0, 0.48); 
+  border-radius: 80%
+ }
+
  
 
 
@@ -195,6 +221,12 @@ button.pref1 {
   .main {
     height: 50em;
   }
-}
 
+  body {
+    grid-template-columns: 1fr;
+  }
+  img {
+    display: none;
+}
+}
 </style>

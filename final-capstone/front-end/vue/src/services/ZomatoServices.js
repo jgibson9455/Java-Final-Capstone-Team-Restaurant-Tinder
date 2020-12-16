@@ -12,7 +12,7 @@ export default{
         getCityInfo(cityName){
             return http.get(`/locations?query=${cityName}`, {
                 headers:{
-                    'user-key' : keyOne
+                    'user-key' : backupKey
                 }
             })
         },
@@ -28,7 +28,7 @@ export default{
         getRestaurantById(id){
             return http.get(`/restaurant?res_id=${id}`, {
                 headers:{
-                    'user-key': keyOne
+                    'user-key': backupKey
                 }
             })
         },

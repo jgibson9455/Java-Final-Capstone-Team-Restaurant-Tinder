@@ -1,6 +1,11 @@
 <template>
 <body>
+<<<<<<< HEAD
   <div class="main-title">
+=======
+  <head> <meta name="viewport" content="width=device-width, initial-scale=1.0"> </head>
+  <div class="whatever">
+>>>>>>> 3e48aec24fdab643f7f43960e38946508300e31f
     <h1 class="title"><strong>Restaurant Tinder</strong></h1>
   </div>
   
@@ -60,7 +65,7 @@
     </form>
     
   </div>
-    <footer class="footer"><img src="@/img/logo-black.png"></footer>
+    <!-- <footer class="footer"><img src="@/img/logo-black.png"></footer> -->
 </body>
 </template>
 
@@ -249,9 +254,9 @@ a:hover {
 img {
     width: 2em;
 }
-.footer{
+/* .footer{
   grid-area: footer;
-  /* position: fixed;  */
+  position: fixed;  
   display: flex;
   align-items: center;
   justify-content: center;
@@ -261,5 +266,27 @@ img {
   height: 3em; 
   background:#FF5C5C; 
   opacity: 65%;
+}*/
+@media screen and (max-width: 800px) {
+  
+  .main {
+    height: 50em;
+  }
+
+  body {
+    grid-template-columns: 1fr;
+  }
+  img {
+    display: none;
+}
+.form-signin {
+   flex-direction: row;
+   flex-wrap: wrap;
+   justify-content: center;
+   align-content: center;
+}
+.footer {
+ display: none;
+}
 }
 </style>

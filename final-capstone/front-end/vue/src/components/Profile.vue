@@ -49,7 +49,7 @@
       </div>
    
     </div>
-  <footer class="footer"><img src="@/img/logo-black.png"></footer>
+  <!-- <footer class="footer"><img src="@/img/logo-black.png"></footer> -->
   </div>
 </body>
 </template>
@@ -286,17 +286,17 @@ export default {
 img {
     width: 2em;
 }
-.footer{
-  /* position: fixed;  */
+/* .footer{
+  position: fixed;  
   display: flex;
-  /*align-items: center;*/
+  align-items: center;
   align-content: center;
   justify-content: center;
-  /*margin-top: 175px;*/
-  /*bottom: 0;*/ 
+  margin-top: 175px;
+  bottom: 0;
   width: 86em; 
-/*  height: 3em; */
+ height: 3em; 
   background:#FF5C5C; 
   opacity: 65%;
-}
+} */
 </style>

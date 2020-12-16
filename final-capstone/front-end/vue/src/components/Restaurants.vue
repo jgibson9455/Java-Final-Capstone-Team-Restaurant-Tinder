@@ -1,12 +1,16 @@
 <template>
 <body>
+    
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet">
     <div class="restaurant-page">
+                <div class="loading" v-if="isLoading">
+                   <img src='@/img/veggies.gif'/>
+            </div>
         <div class="space">
             <h1 class="page-head"><u id="rest-line">Restaurants</u></h1>
 
-            <div class="loading" v-if="isLoading">
-                   <img src='@/img/celerywalk.gif'/>
-            </div>
+
         <div class="restaurant-items">
                 
             <div class="restaurant-head">
@@ -24,7 +28,7 @@
         </div> 
         </div>   
     </div>  
-      <footer class="footer"><img src="@/img/logo-black.png"></footer>
+      <!-- <footer class="footer"><img src="@/img/logo-black.png"></footer> -->
 </body>
 </template>
 
@@ -104,6 +108,8 @@ methods: {
 .loading {
     display: flex;
     justify-content: center;
+    width: 10em;
+    height: 10em;
 }
 .page-head {
     color: #FF5864 ;
@@ -113,7 +119,7 @@ methods: {
     padding-bottom: 30px;
     margin-top: 5px;
     margin-bottom: -15px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: 'Bad Script', cursive;
   }
 .restaurant-items {
     display: flex;
@@ -141,7 +147,7 @@ h4 {
     padding: 15px;
     margin-top: 15px;
     background-clip: padding-box;
-    padding-bottom: 40em;
+    padding-bottom: 15em;
 }
 
 #all-rest-type{
@@ -171,8 +177,8 @@ h4 {
 img {
     width: 2em;
 }
-.footer{
-  /* position: fixed;  */
+/* .footer{
+ position: fixed;  
   display: flex;
   align-items: center;
   justify-content: center;
@@ -182,5 +188,5 @@ img {
   height: 3em; 
   background:#FF5C5C; 
   opacity: 65%;
-}
+} */
 </style>
