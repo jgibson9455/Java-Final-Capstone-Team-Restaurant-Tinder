@@ -1,5 +1,6 @@
 <template>
 <body>
+  <head> <meta name="viewport" content="width=device-width, initial-scale=1.0"> </head>
   <div class="whatever">
     <h1 class="title"><strong>Restaurant Tinder</strong></h1>
   </div>
@@ -261,5 +262,27 @@ img {
   height: 3em; 
   background:#FF5C5C; 
   opacity: 65%;
+}
+@media screen and (max-width: 800px) {
+  
+  .main {
+    height: 50em;
+  }
+
+  body {
+    grid-template-columns: 1fr;
+  }
+  img {
+    display: none;
+}
+.form-signin {
+   flex-direction: row;
+   flex-wrap: wrap;
+   justify-content: center;
+   align-content: center;
+}
+.footer {
+ display: none;
+}
 }
 </style>
