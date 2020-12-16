@@ -16,20 +16,25 @@
           <div class="button-container" v-for="type in top20" v-bind:key="type.typeId" > 
             <h5>{{type.typeName}}</h5>
               <button class="pref1" v-bind:id="type.typeId" v-on:click.prevent="addToPreferences(type.typeId,1, type.typeName)"><img src="../img/Like.png"/></button>
-              <button class="pref1" v-bind:id="type.typeId" v-on:click.prevent="addToPreferences(type.typeId,2, type.typeName)"><img src="../img/Dislike.png"/></button>
+              <button class="pref1" v-bind:id="type.typeId" v-on:click.prevent="addToPreferences(type.typeId,2, type.typeName)"><img src="../img/Dislike.png" /></button>
             </div>
 
         </div> <!-- favorites div -->
 
            
            <button class="submit" type="submit" v-on:click.prevent="savePreferences()">Submit Preferences</button>
-           <button v-on:click.prevent="isHidden = !isHidden">{{isHidden ? "View all food preferences" : "Hide all food preferences"}} </button>
+           <button class="submit" v-on:click.prevent="isHidden = !isHidden">{{isHidden ? "View all food preferences" : "Hide all food preferences"}} </button>
           
          <div class="scroll" v-if="isHidden === false">
             <div class="button-container" v-for="type in allCuisines" v-bind:key="type.cuisine_id" > 
             <h5>{{type.typeName}}</h5>
-              <button class="pref1" v-bind:id="type.typeId" v-on:click.prevent="addToPreferences(type.typeId,1, type.typeName)"><img src="../img/Like.png"/></button>
-              <button class="pref1" v-bind:id="type.typeId" v-on:click.prevent="addToPreferences(type.typeId,2, type.typeName)"><img src="../img/Dislike.png"/></button>
+              <button class="pref1" v-bind:id="type.typeId" v-on:click.prevent="addToPreferences(type.typeId,1, type.typeName); isClicked = !isClicked">
+               <img src="../img/Like.png"/>
+                 </button>
+            
+              <button class="pref1" v-bind:id="type.typeId" v-on:click.prevent="addToPreferences(type.typeId,2, type.typeName)">
+                <img src="../img/Dislike.png"/>
+                </button>
             </div>
     </div> <!--scoll div -->    
       </form>
@@ -62,6 +67,7 @@ export default {
     savedPreferences: [],
     allCuisines: [],
     isHidden: true,
+    isClicked: false,
     cityId: ""
       }
     },
@@ -80,7 +86,8 @@ export default {
         this.aProfilePreference.typeId = id;
         this.aProfilePreference.typeName = name;
         appServices.addPreference(this.aProfilePreference).then(()=> {this.aProfilePreference = "";})
-      }
+      },
+      
 },
 created() {
       appServices.getTop20Types().then((response) => {
@@ -192,9 +199,7 @@ button.pref1 {
   background-color: transparent; 
   border-radius: 50%;
   border: none; 
-  width: 30%;
-  
-  
+  width: 30%; 
 }
 img {
   height: auto;
@@ -209,7 +214,6 @@ img {
   box-shadow: 6px 4px 34px 2px rgba(0, 0, 0, 0.48); 
   border-radius: 80%
  }
-
  
 
 
