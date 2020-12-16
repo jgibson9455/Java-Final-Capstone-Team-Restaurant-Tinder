@@ -66,18 +66,17 @@ export default {
     margin-bottom: 25px;
   }
 }
-/* img {
+/*img {
     width: 2em;
 }
-.footer{
-  /* position: fixed;  
+/* .footer{
+  position: fixed;  
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 175px;
   bottom: 0; 
   width: 100%; 
-  /* Height of the footer  
   height: 3em; 
   background:#FF5C5C; 
   opacity: 65%;

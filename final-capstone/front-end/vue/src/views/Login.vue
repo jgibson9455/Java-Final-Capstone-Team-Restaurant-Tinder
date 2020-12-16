@@ -60,7 +60,7 @@
     </form>
     
   </div>
-    <footer class="footer"><img src="@/img/logo-black.png"></footer>
+    <!-- <footer class="footer"><img src="@/img/logo-black.png"></footer> -->
 </body>
 </template>
 
@@ -249,9 +249,9 @@ a:hover {
 img {
     width: 2em;
 }
-.footer{
+/* .footer{
   grid-area: footer;
-  /* position: fixed;  */
+  position: fixed;  
   display: flex;
   align-items: center;
   justify-content: center;
@@ -261,5 +261,5 @@ img {
   height: 3em; 
   background:#FF5C5C; 
   opacity: 65%;
-}
+} */
 </style>
