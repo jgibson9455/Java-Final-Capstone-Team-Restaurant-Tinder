@@ -26,7 +26,7 @@
         </div> 
         </div>   
     </div>  
-      <footer class="footer"><img src="@/img/logo-black.png"></footer>
+      <!-- <footer class="footer"><img src="@/img/logo-black.png"></footer> -->
 </body>
 </template>
 
@@ -173,8 +173,8 @@ h4 {
 img {
     width: 2em;
 }
-.footer{
-  /* position: fixed;  */
+/* .footer{
+ position: fixed;  
   display: flex;
   align-items: center;
   justify-content: center;
@@ -184,5 +184,5 @@ img {
   height: 3em; 
   background:#FF5C5C; 
   opacity: 65%;
-}
+} */
 </style>
