@@ -105,11 +105,12 @@ methods: {
 </script>
 
 <style scoped>
-.loading {
+.loading > img {
     display: flex;
     justify-content: center;
-    width: 10em;
-    height: 10em;
+    align-items: center;
+    width: 100%;
+    height: 30%;
 }
 .page-head {
     color: #FF5864 ;
