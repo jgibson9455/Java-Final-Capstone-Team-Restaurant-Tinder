@@ -10,9 +10,9 @@ const backupKey ='059bc4082b3c0d39d438c86b72cc26fb'
 
 export default{
         getCityInfo(cityName){
-            return http.get(`/locations?query=${cityName}`, {
+            return http.get(`/locations?query=${cityName}&count=10`, {
                 headers:{
-                    'user-key' : backupKey
+                    'user-key' : keyOne
                 }
             })
         },

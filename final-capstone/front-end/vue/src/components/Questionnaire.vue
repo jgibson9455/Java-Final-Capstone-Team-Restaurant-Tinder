@@ -126,19 +126,20 @@ body{
   grid-template-columns: .25fr 1fr 1fr 1fr .25fr;
   grid-template-areas: 
   "head head    head    head    head"
-  ".    cont    cont    cont    ."
-  /* ".    .       bttn    .       ." */
+  ".    toppref toppref toppref ."
   ".    allpref allpref allpref ."
   "foot foot    foot    foot    foot"
 
 }
 .preferences {
-  grid-area: cont;
+  grid-area: toppref;
   background-color: blanchedalmond;
   border-radius: 2%;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   align-items: center;
   text-align: center;
+  display: flex;
+  flex-direction: column;
   
   }
 
@@ -217,6 +218,7 @@ img {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+  
   }
   .main {
     height: 50em;
@@ -226,7 +228,26 @@ img {
     grid-template-columns: 1fr;
   }
   img {
-    display: none;
+    object-fit: cover;
+     
+}
+}
+
+@media screen and (max-width: 450px) {
+  .preferences {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .main {
+    height: 50em;
+  }
+
+  body {
+    grid-template-columns: 1fr;
+  }
+  img {
+    object-fit: cover;
 }
 }
 </style>

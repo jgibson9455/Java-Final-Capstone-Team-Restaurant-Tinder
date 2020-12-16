@@ -128,9 +128,13 @@ export default {
             this.profile = response.data;
             ZomatoServices.getCityInfo(this.profile.city)
             .then((response) =>{
-                this.cityEntityType = response.data.location_suggestions[0].entity_type;
-                this.cityEntityId = response.data.location_suggestions[0].entity_id;
-
+                console.log(this.profile.greaterCity);
+                response.data.location_suggestions.forEach((location)=>{
+                    if(location.city_name == this.profile.greaterCity){
+                        this.cityEntityType = location.entity_type;
+                        this.cityEntityId = location.entity_id
+                    }
+                })
                 ZomatoServices.getAllRestaurantsByEntities(this.cityEntityId, this.cityEntityType)
                     .then((response) =>{
                         response.data.restaurants.forEach((place) =>{
@@ -370,7 +374,7 @@ export default {
     cursor: pointer;
     display: inline-block;
     border-radius: 8px;
-    transition: 0.4s ease-out;
+    transition: 0.2s ease-out;
     background-color: white;
 }
 #details-link:hover {

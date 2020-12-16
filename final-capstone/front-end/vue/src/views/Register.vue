@@ -1,6 +1,6 @@
 <template>
 <body class="register-body">
-  <div class="whatever">
+  <div class="main-title-reg">
     <h1 class="title2">Restaurant Tinder</h1>
   </div>
   <div class="banner2">
@@ -156,7 +156,7 @@ export default {
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-areas: 
   "ban ban ban"
-  "whatever whatever whatever"
+  "title title title"
   ". register ."
   ". register ."
   ". . ."
@@ -171,8 +171,8 @@ export default {
   align-items: center;
 }
 
-.whatever {
-  grid-area: whatever;
+.main-title-reg {
+  grid-area: title;
   height: 30%;
   padding-bottom: 40px;
 }
@@ -241,7 +241,7 @@ export default {
 .title2 {
   text-align: center;
   font-size: 50px;
-  margin-top: -10px;
+  margin-top: 20px;
   margin-bottom: -20px;
   color: #FD297B;
   font-family: 'Bad Script', cursive;

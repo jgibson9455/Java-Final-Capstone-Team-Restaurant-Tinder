@@ -1,7 +1,7 @@
 <template>
 <body>
   <head> <meta name="viewport" content="width=device-width, initial-scale=1.0"> </head>
-  <div class="whatever">
+  <div class="main-title">
     <h1 class="title"><strong>Restaurant Tinder</strong></h1>
   </div>
   
@@ -183,7 +183,7 @@ body {
 .title {
   text-align: center;
   font-size: 50px;
-  margin-top: -10px;
+  margin-top: 20px;
   margin-bottom: -20px;
   color: #FD297B;
   font-family: 'Bad Script', cursive;
@@ -271,18 +271,26 @@ img {
 
   body {
     grid-template-columns: 1fr;
+    grid-template-areas: 
+  "banner"
+  "title"
+  "login"
+  "login"
+  ;
+  grid-gap: 10px;
   }
-  img {
+  /* .banner {
     display: none;
-}
-.form-signin {
+} */
+/* .form-signin {
    flex-direction: row;
    flex-wrap: wrap;
    justify-content: center;
    align-content: center;
-}
+} */
 .footer {
  display: none;
 }
+
 }
 </style>
