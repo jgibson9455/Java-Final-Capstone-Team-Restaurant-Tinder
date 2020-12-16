@@ -128,6 +128,7 @@ export default {
             this.profile = response.data;
             ZomatoServices.getCityInfo(this.profile.city)
             .then((response) =>{
+                console.log(this.profile.greaterCity);
                 this.cityEntityType = response.data.location_suggestions[0].entity_type;
                 this.cityEntityId = response.data.location_suggestions[0].entity_id;
 

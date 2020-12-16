@@ -17,7 +17,7 @@
            <label for="city" class="profile-form">Your City: </label>
           <input type="text" id="city" placeholder="Your City" required=true v-model="profile.city" />
 
-          <lable for="greaterCity" class="profile-form">Greater City(ex: Cleveland): </lable>
+          <label for="greaterCity" class="profile-form">Greater City(ex: Cleveland): </label>
           <input type="text" id="greaterCity" placeholder="Greater City" required=true v-model="profile.greaterCity"/>
 
           <button id="update-button" type="submit" v-on:click.prevent="saveProfile()">Update Profile</button>
