@@ -4,54 +4,53 @@
     <!-- <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Mada&display=swap" rel="stylesheet"> -->
 
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet">
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet">
 
-  <div class="space"></div>
+    <div class="space"></div>
 
-  <div class="banner">
-    <img src='@/img/banner.jpeg'/>
-  </div>
+      <div class="banner">
+          <img src='@/img/banner.jpeg'/>
+      </div><!--end banner div-->
 
-  <div class='pic'>
-    <img class="profile-pic" src='@/img/profile.png'/>
-  </div>
+    <div class='profile-head'>
+        <img class="profile-pic" src='@/img/profile.png'/>
+        <h1 id="my-profile">My Profile</h1>
+    </div><!--end pic div-->
 
-  <h1 id="my-profile">My Profile</h1>
+
 
   <div class="home">
-    <div class="top-half">
+      <div class="main">
 
-          <div class="profile-nav">
-              <router-link class="profile-navs" v-bind:to="{name: 'update-profile-view'}">Update Profile Info</router-link> |
-              <router-link class="profile-navs" v-bind:to="{name: 'questionnaire'}">Food Questionnaire</router-link>
-          </div>
+          <div class="profile-navs">
+              <router-link class="update-nav" v-bind:to="{name: 'update-profile-view'}">Update Profile Info</router-link> |
+              <router-link class="preference-nav" v-bind:to="{name: 'questionnaire'}">Food Questionnaire</router-link>
+          </div> <!--end profile nav-->
     
-       <router-link class="restaurant-navs" v-bind:to="{name: 'restaurants'}">View All Restaurants</router-link> 
+          <router-link class="restaurant-nav" v-bind:to="{name: 'restaurants'}">View All Restaurants</router-link> 
     
-       <router-link v-bind:to="{name: 'match-making'}">
-         <button class="start"
-         ><b>Continue Swiping</b></button>
-        </router-link>
+          <router-link v-bind:to="{name: 'match-making'}">
+              <button class="start"><b>Continue Swiping</b></button>
+          </router-link>
 
-        <h2 class="fav-head"
-          v-on:click="showFavs = (showFavs ? false : true)"
-          ><u id="fav-rest-line">{{showFavs === false ? "View Favorites" : "Hide Favorites"}}</u></h2>
+          <h2 class="fav-head"
+              v-on:click="showFavs = (showFavs ? false : true)">
+              <u id="fav-rest-line">{{showFavs === false ? "View Favorites" : "Hide Favorites"}}</u>
+          </h2>
       
-      <div class="rest-card" v-if="showFavs === true">
-        
-        <restaurant-card class="flex-container"
-          v-for="restaurant in fav"
-          v-bind:key="restaurant.restaurantId"
-          v-bind:restaurant="restaurant"
-        ></restaurant-card>
-        
-      </div>
+        <div class="rest-card" v-if="showFavs === true">
+          <restaurant-card class="flex-container"
+              v-for="restaurant in fav"
+              v-bind:key="restaurant.restaurantId"
+              v-bind:restaurant="restaurant"
+          ></restaurant-card>
+        </div> <!--end of rest-card-->
    
-    </div>
-  <!-- <footer class="footer"><img src="@/img/logo-black.png"></footer> -->
-  </div>
-</body>
+      </div> <!--end of main div-->
+                     <!-- <footer class="footer"><img src="@/img/logo-black.png"></footer> -->
+  </div><!--end of home div-->
+</body><!--end profile body-->
 </template>
 
 <script>
@@ -131,7 +130,7 @@ export default {
   align-content: center;
   color: #FF5864;
 }
-.home > .top-half {
+.home > .main {
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -141,12 +140,16 @@ export default {
   padding-top: 25px;
   padding-bottom: 20px;
 }
-.profile-nav {
+.profile-navs {
   margin-top: -30px;
   /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
   font-family: 'Mada', sans-serif;
 }
-.profile-nav > .profile-navs {
+.profile-navs > .update-nav {
+  color: black;
+  font-size: 25px;
+}
+.profile-navs > .preference-nav {
   color: black;
   font-size: 25px;
 }
@@ -157,12 +160,14 @@ export default {
   font-size: 22px;
   /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
   font-family: 'Mada', sans-serif;
-
 }
-.restaurant-navs:hover{
+.restaurant-nav:hover{
   color: #FE3C72;
 }
-.profile-navs:hover{
+.update-nav:hover{
+  color: #FE3C72;  
+}
+.preference-nav:hover{
   color: #FE3C72;  
 }
 .favorite-restaurants{
@@ -172,39 +177,6 @@ export default {
   /* text-align: center; */
   margin-bottom: -30px;
   margin-top: -10px;
-}
-.fav {
-  text-decoration: underline;
-  text-decoration-color: lightgray;
-}
-.welcome {
-  font-size: 15px;
-  margin-top: -20px;
-  padding-top: 20px;
-}
-.middle, .first, .last {
-  width: 200px;
-  height: 100px;
-  object-fit: cover;
-}
-.fav-temp {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  align-items: center;
-  margin-left: 200px;
-  margin-right: 200px;
-  margin-top: 80px;
-}
-.middle {
-  padding-left: -10px;
-  padding-right: -10px;
-}
-.rest-1, .rest-2, .rest-3 {
-  background-color: #FF5864;
-  color: white;
-  border: 3px solid black;
-  border-radius: 3%;
 }
 .start {
      background-color: blanchedalmond;
@@ -243,8 +215,6 @@ export default {
   justify-content: center;
   margin-bottom: -20px;
 } */
-
-
 .favorites {
    font-size: 1.5em; 
    display: flex;
@@ -258,13 +228,11 @@ export default {
   font-family: 'Mada', sans-serif;
   /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
   font-family: 'Mada', sans-serif;
-
 }
 #fav-rest-line {
   color: #FE3C72;
   cursor: pointer;
 }
-
 #fav-rest-line:hover{
   color: black;
 }
@@ -281,9 +249,8 @@ export default {
   /* display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr; */
   text-align: center;
-
 }
-img {
+/*img {
     width: 2em;
 }
 /* .footer{
@@ -299,4 +266,57 @@ img {
   background:#FF5C5C; 
   opacity: 65%;
 } */
+
+@media screen and (max-width: 800px) {
+.banner > img {
+  width: 100%;
+  max-height: 175px;
+}
+  .main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .profile-navs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .restaurant-nav {
+    padding-top: 25px;
+  }
+  .start {
+     padding: 10px;
+     font-size: 35px; 
+}
+  .rest-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 400px) {
+.banner > img {
+    width: 100%;
+}
+.profile-head {
+    text-align: center;
+}
+.profile-pic{
+    height: 50px;
+    width: 50px;
+    margin-top: -20px;
+    margin-left: 0px;
+}
+#my-profile{
+  font-size: xx-large;
+  margin-bottom: -15px;
+}
+   .home {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+  } 
+}
 </style>

@@ -1,11 +1,7 @@
 <template>
 <body>
-<<<<<<< HEAD
-  <div class="main-title">
-=======
   <head> <meta name="viewport" content="width=device-width, initial-scale=1.0"> </head>
   <div class="whatever">
->>>>>>> 3e48aec24fdab643f7f43960e38946508300e31f
     <h1 class="title"><strong>Restaurant Tinder</strong></h1>
   </div>
   
