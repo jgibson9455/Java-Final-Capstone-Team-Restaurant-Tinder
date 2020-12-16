@@ -1,7 +1,7 @@
 <template>
 <body>
   <head> <meta name="viewport" content="width=device-width, initial-scale=1.0"> </head>
-  <div class="whatever">
+  <div class="main-title">
     <h1 class="title"><strong>Restaurant Tinder</strong></h1>
   </div>
   
