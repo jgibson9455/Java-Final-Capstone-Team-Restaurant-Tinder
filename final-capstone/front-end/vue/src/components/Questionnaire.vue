@@ -221,16 +221,12 @@ img {
   .main {
     height: 50em;
   }
-}
 
-
-@media only screen and (max-width: 768px) {
-  
   body {
     grid-template-columns: 1fr;
   }
   img {
     display: none;
-  }
+}
 }
 </style>
