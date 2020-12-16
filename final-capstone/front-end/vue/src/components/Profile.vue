@@ -150,7 +150,7 @@ export default {
   color: black;
   font-size: 25px;
 }
-.restaurant-navs{
+.restaurant-nav{
   color: black;
   cursor: pointer;
   margin-top: 15px;
