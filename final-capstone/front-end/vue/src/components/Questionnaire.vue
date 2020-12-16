@@ -1,5 +1,6 @@
 <template>
 <body>
+  <head> <meta name="viewport" content="width=device-width, initial-scale=1.0"> </head>
   <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet">
    
@@ -138,6 +139,7 @@ body{
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   align-items: center;
   text-align: center;
+  
   }
 
 .favorites {
@@ -160,17 +162,20 @@ body{
   grid-area: allpref;
   display: grid;
   text-align: center;
-  align-items: stretch;
+  align-items: stretch; 
   justify-items: center;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   overflow-x: hidden;
   overflow-y:auto;
-  width: 1300px;
+  width: 93%;
   height: 368px;
   margin: 50px;
   background: url("../img/gradient-blob.png") no-repeat;
+  background-size: contain;
   border-radius: 2%;
+ 
 }
+
  button {
    margin: 1px;
    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -188,18 +193,15 @@ button.pref1 {
   border: none; 
   width: 30%;
   
+  
 }
-button.pref1:active{
-height: auto;
-width: 100%;
-}
-
 img {
   height: auto;
   width: 65%;
   transform: scale(0.98);
   box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24); 
-  border-radius: 80%
+  border-radius: 80%;
+  background-size: contain;
 }
  img:active {
   transform: scale(0.98);
@@ -221,4 +223,14 @@ img {
   }
 }
 
+
+@media only screen and (max-width: 768px) {
+  
+  body {
+    grid-template-columns: 1fr;
+  }
+  img {
+    display: none;
+  }
+}
 </style>
