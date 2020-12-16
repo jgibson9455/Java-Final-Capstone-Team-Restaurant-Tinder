@@ -14,7 +14,8 @@ CREATE TABLE profile(
         last_name       VARCHAR(50),
         user_name       VARCHAR(50),
         email_address   VARCHAR(100),
-        city            VARCHAR(250)
+        city            VARCHAR(250),
+        greater_city     VARCHAR(250)
 );
 
 CREATE TABLE restaurant(

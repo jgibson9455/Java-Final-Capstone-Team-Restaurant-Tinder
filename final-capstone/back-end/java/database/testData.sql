@@ -112,7 +112,7 @@ VALUES('Barrio', 'Local chain serving signature & build-your-own tacos, plus coc
 
 -- Test Data for -- Profile
 INSERT INTO profile VALUES(1, 'Test', 'User', (SELECT username FROM users WHERE user_id = 1), 
-'TheTestUser@Gmail.com', 'Strongsville');
+'TheTestUser@Gmail.com', 'Strongsville', 'Cleveland');
 
 --Test Data For -- profile_preferences
 --VALUES(user_id, type, like(1)/dislike(2))

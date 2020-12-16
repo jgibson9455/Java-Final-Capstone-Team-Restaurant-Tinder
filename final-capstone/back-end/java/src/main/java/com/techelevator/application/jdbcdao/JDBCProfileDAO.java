@@ -36,10 +36,10 @@ public class JDBCProfileDAO implements ProfileDAO {
 	
 	@Override
 	public void populateUserProfile(Profile profile) {
-		String query = "UPDATE profile SET first_name = ?, last_name = ?, email_address = ?, city = ? "
+		String query = "UPDATE profile SET first_name = ?, last_name = ?, email_address = ?, city = ?, greaterCity = ? "
 				+ "WHERE user_name = ?";
 		jdbcTemplate.update(query, profile.getFirstName(), profile.getLastName(), profile.getEmail(),
-				profile.getCity(), profile.getUserName());
+				profile.getCity(), profile.getGreaterCity(), profile.getUserName());
 	}
 	
 	public Profile findByUsername(String userName) {
@@ -75,6 +75,7 @@ public class JDBCProfileDAO implements ProfileDAO {
 		profile.setUserName(rowset.getString("user_name"));
 		profile.setEmail(rowset.getString("email_address"));
 		profile.setCity(rowset.getString("city"));
+		profile.setGreaterCity(rowset.getString("greater_city"));
 
 		return profile;
 	}
