@@ -241,7 +241,7 @@ export default {
 .title2 {
   text-align: center;
   font-size: 50px;
-  margin-top: -10px;
+  margin-top: 20px;
   margin-bottom: -20px;
   color: #FD297B;
   font-family: 'Bad Script', cursive;
