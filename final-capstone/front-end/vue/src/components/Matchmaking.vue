@@ -374,7 +374,7 @@ export default {
     cursor: pointer;
     display: inline-block;
     border-radius: 8px;
-    transition: 0.4s ease-out;
+    transition: 0.2s ease-out;
     background-color: white;
 }
 #details-link:hover {
