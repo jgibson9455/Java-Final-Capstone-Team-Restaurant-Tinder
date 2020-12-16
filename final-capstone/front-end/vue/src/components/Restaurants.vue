@@ -60,8 +60,12 @@ created() {
             this.profile = response.data;
             ZomatoServices.getCityInfo(this.profile.city)
             .then((response) =>{
-                this.cityEntityType = response.data.location_suggestions[0].entity_type;
-                this.cityEntityId = response.data.location_suggestions[0].entity_id;
+                response.data.location_suggestions.forEach((location)=>{
+                    if(location.city_name == this.profile.greaterCity){
+                        this.cityEntityType = location.entity_type;
+                        this.cityEntityId = location.entity_id
+                    }
+                })
 
                 ZomatoServices.getAllRestaurantsByEntities(this.cityEntityId, this.cityEntityType)
                     .then((response) =>{
