@@ -40,7 +40,7 @@
                         <h2 id="match-modal-rest-phone"> {{ randomRestaurant.phoneNumber}} </h2>
                         <h3 id="match-modal-rest-address"> {{ randomRestaurant.address}} {{ randomRestaurant.city}} {{ randomRestaurant.zipCode}}  </h3>
                         <p id="match-modal-rest-descript"> {{ randomRestaurant.restaurantDescrip}}  </p>
-                        <button class="button" @click="showModal = false">Close</button>
+                        <button class="close-button" @click="showModal = false">Close</button>
                     </div> <!--modal-->
                 </transition>
 
@@ -229,6 +229,9 @@ export default {
 </script>
 
 <style scoped>
+.close-button {
+    margin-left: 175px;
+}
 .loading {
     display: flex;
     justify-content: center;
@@ -322,6 +325,7 @@ export default {
     margin-bottom: 5px;
 } 
  .modal-image {
+    margin-left: 25px;
     align-self: center;
     height: 300px;
     width: 360px;
@@ -343,12 +347,15 @@ export default {
 #match-modal-rest-name{
     margin-top: 10px;
     margin-bottom: -25px;
+    text-align: center;
 }
  #match-modal-rest-phone{
     margin-bottom: 5px;
+    text-align: center;
 } 
  #match-modal-rest-address{
     margin-bottom: 20px;
+    text-align: center;
 } 
 #details-link {
     color: #FE3C72;
