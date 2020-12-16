@@ -262,11 +262,7 @@ img {
   height: 3em; 
   background:#FF5C5C; 
   opacity: 65%;
-<<<<<<< HEAD
-} */
-</style>
-=======
-}
+}*/
 @media screen and (max-width: 800px) {
   
   .main {
@@ -290,4 +286,3 @@ img {
 }
 }
 </style>
->>>>>>> 34e6cd56d726d69b0427127de6eb894d03535b4c

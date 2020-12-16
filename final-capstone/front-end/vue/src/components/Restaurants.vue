@@ -1,14 +1,16 @@
 <template>
 <body>
+    
       <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet">
     <div class="restaurant-page">
+                <div class="loading" v-if="isLoading">
+                   <img src='@/img/veggies.gif'/>
+            </div>
         <div class="space">
             <h1 class="page-head"><u id="rest-line">Restaurants</u></h1>
 
-            <div class="loading" v-if="isLoading">
-                   <img src='@/img/celerywalk.gif'/>
-            </div>
+
         <div class="restaurant-items">
                 
             <div class="restaurant-head">
@@ -106,6 +108,8 @@ methods: {
 .loading {
     display: flex;
     justify-content: center;
+    width: 10em;
+    height: 10em;
 }
 .page-head {
     color: #FF5864 ;
@@ -143,7 +147,7 @@ h4 {
     padding: 15px;
     margin-top: 15px;
     background-clip: padding-box;
-    padding-bottom: 40em;
+    padding-bottom: 15em;
 }
 
 #all-rest-type{
