@@ -14,7 +14,7 @@
         <div class="favorites">
 
           <div class="button-container" v-for="type in top20" v-bind:key="type.typeId" > 
-            <h5>{{type.typeName}}</h5>
+            <h5 class="food-name">{{type.typeName}}</h5>
               <button class="pref1" v-bind:id="type.typeId" v-on:click.prevent="addToPreferences(type.typeId,1, type.typeName)"><img src="../img/Like.png"/></button>
               <button class="pref1" v-bind:id="type.typeId" v-on:click.prevent="addToPreferences(type.typeId,2, type.typeName)"><img src="../img/Dislike.png" /></button>
             </div>
@@ -26,7 +26,7 @@
           
          <div class="scroll" v-if="isHidden === false">
             <div class="button-container" v-for="type in allCuisines" v-bind:key="type.cuisine_id" > 
-            <h5>{{type.typeName}}</h5>
+            <h5 class="food-name">{{type.typeName}}</h5>
               <button class="pref1" v-bind:id="type.typeId" v-on:click.prevent="addToPreferences(type.typeId,1, type.typeName)">
                 <img src="../img/Like.png"/>
                  </button>
@@ -218,7 +218,7 @@ img {
   box-shadow: 6px 4px 34px 2px rgba(0, 0, 0, 0.48); 
   border-radius: 80%
  }
- 
+
 
 
 @media screen and (max-width: 800px) {
@@ -242,7 +242,16 @@ img {
   }
   img {
     background-size: auto;
-}
+    }
+    .favorites {
+      display: flex;
+    }
+  .scroll {
+    display: grid;
+    grid-template-columns: 1fr;
+    background: none;
+  }
+
 }
 
 @media screen and (max-width: 450px) {
@@ -257,19 +266,33 @@ img {
   .main {
     height: 50em;
   }
-    .button-container {
+  .button-container {
     display:flex;
     grid-template-columns: 1fr;
-    flex-direction: row;
-    flex-wrap:wrap;
+    flex-wrap: wrap;
   }
   body {
     grid-template-columns: 1fr;
     display: flex;
     flex-direction:column;
+    
   }
   img {
-    background-size: auto;
+    background-image:none;
 }
+  .scroll {
+    display: grid;
+    grid-template-columns: 1fr;
+     background: none;
+     
+  }
+ .favorites {
+      display: flex;
+      align-content:right;
+      justify-content: space-evenly;
+    }
+    h2 {
+      text-align: center;
+    }
 }
 </style>
