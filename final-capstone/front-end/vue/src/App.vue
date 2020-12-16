@@ -17,12 +17,8 @@
       
     </div> <!--if nav closing div-->
        <router-view />
-
-      
-       <!-- <footer class="footer"><img src="@/img/logo-black.png"></footer> -->
-       <!-- <h5>C 2020</h5> -->
   
-</div> <!--id app closing div-->
+  </div> <!--id app closing div-->
 </template>
 
 <script>
@@ -33,7 +29,6 @@ export default {
   //       this.$store.commit("LOGOUT");
   //   }, false)
   // }
-
 }
 </script>
 
@@ -61,7 +56,7 @@ export default {
   transition: 0.2s ease;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 800px) {
   #nav {
     margin-bottom: 25px;
   }
@@ -72,20 +67,5 @@ export default {
     text-align: center;
   }
 }
-/*img {
-    width: 2em;
-}
-/* .footer{
-  position: fixed;  
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 175px;
-  bottom: 0; 
-  width: 100%; 
-  height: 3em; 
-  background:#FF5C5C; 
-  opacity: 65%;
-} */
 
 </style>

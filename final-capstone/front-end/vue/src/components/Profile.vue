@@ -116,8 +116,6 @@ export default {
   align-items: center;
 }
 .profile {
-  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
-  /* font-family: 'Mada', sans-serif; */
   height: 25em;
   align-content: center;
   padding-top: 30px;
@@ -142,7 +140,6 @@ export default {
 }
 .profile-navs {
   margin-top: -30px;
-  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
   font-family: 'Mada', sans-serif;
 }
 .profile-navs > .update-nav {
@@ -158,7 +155,6 @@ export default {
   cursor: pointer;
   margin-top: 15px;
   font-size: 22px;
-  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
   font-family: 'Mada', sans-serif;
 }
 .restaurant-nav:hover{
@@ -174,7 +170,6 @@ export default {
     font-size: 24px;
 }
 #my-profile {
-  /* text-align: center; */
   margin-bottom: -30px;
   margin-top: -10px;
 }
@@ -192,7 +187,6 @@ export default {
      padding: 16px 32px;
      text-align: center;
      font-size: 40px; 
-     /* margin: 2px 1px; */
      opacity: 0.6;
      transition: 0.3s;
      display: inline-block;
@@ -208,13 +202,7 @@ export default {
   width: 8.5em;
   margin-top: -70px;
   margin-left: 20px;
-  /* opacity: 100%; */
 }
-/* .pic {
-  display: flex;
-  justify-content: center;
-  margin-bottom: -20px;
-} */
 .favorites {
    font-size: 1.5em; 
    display: flex;
@@ -226,7 +214,6 @@ export default {
   justify-content: center;
   font-size: xx-large;
   font-family: 'Mada', sans-serif;
-  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
   font-family: 'Mada', sans-serif;
 }
 #fav-rest-line {
@@ -246,27 +233,8 @@ export default {
   flex-direction: row;
   flex-wrap: wrap;
   align-items: flex-end;
-  /* display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr; */
   text-align: center;
 }
-/*img {
-    width: 2em;
-}
-/* .footer{
-  position: fixed;  
-  display: flex;
-  align-items: center;
-  align-content: center;
-  justify-content: center;
-  margin-top: 175px;
-  bottom: 0;
-  width: 86em; 
- height: 3em; 
-  background:#FF5C5C; 
-  opacity: 65%;
-} */
-
 @media screen and (max-width: 800px) {
 .banner > img {
   width: 100%;

@@ -1,34 +1,36 @@
 <template>
 <body>
     
-      <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet">
+    
     <div class="restaurant-page">
+
                 <div class="loading" v-if="isLoading">
                    <img src='@/img/veggies.gif'/>
-            </div>
-        <div class="space">
+                </div><!--end of loading div-->
+
             <h1 class="page-head"><u id="rest-line">Restaurants</u></h1>
 
 
-        <div class="restaurant-items">
+            <div class="restaurant-items">
                 
-            <div class="restaurant-head">
-            <restaurant-card class="card"
-                    v-for="restaurant in restaurants"
-                    v-bind:key="restaurant.id"
-                    v-bind:restaurant="restaurant">
-            </restaurant-card>
-            </div>
-              <!-- <h2 id="all-rest-name">{{ restaurant.restaurantName }}</h2>
+                <div class="restaurant-head">
+                    <restaurant-card class="card"
+                        v-for="restaurant in restaurants"
+                        v-bind:key="restaurant.id"
+                        v-bind:restaurant="restaurant">
+                    </restaurant-card>
+                </div><!--end of restaurant head div-->
+
+                <!-- <h2 id="all-rest-name">{{ restaurant.restaurantName }}</h2>
                 <p id="all-rest-type">{{ restaurant.typeName }}</p>
 
                 <img class="rest-images" v-bind:src="restaurant.imageLink"/> -->
-      
-        </div> 
-        </div>   
-    </div>  
-      <!-- <footer class="footer"><img src="@/img/logo-black.png"></footer> -->
+            </div> <!--end of restaurant-items div-->
+
+    </div>  <!--end of restaurant page div-->
+
 </body>
 </template>
 
@@ -171,27 +173,6 @@ h4 {
     border-radius: 5px; 
     }
 .image {
-    /* display: flex;
-    justify-content: center; */
     padding: 13%;
-
     } 
-/* img {
-    width: 2%;
-} */
-img {
-    width: 2em;
-}
-/* .footer{
- position: fixed;  
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 175px;
-  bottom: 0; 
-  width: 100%; 
-  height: 3em; 
-  background:#FF5C5C; 
-  opacity: 65%;
-} */
 </style>

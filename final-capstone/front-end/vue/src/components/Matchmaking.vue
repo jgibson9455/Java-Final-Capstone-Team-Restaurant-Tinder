@@ -1,92 +1,84 @@
 <template>
 <div class="match-main">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet">
+    
     <div class="match-heading">
         <h1>How's this sound?</h1>  
     </div><!--end of heading-->
 
     <div class="loading" v-if="isLoading">
        <img src='@/img/celerywalk.gif'/>
-    </div>
-
-    <div class="random">
+    </div><!--end of loading img-->
         
             <div class="match-elements">
+
                 <img class="image" v-bind:src="randomRestaurant.imageLink"/>
                     <div class="match-info">
                         <h1 id="match-rest-name"> {{ randomRestaurant.restaurantName }}</h1>
                         <h3 id="match-rest-city"> {{ randomRestaurant.city}}  </h3>
                     
-                    <div class="flex-end">
-                        <button id="details-link" @click="showModal = true">
-                            Click for details
-                        </button>
-                    </div><!--flex end-->
-
+                            <div class="detail-div">
+                                <button id="details-link" @click="showModal = true">
+                                    Click for details
+                                </button>
+                            </div><!--flex end-->
                     </div><!--match info-->
-                <!-- <p id="match-rest-descript"> {{ randomRestaurant.restaurantDescrip}}  </p> -->
+
             </div><!--match elements-->
 
-        <div class="modal-test">
+            <div class="modal-test">
+                <transition name="fade" appear>
+                    <div class="modal-overlay" v-if="showModal" @click="showModal = false"></div>
+                </transition>
+            
+                <transition name="slide" appear>
+                    <div class="modal" v-if="showModal">
+                        <img class="modal-image" v-bind:src="randomRestaurant.imageLink"/>
+                        <h1 id="match-modal-rest-name"> {{ randomRestaurant.restaurantName }}</h1>
+                        <h1 id="match-modal-rest-type"> {{ randomRestaurant.typeName }}</h1>
+                        <h2 id="match-modal-rest-phone"> {{ randomRestaurant.phoneNumber}} </h2>
+                        <h3 id="match-modal-rest-address"> {{ randomRestaurant.address}} {{ randomRestaurant.city}} {{ randomRestaurant.zipCode}}  </h3>
+                        <p id="match-modal-rest-descript"> {{ randomRestaurant.restaurantDescrip}}  </p>
+                        <button class="button" @click="showModal = false">Close</button>
+                    </div> <!--modal-->
+                </transition>
 
+            </div><!--end of modal test div-->
 
-            <transition name="fade" appear>
-                <div class="modal-overlay" v-if="showModal" @click="showModal = false"></div>
-            </transition>
-            <transition name="slide" appear>
-                <div class="modal" v-if="showModal">
-                    <img class="modal-image" v-bind:src="randomRestaurant.imageLink"/>
-                    <h1 id="match-modal-rest-name"> {{ randomRestaurant.restaurantName }}</h1>
-                    <h1 id="match-modal-rest-type"> {{ randomRestaurant.typeName }}</h1>
-                    <h2 id="match-modal-rest-phone"> {{ randomRestaurant.phoneNumber}} </h2>
-                    <h3 id="match-modal-rest-address"> {{ randomRestaurant.address}} {{ randomRestaurant.city}} {{ randomRestaurant.zipCode}}  </h3>
-                    <p id="match-modal-rest-descript"> {{ randomRestaurant.restaurantDescrip}}  </p>
-                    <button class="button" @click="showModal = false">
-                        Close
-                    </button>
-                </div> <!--modal-->
-            </transition>
-        </div><!--random-->
-
-    </div><!--end of random div-->
-
-
-  <div class="buttons">
+<!---->        <div class="buttons">
       
-      <div id="dislike">
-         <a href
-         v-on:click.prevent="addToDislike(randomRestaurant)">
-         <img id="dislike-pic" src="../img/Dislike.png">
-         </a>
-        <h5 class="button-label">Nope</h5>
-      </div>
+            <div id="dislike">
+                <a href
+                v-on:click.prevent="addToDislike(randomRestaurant)">
+                <img id="dislike-pic" src="../img/Dislike.png"></a>
+                <h5 class="button-label">Nope</h5>
+            </div><!--end of dislike div-->
 
+            <div id="skip">
+                <a href
+                v-on:click.prevent="getRandomRestaurant()">
+                <img id="skip-pic" src="../img/Skip.png"></a>
+                <h5 class="button-label">Next</h5>
+            </div><!--end of skip div-->
 
-      <div id="skip">
-         <a href
-         v-on:click.prevent="getRandomRestaurant()">
-         <img id="skip-pic" src="../img/Skip.png">
-         </a>
-         <h5 class="button-label">Next</h5>
-      </div>
+            <div id="like">
+                <a href
+                v-on:click.prevent="addRestaurantToFavorites(randomRestaurant)">
+                <img id="like-pic" src="../img/Like.png"></a>
+                <h5 class="button-label">Like</h5>
+            </div><!--end of like div-->
 
-      <div id="like">
-         <a href
-         v-on:click.prevent="addRestaurantToFavorites(randomRestaurant)">
-         <img id="like-pic" src="../img/Like.png">
-         </a>
-         <h5 class="button-label">Like</h5>
-      </div>
-  </div> <!--end of buttons div-->
+        </div> <!--end of buttons div-->
    
 
         <div class="match-links">
           <router-link class="your-faves"
-          v-bind:to="{name: 'home'}"><strong>View Your Favorites</strong></router-link>
+              v-bind:to="{name: 'home'}"><strong>View Your Favorites</strong></router-link>
           <router-link class="all-restaurants" v-bind:to="{name: 'restaurants'}"><strong>View All Restaurants</strong></router-link>
         </div><!--end of match-links div-->
-  </div> <!--end of matches main div-->
+
+</div> <!--end of match main div-->
 
 </template>
 
@@ -232,16 +224,6 @@ export default {
                 }
             }
         },
-//          getRestaurantTypes() {
-//     for(let i = 0; i < this.restaurants.length; i++){
-//     ApplicationServices.getTypeById(this.restaurants[i].typeId)
-//         .then(apiData => {
-//             this.$set(this.restaurants[i], 'typeName', apiData.data.typeName)
-//         })
-
-//     }
-//  }
-
     }      
 }
 </script>
@@ -344,7 +326,7 @@ export default {
     height: 300px;
     width: 360px;
 }
-.random {
+.match-elements {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -426,6 +408,13 @@ export default {
     color: black;
     text-decoration: underline;
 }
+@media screen and (max-width: 800px) {
 
+}
 
+@media screen and (max-width: 400px) {
+.match-elements {
+    align-items: center;
+}
+}
 </style>
