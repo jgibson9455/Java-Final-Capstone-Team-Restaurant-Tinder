@@ -66,6 +66,12 @@ export default {
     margin-bottom: 25px;
   }
 }
+
+@media screen and (max-width: 500px) {
+  #nav {
+    text-align: center;
+  }
+}
 /*img {
     width: 2em;
 }
