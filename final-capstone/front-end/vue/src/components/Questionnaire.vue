@@ -1,5 +1,5 @@
 <template>
-<body>
+<div>
   <head> <meta name="viewport" content="width=device-width, initial-scale=1.0"> </head>
   <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet">
@@ -21,17 +21,16 @@
 
         </div> <!-- favorites div -->
 
-           
            <button class="submit" type="submit" v-on:click.prevent="savePreferences()">Submit Preferences</button>
            <button class="submit" v-on:click.prevent="isHidden = !isHidden">{{isHidden ? "View all food preferences" : "Hide all food preferences"}} </button>
           
          <div class="scroll" v-if="isHidden === false">
             <div class="button-container" v-for="type in allCuisines" v-bind:key="type.cuisine_id" > 
             <h5>{{type.typeName}}</h5>
-              <button class="pref1" v-bind:id="type.typeId" v-on:click.prevent="addToPreferences(type.typeId,1, type.typeName); isClicked = !isClicked">
-               <img src="../img/Like.png"/>
+              <button class="pref1" v-bind:id="type.typeId" v-on:click.prevent="addToPreferences(type.typeId,1, type.typeName)">
+                <img src="../img/Like.png"/>
                  </button>
-            
+              
               <button class="pref1" v-bind:id="type.typeId" v-on:click.prevent="addToPreferences(type.typeId,2, type.typeName)">
                 <img src="../img/Dislike.png"/>
                 </button>
@@ -40,7 +39,7 @@
       </form>
       
 
-</body>
+</div>
 </template>
 
 <script>
@@ -67,7 +66,6 @@ export default {
     savedPreferences: [],
     allCuisines: [],
     isHidden: true,
-    isClicked: false,
     cityId: ""
       }
     },
@@ -96,7 +94,12 @@ created() {
 
       appServices.getNonTop20Types().then((response)=>{
       this.allCuisines = response.data;
+
+      this.allCuisines.forEach((cuisine)=> {
+        cuisine.isClicked = false;
       })
+      })
+
 
       appServices.getPreferencesByUsername(this.$store.state.user.username).then((response) =>{
         response.data.forEach((preference) =>{
@@ -201,13 +204,14 @@ button.pref1 {
   border: none; 
   width: 30%; 
 }
+
 img {
   height: auto;
   width: 65%;
   transform: scale(0.98);
   box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24); 
   border-radius: 80%;
-  background-size: contain;
+  background-size: auto;
 }
  img:active {
   transform: scale(0.98);
@@ -222,18 +226,22 @@ img {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-  
+    display: flex;
   }
   .main {
     height: 50em;
   }
-
-  body {
+  .button-container {
+    display:flex;
     grid-template-columns: 1fr;
   }
+  body {
+    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction:column;
+  }
   img {
-    object-fit: cover;
-     
+    background-size: auto;
 }
 }
 
@@ -242,16 +250,26 @@ img {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    display: flex;
+    flex-direction: column;
   }
+  
   .main {
     height: 50em;
   }
-
+    .button-container {
+    display:flex;
+    grid-template-columns: 1fr;
+    flex-direction: row;
+    flex-wrap:wrap;
+  }
   body {
     grid-template-columns: 1fr;
+    display: flex;
+    flex-direction:column;
   }
   img {
-    object-fit: cover;
+    background-size: auto;
 }
 }
 </style>
