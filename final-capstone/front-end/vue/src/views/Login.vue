@@ -1,6 +1,6 @@
 <template>
 <body>
-  <div class="whatever">
+  <div class="main-title">
     <h1 class="title"><strong>Restaurant Tinder</strong></h1>
   </div>
   
@@ -143,7 +143,7 @@ body {
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-areas: 
   "banner banner banner"
-  "whatever whatever whatever"
+  "title title title"
   ". login ."
   ". login ."
   ". footer ."
@@ -158,8 +158,8 @@ body {
   align-items: center;
 }
 
-.whatever {
-  grid-area: whatever;
+.main-title {
+  grid-area: title;
   height: 30%;
   padding-bottom: 40px;
 }
