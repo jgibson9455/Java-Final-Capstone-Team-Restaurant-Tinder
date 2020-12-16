@@ -1,5 +1,7 @@
 <template>
 <body>
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet">
     <div class="restaurant-page">
         <div class="space">
             <h1 class="page-head"><u id="rest-line">Restaurants</u></h1>
@@ -113,7 +115,7 @@ methods: {
     padding-bottom: 30px;
     margin-top: 5px;
     margin-bottom: -15px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: 'Bad Script', cursive;
   }
 .restaurant-items {
     display: flex;

@@ -1,6 +1,7 @@
 <template>
 <body>
-
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet">
    
       <div class="heading"> 
       <h2>Preferences</h2>
@@ -151,7 +152,7 @@ body{
   padding-bottom: 20px;
   align-content: center;
   color: #FF5864;
-   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'Bad Script', cursive;
 }
 
 .scroll {
