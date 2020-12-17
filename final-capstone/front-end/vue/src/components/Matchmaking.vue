@@ -16,7 +16,7 @@
         <div class="match-modal-div">
             <div class="match-elements">
 
-                <img class="image" v-bind:src="randomRestaurant.imageLink"/>
+                <img class="image" v-bind:src='getImage'/>
                     <div class="match-info">
                         <h1 id="match-rest-name"> {{ randomRestaurant.restaurantName }}</h1>
                         <h3 id="match-rest-city"> {{ randomRestaurant.city}}  </h3>
@@ -141,20 +141,17 @@ export default {
                             this.restaurant.restaurantCuisine = "Cuisines: " + place.restaurant.cuisines;
                             this.restaurant.restaurantHours = "Hours of Operation: " + place.restaurant.timings;
                             this.restaurant.restaurantRating = "Average Rating: " + place.restaurant.user_rating.aggregate_rating;
-                            // this.restaurant.restaurantDescrip = "Cuisines: " + place.restaurant.cuisines  + 
-                            // " Hours of Operation: " + place.restaurant.timings + " Average Rating: " +
-                            // place.restaurant.user_rating.aggregate_rating;
                             this.restaurant.cuisines = place.restaurant.cuisines;
                             this.restaurant.zipCode =  place.restaurant.location.zipcode;
                             this.restaurant.city =  place.restaurant.location.locality;
                             this.restaurant.phoneNumber =  place.restaurant.phone_numbers;
                             this.restaurant.address =  place.restaurant.location.address;
-                            // let cuisinesSplit = place.restaurant.cuisines.split(", ");
-                            // if(cuisinesSplit.length > 0){
-                            //     this.restaurant.imageLink = ("../img/cuisinesImages/" + cuisinesSplit[0] + ".png");
-                            // }else{
+                            let cuisinesSplit = place.restaurant.cuisines.split(", ");
+                            if(cuisinesSplit.length > 0){
+                                this.restaurant.imageLink = cuisinesSplit[0];
+                            }else{
                                 this.restaurant.imageLink = 'https://cdn.dribbble.com/users/1012566/screenshots/4187820/topic-2.jpg'
-                            // }
+                            }
 
                             this.restaurants.push(this.restaurant);
                             this.restaurant = {};
@@ -238,6 +235,11 @@ export default {
                 }
             }
         },
+    },
+    computed:{
+        getImage(){
+            return `@/img/cuisinesImages/${this.randomRestaurant.imageLink}.png`
+        }
     }      
 }
 </script>
