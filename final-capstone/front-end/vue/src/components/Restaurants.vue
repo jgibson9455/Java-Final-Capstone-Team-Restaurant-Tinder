@@ -87,9 +87,9 @@ created() {
                             this.localRestaurant.address =  place.restaurant.location.address;
                             let cuisinesSplit = place.restaurant.cuisines.split(", ");
                             if(cuisinesSplit.length > 0){
-                                this.restaurant.imageLink = `${cuisinesSplit[0]}.png`;
+                                this.localRestaurant.imageLink = `${cuisinesSplit[0]}.png`;
                             }else{
-                                this.restaurant.imageLink = 'https://cdn.dribbble.com/users/1012566/screenshots/4187820/topic-2.jpg'
+                                this.localRestaurant.imageLink = 'https://cdn.dribbble.com/users/1012566/screenshots/4187820/topic-2.jpg'
                              }
 
                             this.restaurants.push(this.localRestaurant);

@@ -151,7 +151,7 @@ export default {
                                 this.restaurant.imageLink = `${cuisinesSplit[0]}.png`;
                             }else{
                                 this.restaurant.imageLink = 'https://cdn.dribbble.com/users/1012566/screenshots/4187820/topic-2.jpg'
-                             }
+                            }
 
                             this.restaurants.push(this.restaurant);
                             this.restaurant = {};
