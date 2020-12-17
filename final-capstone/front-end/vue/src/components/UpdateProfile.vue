@@ -104,6 +104,7 @@ export default {
   font-size: 3.75em;
   padding-bottom: 20px;
   margin-bottom: -10px;
+  margin-top: -5px;
   align-content: center;
   color: #FF5864;
 }
@@ -115,13 +116,14 @@ export default {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 .banner > img {
-  width: 100%;
+  width: 99%;
   height: 175px;
 }
 .banner {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 37px;
 }
 #update-button {
   margin-top: 20px;
