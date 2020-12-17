@@ -52,7 +52,8 @@ export default {
       type: {
       typeId: "",
       typeName: "",
-      showPrefs: true
+      showPrefs: true,
+      isClicked: false
     },
       aProfilePreference: {
         userName: "",
@@ -202,7 +203,7 @@ button.pref1 {
   background-color: transparent; 
   border-radius: 50%;
   border: none; 
-  width: 30%; 
+  width: 30%;
 }
 
 img {
@@ -212,7 +213,13 @@ img {
   box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24); 
   border-radius: 80%;
   background-size: auto;
+  cursor: pointer;
 }
+
+/* .food-name .pref1:clicked + img {
+  opacity: 0.6;
+} */
+
  img:active {
   transform: scale(0.98);
   box-shadow: 6px 4px 34px 2px rgba(0, 0, 0, 0.48); 
