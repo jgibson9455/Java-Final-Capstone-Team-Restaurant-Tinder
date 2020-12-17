@@ -4,15 +4,15 @@
       
 
       <router-link v-bind:to="{ name: 'match-making' }">
-        <img class="nav-logo" src='@/img/logo-color.png'/>
+        <img class="nav-logo" src='@/assets/logo-color.png'/>
       </router-link>&nbsp;  
 
       <router-link v-bind:to="{ name: 'home' }">
-        <img class="nav-profile" src='@/img/profile.png'/>
+        <img class="nav-profile" src='@/assets/profile.png'/>
       </router-link>&nbsp;  
 
       <router-link v-bind:to="{ name: 'logout' }">
-        <img class="nav-logout" src='@/img/logout.png'/>
+        <img class="nav-logout" src='@/assets/logout.png'/>
       </router-link>
       
     </div> <!--if nav closing div-->

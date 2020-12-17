@@ -3,7 +3,7 @@
   <div class="update-prof-main">
 
       <div class="banner">
-        <img src='@/img/banner.jpeg'/>
+        <img src='@/assets/banner.jpeg'/>
       </div><!--end of banner div-->
   
   <h1 id="prof-head"><strong>Update Profile</strong></h1>

@@ -16,10 +16,10 @@
           <div class="button-container" v-for="type in top20" v-bind:key="type.typeId" > 
             <h5 class="food-name">{{type.typeName}}</h5>
               <button class="pref1" v-bind:id="type.typeId" v-on:click.prevent="addToPreferences(type.typeId,1, type.typeName)">
-                <img src="../img/Like.png"/></button>
+                <img src="../assets/Like.png"/></button>
               
               <button class="pref1" v-bind:id="type.typeId" v-on:click.prevent="addToPreferences(type.typeId,2, type.typeName)">
-                <img src="../img/Dislike.png" /></button>
+                <img src="../assets/Dislike.png" /></button>
             </div>
 
         </div> <!-- favorites div -->
@@ -31,11 +31,11 @@
             <div class="button-container" v-for="type in allCuisines" v-bind:key="type.cuisine_id" > 
             <h5 class="food-name">{{type.typeName}}</h5>
               <button class="pref1" v-bind:id="type.typeId" v-on:click.prevent="addToPreferences(type.typeId,1, type.typeName)">
-                <img src="../img/Like.png"/>
+                <img src="../assets/Like.png"/>
                  </button>
               
               <button class="pref1" v-bind:id="type.typeId" v-on:click.prevent="addToPreferences(type.typeId,2, type.typeName)">
-                <img src="../img/Dislike.png"/>
+                <img src="../assets/Dislike.png"/>
                 </button>
             </div>
     </div> <!--scoll div -->    
@@ -159,7 +159,7 @@ body{
   width: 93%;
   height: 368px;
   margin: 50px;
-  background: url("../img/gradient-blob.png") no-repeat;
+  background: url("../assets/gradient-blob.png") no-repeat;
   background-size: contain;
   border-radius: 2%;
 }

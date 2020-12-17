@@ -10,7 +10,7 @@
     </div><!--end of heading-->
 
     <div class="loading" v-if="isLoading">
-       <img src='@/img/celerywalk.gif'/>
+       <img src='@/assets/celerywalk.gif'/>
     </div><!--end of loading img-->
         
         <div class="match-modal-div">
@@ -57,21 +57,21 @@
             <div id="dislike">
                 <a href
                 v-on:click.prevent="addToDislike(randomRestaurant)">
-                <img id="dislike-pic" src="../img/Dislike.png"></a>
+                <img id="dislike-pic" src="../assets/Dislike.png"></a>
                 <h5 class="button-label">Nope</h5>
             </div><!--end of dislike div-->
 
             <div id="skip">
                 <a href
                 v-on:click.prevent="getRandomRestaurant()">
-                <img id="skip-pic" src="../img/Skip.png"></a>
+                <img id="skip-pic" src="../assets/Skip.png"></a>
                 <h5 class="button-label">Next</h5>
             </div><!--end of skip div-->
 
             <div id="like">
                 <a href
                 v-on:click.prevent="addRestaurantToFavorites(randomRestaurant)">
-                <img id="like-pic" src="../img/Like.png"></a>
+                <img id="like-pic" src="../assets/Like.png"></a>
                 <h5 class="button-label">Like</h5>
             </div><!--end of like div-->
 
@@ -238,7 +238,7 @@ export default {
     },
     computed:{
         getImage(){
-            return `@/img/cuisinesImages/${this.randomRestaurant.imageLink}.png`
+            return `@/assets/cuisinesImages/${this.randomRestaurant.imageLink}.png`
         }
     }      
 }

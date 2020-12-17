@@ -4,7 +4,7 @@
     <h1 class="title2">Restaurant Tinder</h1>
   </div>
   <div class="banner2">
-    <img src='@/img/banner.jpeg'/>
+    <img src='@/assets/banner.jpeg'/>
   </div>
   <div id="register" class="text-center">
     <form class="form-register" @submit.prevent="register">
@@ -54,11 +54,11 @@
       </button>
       <router-link class="link-account" :to="{ name: 'login' }">Have an account?</router-link>
       <div class="logo-account">
-      <img src='../img/logo-color.png'/>
+      <img src='../assets/logo-color.png'/>
     </div>
     </form>
   </div>
-    <!-- <footer class="footer"><img src="@/img/logo-black.png"></footer> -->
+    <!-- <footer class="footer"><img src="@/assets/logo-black.png"></footer> -->
   </body>
 </template>
 

@@ -6,12 +6,12 @@
   </div>
   
   <div class="loading" v-if="isLoading">
-    <img src='@/img/celerywalk.gif'/>
+    <img src='@/assets/celerywalk.gif'/>
   </div>
 
 
   <div class="banner">
-    <img src='@/img/banner.jpeg'/>
+    <img src='@/assets/banner.jpeg'/>
   </div>
   <div id="login" class="text-center">
     <form class="form-signin" @submit.prevent="login">
@@ -56,12 +56,12 @@
       <router-link class="link" :to="{ name: 'register' }">Create an Account</router-link>
 
     <div class="logo">
-      <img src='../img/logo-color.png'/>
+      <img src='../assets/logo-color.png'/>
     </div>
     </form>
     
   </div>
-    <!-- <footer class="footer"><img src="@/img/logo-black.png"></footer> -->
+    <!-- <footer class="footer"><img src="@/assets/logo-black.png"></footer> -->
 </body>
 </template>
 

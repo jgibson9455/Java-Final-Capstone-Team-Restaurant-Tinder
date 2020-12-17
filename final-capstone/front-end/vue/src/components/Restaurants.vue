@@ -7,7 +7,7 @@
     <div class="restaurant-page">
 
                 <div class="loading" v-if="isLoading">
-                   <img src='@/img/veggies.gif'/>
+                   <img src='@/assets/veggies.gif'/>
                 </div><!--end of loading div-->
 
             <h1 class="page-head"><u id="rest-line">Restaurants</u></h1>

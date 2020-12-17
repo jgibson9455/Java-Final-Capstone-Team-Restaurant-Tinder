@@ -10,11 +10,11 @@
     <div class="space"></div>
 
       <div class="banner">
-          <img src='@/img/banner.jpeg'/>
+          <img src='@/assets/banner.jpeg'/>
       </div><!--end banner div-->
 
     <div class='profile-head'>
-        <img class="profile-pic" src='@/img/profile.png'/>
+        <img class="profile-pic" src='@/assets/profile.png'/>
         <h1 id="my-profile">My Profile</h1>
     </div><!--end pic div-->
 
@@ -48,7 +48,7 @@
         </div> <!--end of rest-card-->
    
       </div> <!--end of main div-->
-                     <!-- <footer class="footer"><img src="@/img/logo-black.png"></footer> -->
+                     <!-- <footer class="footer"><img src="@/assets/logo-black.png"></footer> -->
   </div><!--end of home div-->
 </body><!--end profile body-->
 </template>

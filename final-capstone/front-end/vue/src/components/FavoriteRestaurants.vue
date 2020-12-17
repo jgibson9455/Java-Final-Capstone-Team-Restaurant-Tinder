@@ -2,7 +2,7 @@
   <div class="favorites">
 
     <!-- <div class="loading" v-if="isLoading">
-       <img src='@/img/celerywalk.gif'/>
+       <img src='@/assets/celerywalk.gif'/>
     </div> -->
 
     <!-- <h2 class="fav-head"
@@ -15,7 +15,7 @@
       v-bind:restaurant="restaurant"
       ></restaurant-card></div> -->
 
-      <!-- <div class="logo"><img src="../img/logo-black.png"></div> -->
+      <!-- <div class="logo"><img src="../assets/logo-black.png"></div> -->
   </div>
   
 </template>

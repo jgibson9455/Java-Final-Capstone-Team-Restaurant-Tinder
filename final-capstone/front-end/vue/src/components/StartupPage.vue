@@ -4,7 +4,7 @@
 
       <body class="startup-body">
             <div class="start-banner">
-                <img id="banner-logo" src='../img/homebanner.jpg'/>
+                <img id="banner-logo" src='../assets/homebanner.jpg'/>
             </div>
     <h1 class="start-head">Restaurant Tinder</h1>
        
@@ -17,7 +17,7 @@
                 <router-link v-bind:to="{ name: 'register' }">Register</router-link></button>
        
             <div class="start-logo">
-                <img id="starting-logo" src='../img/logo-color.png'/>
+                <img id="starting-logo" src='../assets/logo-color.png'/>
             </div>
        
         </div>
