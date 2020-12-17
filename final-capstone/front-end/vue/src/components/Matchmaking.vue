@@ -146,12 +146,12 @@ export default {
                             this.restaurant.city =  place.restaurant.location.locality;
                             this.restaurant.phoneNumber =  place.restaurant.phone_numbers;
                             this.restaurant.address =  place.restaurant.location.address;
-                            //let cuisinesSplit = place.restaurant.cuisines.split(", ");
-                            // if(cuisinesSplit.length > 0){
-                            //     this.restaurant.imageLink = cuisinesSplit[0];
-                            // }else{
+                            let cuisinesSplit = place.restaurant.cuisines.split(", ");
+                            if(cuisinesSplit.length > 0){
+                                this.restaurant.imageLink = `../assets/${cuisinesSplit[0]}.png`;
+                            }else{
                                 this.restaurant.imageLink = 'https://cdn.dribbble.com/users/1012566/screenshots/4187820/topic-2.jpg'
-                            // }
+                             }
 
                             this.restaurants.push(this.restaurant);
                             this.restaurant = {};
