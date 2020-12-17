@@ -15,8 +15,11 @@
 
           <div class="button-container" v-for="type in top20" v-bind:key="type.typeId" > 
             <h5 class="food-name">{{type.typeName}}</h5>
-              <button class="pref1" v-bind:id="type.typeId" v-on:click.prevent="addToPreferences(type.typeId,1, type.typeName)"><img src="../img/Like.png"/></button>
-              <button class="pref1" v-bind:id="type.typeId" v-on:click.prevent="addToPreferences(type.typeId,2, type.typeName)"><img src="../img/Dislike.png" /></button>
+              <button class="pref1" v-bind:id="type.typeId" v-on:click.prevent="addToPreferences(type.typeId,1, type.typeName)">
+                <img src="../img/Like.png"/></button>
+              
+              <button class="pref1" v-bind:id="type.typeId" v-on:click.prevent="addToPreferences(type.typeId,2, type.typeName)">
+                <img src="../img/Dislike.png" /></button>
             </div>
 
         </div> <!-- favorites div -->
@@ -53,7 +56,6 @@ export default {
       typeId: "",
       typeName: "",
       showPrefs: true,
-      isClicked: false
     },
       aProfilePreference: {
         userName: "",
@@ -67,6 +69,7 @@ export default {
     savedPreferences: [],
     allCuisines: [],
     isHidden: true,
+    isClicked: false,
     cityId: ""
       }
     },
@@ -100,38 +103,17 @@ created() {
         cuisine.isClicked = false;
       })
       })
-
-
       appServices.getPreferencesByUsername(this.$store.state.user.username).then((response) =>{
         response.data.forEach((preference) =>{
           this.savedPreferences.push(preference);
       });
     })
-
-  
-      // appServices.getProfileByUsername(this.$store.state.user.username).then((response)=>{
-      //   this.profile = response.data;
-
-      // zomatoServices.getCityInfo(this.profile.city).then((response) =>{
-      //   this.cityId = response.data.location_suggestions[0].city_id;
-
-      //   zomatoServices.getAllCuisines(this.cityId).then((response) =>{ 
-      //     response.data.cuisines.forEach((cuisine)=> {
-      //       this.type.typeId = cuisine.cuisine.cuisine_id
-      //       this.type.typeName = cuisine.cuisine.cuisine_name
-      //       this.allCuisines.push(this.type);
-      //       this.type= {};
-      //     })
-      //     })
-      //   })
-      // })
     }
 }
 </script>
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Bad+Script&display=swap');
-
 body{
   display: grid;
   grid-template-columns: .25fr 1fr 1fr 1fr .25fr;
@@ -140,7 +122,6 @@ body{
   ".    toppref toppref toppref ."
   ".    allpref allpref allpref ."
   "foot foot    foot    foot    foot"
-
 }
 .preferences {
   grid-area: toppref;
@@ -151,15 +132,12 @@ body{
   text-align: center;
   display: flex;
   flex-direction: column;
-  
   }
-
 .favorites {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   padding-bottom: 50px;
   }
-
 .heading {
   grid-area: head;
   text-align: center;
@@ -169,7 +147,6 @@ body{
   color: #FF5864;
   font-family: 'Bad Script', cursive;
 }
-
 .scroll {
   grid-area: allpref;
   display: grid;
@@ -185,9 +162,7 @@ body{
   background: url("../img/gradient-blob.png") no-repeat;
   background-size: contain;
   border-radius: 2%;
- 
 }
-
  button {
    margin: 1px;
    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -205,7 +180,6 @@ button.pref1 {
   border: none; 
   width: 30%;
 }
-
 img {
   height: auto;
   width: 65%;
@@ -215,16 +189,12 @@ img {
   background-size: auto;
   cursor: pointer;
 }
-
-/* .food-name .pref1:clicked + img {
-  opacity: 0.6;
-} */
-
  img:active {
   transform: scale(0.98);
   box-shadow: 6px 4px 34px 2px rgba(0, 0, 0, 0.48); 
   border-radius: 80%
  }
+
 
 
 
@@ -258,7 +228,6 @@ img {
     grid-template-columns: 1fr;
     background: none;
   }
-
 }
 
 @media screen and (max-width: 450px) {
@@ -269,7 +238,6 @@ img {
     display: flex;
     flex-direction: column;
   }
-  
   .main {
     height: 50em;
   }
@@ -282,16 +250,14 @@ img {
     grid-template-columns: 1fr;
     display: flex;
     flex-direction:column;
-    
   }
   img {
     background-image:none;
-}
+  }
   .scroll {
     display: grid;
     grid-template-columns: 1fr;
      background: none;
-     
   }
  .favorites {
       display: flex;
