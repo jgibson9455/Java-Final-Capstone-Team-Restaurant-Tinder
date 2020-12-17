@@ -37,7 +37,7 @@
             
                 <transition name="slide" appear>
                     <div class="modal" v-if="showModal">
-                        <img class="modal-image" v-bind:src="randomRestaurant.imageLink"/>
+                        <img class="modal-image" v-bind:src= randomRestaurant.imageLink />
                         <h1 id="match-modal-rest-name"> {{ randomRestaurant.restaurantName }}</h1>
                         <p id="match-modal-cuisine"> {{randomRestaurant.restaurantCuisine}}</p>
                         <h3 id="match-modal-rest-address"> {{ randomRestaurant.address}} {{ randomRestaurant.city}} {{ randomRestaurant.zipCode}}  </h3>
@@ -148,7 +148,7 @@ export default {
                             this.restaurant.address =  place.restaurant.location.address;
                             let cuisinesSplit = place.restaurant.cuisines.split(", ");
                             if(cuisinesSplit.length > 0){
-                                this.restaurant.imageLink = `../assets/${cuisinesSplit[0]}.png`;
+                                this.restaurant.imageLink = `${cuisinesSplit[0]}.png`;
                             }else{
                                 this.restaurant.imageLink = 'https://cdn.dribbble.com/users/1012566/screenshots/4187820/topic-2.jpg'
                              }
@@ -238,7 +238,7 @@ export default {
     },
     computed:{
         getImage(){
-            return `@/assets/cuisinesImages/${this.randomRestaurant.imageLink}.png`
+            return `${this.randomRestaurant.imageLink}.png`
         }
     }      
 }

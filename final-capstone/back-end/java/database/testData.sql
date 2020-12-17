@@ -24,7 +24,7 @@ INSERT INTO restaurant_type VALUES(40, 'Fast Food', 'y');
 INSERT INTO restaurant_type VALUES(148, 'Indian', 'y');
 INSERT INTO restaurant_type VALUES(55, 'Italian', 'y');
 INSERT INTO restaurant_type VALUES(60, 'Japanese', 'y');
-INSERT INTO restaurant_type VALUES(70, 'Mediterranian', 'y');
+INSERT INTO restaurant_type VALUES(70, 'Mediterranean', 'y');
 INSERT INTO restaurant_type VALUES(73, 'Mexican', 'y');
 INSERT INTO restaurant_type VALUES(82, 'Pizza', 'y');
 INSERT INTO restaurant_type VALUES(998, 'Salad', 'y');
