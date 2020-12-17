@@ -9,7 +9,7 @@
 
         <div id="card">
             <h2 id="card-name">{{this.restaurant.restaurantName}}</h2>
-            <h3 id="card-type">{{this.restaurant.typeName}}</h3>
+            <!-- <h3 id="card-type">{{this.restaurant.cuisines}}</h3> -->
             <img class="company-logo" v-bind:src="this.restaurant.imageLink"/>
         </div>
 
@@ -25,10 +25,12 @@
                 <div class="details-popup" v-if="showDetails">
                     <img class="details-pic" v-bind:src="this.restaurant.imageLink"/>
                     <h1 class="rest-name">{{this.restaurant.restaurantName}}</h1>
-                    <h1 class="rest-type">{{this.restaurant.typeName}}</h1>
-                    <h2 class="rest-phone">{{this.restaurant.phoneNumber}}</h2>
+                    <p class="rest-cuisine">{{this.restaurant.restaurantCuisine}}</p>
                     <h3 class="rest-address">{{this.restaurant.address}} {{this.restaurant.city}} {{this.restaurant.zipCode}}</h3>
-                    <p class="rest-description">{{this.restaurant.restaurantDescrip}}</p>
+                    <h2 class="rest-phone">{{this.restaurant.phoneNumber}}</h2>
+                    <p class="rest-hours">{{this.restaurant.restaurantHours}}</p>
+                    <p id="rest-rating">{{this.restaurant.restaurantRating}}</p>
+                    <!-- <p class="rest-description">{{this.restaurant.restaurantDescrip}}</p> -->
                     <button class="close-btn" v-on:click="showDetails = false">
                         Close
                     </button>
@@ -49,14 +51,34 @@ export default {
 }
 </script>
 <style scoped>
+.rest-name{
+    margin-top: 10px;
+}
+ .rest-cuisine{
+    margin-top: -10px;
+} 
+ .rest-address{
+    margin-top: -5px;
+} 
+.rest-phone{
+    margin-top: -5px;
+} 
+.rest-hours{
+    margin-top: -10px;
+} 
+#rest-rating {
+    margin-top: -5px;
+    color: rgb(155, 118, 24);
+} 
 #card {
     padding-right: 25px;
     padding-left: 25px;
     width: 200px;
 }
 #card-name {
-    font-family: 'Bad Script', cursive;
-    margin-bottom: -20px;
+    font-family: 'Mada', sans-serif;
+    /* font-family: 'Bad Script', cursive; */
+    margin-bottom: -5px;
 }
 img.company-logo {
     background-color: rgb(209, 209, 209);
@@ -89,12 +111,12 @@ img.company-logo {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 99;
-
+    height: 90%;
     width: 100%;
     max-width: 400px;
     background-color: #FFF;
     border-radius: 16px;
-    padding: 25px;
+    padding: 17px;
 }
 
 .details-popup > h1 {
@@ -129,8 +151,9 @@ img.company-logo {
 
 .details-pic {
     align-self: center;
-    height: 300px;
+    height: 275px;
     width: 360px;
+    margin-bottom: -20px;
 }
 
 .details-btn {

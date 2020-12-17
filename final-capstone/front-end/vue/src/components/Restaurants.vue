@@ -74,9 +74,12 @@ created() {
                         response.data.restaurants.forEach((place) =>{
                             this.localRestaurant.restaurantId = place.restaurant.id;
                             this.localRestaurant.restaurantName =  place.restaurant.name;
-                            this.localRestaurant.restaurantDescrip = "Cuisines: " + place.restaurant.cuisines  + 
-                            " Hours of Operation: " + place.restaurant.timings + " Average Rating: " +
-                            place.restaurant.user_rating.aggregate_rating;
+                            // this.localRestaurant.restaurantDescrip = "Cuisines: " + place.restaurant.cuisines  + 
+                            // " Hours of Operation: " + place.restaurant.timings + " Average Rating: " +
+                            // place.restaurant.user_rating.aggregate_rating;
+                            this.localRestaurant.restaurantCuisine = "Cuisines: " + place.restaurant.cuisines;
+                            this.localRestaurant.restaurantHours = "Hours of Operation: " + place.restaurant.timings;
+                            this.localRestaurant.restaurantRating = "Average Rating: " + place.restaurant.user_rating.aggregate_rating;
                             this.localRestaurant.cuisines = place.restaurant.cuisines;
                             this.localRestaurant.zipCode =  place.restaurant.location.zipcode;
                             this.localRestaurant.city =  place.restaurant.location.locality;

@@ -87,9 +87,12 @@ export default {
         ZomatoServices.getRestaurantById(match.restaurantId).then((apiData) =>{
             this.favoriteRestaurant.restaurantId = apiData.data.id;
             this.favoriteRestaurant.restaurantName =  apiData.data.name;
-            this.favoriteRestaurant.restaurantDescrip = "Cuisines: " + apiData.data.cuisines  + 
-            " Hours of Operation: " + apiData.data.timings + " Average Rating: " +
-            apiData.data.user_rating.aggregate_rating;
+            this.favoriteRestaurant.restaurantCuisine = "Cuisines: " + apiData.data.cuisines;
+            this.favoriteRestaurant.restaurantHours = "Hours of Operation: " + apiData.data.timings;
+            this.favoriteRestaurant.restaurantRating = "Average Rating: " + apiData.data.user_rating.aggregate_rating;
+            // this.favoriteRestaurant.restaurantDescrip = "Cuisines: " + apiData.data.cuisines  + 
+            // " Hours of Operation: " + apiData.data.timings + " Average Rating: " +
+            // apiData.data.user_rating.aggregate_rating;
             this.favoriteRestaurant.zipCode =  apiData.data.location.zipcode;
             this.favoriteRestaurant.city =  apiData.data.location.locality;
             this.favoriteRestaurant.phoneNumber =  apiData.data.phone_numbers;
