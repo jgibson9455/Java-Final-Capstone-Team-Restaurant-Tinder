@@ -97,7 +97,12 @@ export default {
             this.favoriteRestaurant.city =  apiData.data.location.locality;
             this.favoriteRestaurant.phoneNumber =  apiData.data.phone_numbers;
             this.favoriteRestaurant.address =  apiData.data.location.address;
-            this.favoriteRestaurant.imageLink = 'https://cdn.dribbble.com/users/1012566/screenshots/4187820/topic-2.jpg'
+            let cuisinesSplit = apiData.data.cuisines.split(", ");
+            if(cuisinesSplit.length > 0){
+              this.favoriteRestaurant.imageLink = `${cuisinesSplit[0]}.png`;
+              }else{
+                this.favoriteRestaurant.imageLink = 'https://cdn.dribbble.com/users/1012566/screenshots/4187820/topic-2.jpg'
+              }
 
           this.fav.push(this.favoriteRestaurant);
           this.favoriteRestaurant = {};

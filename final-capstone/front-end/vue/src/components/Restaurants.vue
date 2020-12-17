@@ -85,7 +85,12 @@ created() {
                             this.localRestaurant.city =  place.restaurant.location.locality;
                             this.localRestaurant.phoneNumber =  place.restaurant.phone_numbers;
                             this.localRestaurant.address =  place.restaurant.location.address;
-                            this.localRestaurant.imageLink = 'https://cdn.dribbble.com/users/1012566/screenshots/4187820/topic-2.jpg'
+                            let cuisinesSplit = place.restaurant.cuisines.split(", ");
+                            if(cuisinesSplit.length > 0){
+                                this.restaurant.imageLink = `${cuisinesSplit[0]}.png`;
+                            }else{
+                                this.restaurant.imageLink = 'https://cdn.dribbble.com/users/1012566/screenshots/4187820/topic-2.jpg'
+                             }
 
                             this.restaurants.push(this.localRestaurant);
                             this.localRestaurant = {};
