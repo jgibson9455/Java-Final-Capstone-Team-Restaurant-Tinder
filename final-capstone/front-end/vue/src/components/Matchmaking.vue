@@ -1,4 +1,6 @@
 <template>
+<!-- CENTER THE FIELDS -->
+<!-- PUT THINGS ON THEIR OWN LINE -->
 <div class="match-main">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet">
@@ -11,6 +13,7 @@
        <img src='@/img/celerywalk.gif'/>
     </div><!--end of loading img-->
         
+        <div class="match-modal-div">
             <div class="match-elements">
 
                 <img class="image" v-bind:src="randomRestaurant.imageLink"/>
@@ -36,13 +39,16 @@
                     <div class="modal" v-if="showModal">
                         <img class="modal-image" v-bind:src="randomRestaurant.imageLink"/>
                         <h1 id="match-modal-rest-name"> {{ randomRestaurant.restaurantName }}</h1>
-                        <h1 id="match-modal-rest-type"> {{ randomRestaurant.typeName }}</h1>
-                        <h2 id="match-modal-rest-phone"> {{ randomRestaurant.phoneNumber}} </h2>
+                        <p id="match-modal-cuisine"> {{randomRestaurant.restaurantCuisine}}</p>
                         <h3 id="match-modal-rest-address"> {{ randomRestaurant.address}} {{ randomRestaurant.city}} {{ randomRestaurant.zipCode}}  </h3>
-                        <p id="match-modal-rest-descript"> {{ randomRestaurant.restaurantDescrip}}  </p>
+                        <h2 id="match-modal-rest-phone"> {{ randomRestaurant.phoneNumber}} </h2>
+                        <p id="match-modal-hours"> {{randomRestaurant.restaurantHours}}</p>
+                        <p id="match-modal-rating"> {{randomRestaurant.restaurantRating}}</p>
+                        <!-- <p id="match-modal-rest-descript"> {{ randomRestaurant.restaurantDescrip}}  </p> -->
                         <button class="close-button" @click="showModal = false">Close</button>
                     </div> <!--modal-->
                 </transition>
+            </div> <!--end of match-modal div-->
 
             </div><!--end of modal test div-->
 
@@ -132,9 +138,12 @@ export default {
                         response.data.restaurants.forEach((place) =>{
                             this.restaurant.restaurantId = place.restaurant.id;
                             this.restaurant.restaurantName =  place.restaurant.name;
-                            this.restaurant.restaurantDescrip = "Cuisines: " + place.restaurant.cuisines  + 
-                            " Hours of Operation: " + place.restaurant.timings + " Average Rating: " +
-                            place.restaurant.user_rating.aggregate_rating;
+                            this.restaurant.restaurantCuisine = "Cuisines: " + place.restaurant.cuisines;
+                            this.restaurant.restaurantHours = "Hours of Operation: " + place.restaurant.timings;
+                            this.restaurant.restaurantRating = "Average Rating: " + place.restaurant.user_rating.aggregate_rating;
+                            // this.restaurant.restaurantDescrip = "Cuisines: " + place.restaurant.cuisines  + 
+                            // " Hours of Operation: " + place.restaurant.timings + " Average Rating: " +
+                            // place.restaurant.user_rating.aggregate_rating;
                             this.restaurant.cuisines = place.restaurant.cuisines;
                             this.restaurant.zipCode =  place.restaurant.location.zipcode;
                             this.restaurant.city =  place.restaurant.location.locality;
@@ -234,8 +243,11 @@ export default {
 </script>
 
 <style scoped>
-.close-button {
-    margin-left: 175px;
+.match-modal-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: center;
 }
 .loading {
     display: flex;
@@ -330,8 +342,6 @@ export default {
     margin-bottom: 5px;
 } 
  .modal-image {
-    margin-left: 25px;
-    align-self: center;
     height: 300px;
     width: 360px;
 }
@@ -351,16 +361,24 @@ export default {
 }
 #match-modal-rest-name{
     margin-top: 10px;
-    margin-bottom: -25px;
-    text-align: center;
+    margin-bottom: -15px;
 }
  #match-modal-rest-phone{
-    margin-bottom: 5px;
-    text-align: center;
+    margin-bottom: -5px;
 } 
  #match-modal-rest-address{
+    margin-bottom: -5px;
+} 
+ #match-modal-cuisine{
+    margin-bottom: -5px;
+} 
+ #match-modal-hours{
+    margin-bottom: -10px;
+} 
+ #match-modal-rating{
     margin-bottom: 20px;
-    text-align: center;
+    color: rgb(155, 118, 24);
+    
 } 
 #details-link {
     color: #FE3C72;
