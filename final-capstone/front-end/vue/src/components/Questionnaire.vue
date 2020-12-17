@@ -15,8 +15,16 @@
 
           <div class="button-container" v-for="type in top20" v-bind:key="type.typeId" > 
             <h5 class="food-name">{{type.typeName}}</h5>
+
               <button class="pref1" v-bind:id="type.typeId" v-on:click.prevent="addToPreferences(type.typeId,1, type.typeName)">
                 <img src="../assets/Like.png"/></button>
+
+                <!-- <div v-bind:class="{isClicked: isClicked}">
+                <button class="pref1" v-bind:id="type.typeId" 
+                  v-on:click.prevent="addToPreferences(type.typeId,1, type.typeName); isClicked = !isClicked">
+                    <img src="../assets/Like.png"/>
+                </button>
+                </div> -->
               
               <button class="pref1" v-bind:id="type.typeId" v-on:click.prevent="addToPreferences(type.typeId,2, type.typeName)">
                 <img src="../assets/Dislike.png" /></button>
@@ -30,6 +38,7 @@
          <div class="scroll" v-if="isHidden === false">
             <div class="button-container" v-for="type in allCuisines" v-bind:key="type.cuisine_id" > 
             <h5 class="food-name">{{type.typeName}}</h5>
+
               <button class="pref1" v-bind:id="type.typeId" v-on:click.prevent="addToPreferences(type.typeId,1, type.typeName)">
                 <img src="../assets/Like.png"/>
                  </button>
@@ -52,6 +61,8 @@ export default {
     name: 'questionnaire',
     data() {
       return {
+        
+      isClicked: false,
       type: {
       typeId: "",
       typeName: "",
@@ -61,7 +72,7 @@ export default {
         userName: "",
         typeId: "",
         typeName: "",
-        preferenceId: ""
+        preferenceId: "",
       },
     top20: [],
     selectedLikeIds: [],
@@ -69,7 +80,6 @@ export default {
     savedPreferences: [],
     allCuisines: [],
     isHidden: true,
-    isClicked: false,
     cityId: ""
       }
     },
@@ -94,6 +104,9 @@ export default {
 created() {
       appServices.getTop20Types().then((response) => {
       this.top20 = response.data;
+      this.top20.forEach((cuisine)=> {
+      cuisine.isClicked = false;
+      })
       });
 
       appServices.getNonTop20Types().then((response)=>{
@@ -114,6 +127,25 @@ created() {
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Bad+Script&display=swap');
+/* .pref1{
+  background: transparent;
+  display: inline-block;
+  padding: 10px;
+  color: #fff;
+  margin: 10px 0;
+  width: 30%;
+  border-radius: 60%;
+  border: none; 
+}
+.isClicked .pref1 {
+  background: green;
+} */
+button.pref1 {
+  background-color: transparent; 
+  border-radius: 50%;
+  border: none; 
+  width: 30%;
+}
 body{
   display: grid;
   grid-template-columns: .25fr 1fr 1fr 1fr .25fr;
@@ -174,12 +206,7 @@ button.submit {
   align-content: center;
   justify-content: center;
 } 
-button.pref1 {
-  background-color: transparent; 
-  border-radius: 50%;
-  border: none; 
-  width: 30%;
-}
+
 img {
   height: auto;
   width: 65%;
